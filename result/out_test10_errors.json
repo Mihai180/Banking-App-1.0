@@ -1,1 +1,91 @@
-[ ]
+[ {
+  "result" : "Command 'sendMoney' at timestamp 3 is not implemented yet."
+}, {
+  "result" : "Command 'sendMoney' at timestamp 5 is not implemented yet."
+}, {
+  "result" : "Command 'setAlias' at timestamp 6 is not implemented yet."
+}, {
+  "result" : "Command 'sendMoney' at timestamp 7 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 8 is not implemented yet."
+}, {
+  "command" : "deleteAccount",
+  "output" : {
+    "success" : "Account deleted",
+    "timestamp" : 10
+  },
+  "timestamp" : 10
+}, {
+  "result" : "Command 'sendMoney' at timestamp 11 is not implemented yet."
+}, {
+  "result" : "Command 'setAlias' at timestamp 13 is not implemented yet."
+}, {
+  "result" : "Command 'sendMoney' at timestamp 14 is not implemented yet."
+}, {
+  "command" : "deleteAccount",
+  "output" : {
+    "error" : "Balance must be zero to delete the account."
+  },
+  "timestamp" : 15
+}, {
+  "result" : "Command 'sendMoney' at timestamp 16 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 17 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 21 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
+    "firstName" : "Jan",
+    "lastName" : "Ababe",
+    "email" : "Jan_Ababe@outlook.ro",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 670.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Alice",
+    "lastName" : "Dima",
+    "email" : "Alice_Dima@hotmail.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Marinela",
+    "lastName" : "Puscasu",
+    "email" : "Marinela_Puscasu@hotmail.ro",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 2389.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Andre",
+    "lastName" : "Martin",
+    "email" : "Andre_Martin@gmail.fr",
+    "accounts" : [ {
+      "IBAN" : "RO65POOB8944016386845896",
+      "balance" : 842.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "8207906978464446",
+        "status" : "active"
+      } ]
+    } ]
+  } ],
+  "timestamp" : 22
+}, {
+  "result" : "Command 'payOnline' at timestamp 23 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 24 is not implemented yet."
+}, {
+  "result" : "Command 'deleteCard' at timestamp 25 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 26 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 27 is not implemented yet."
+} ]

@@ -1,1 +1,107 @@
-[ ]
+[ {
+  "result" : "Command 'splitPayment' at timestamp 9 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
+    "firstName" : "Emanoil",
+    "lastName" : "Barbu",
+    "email" : "Emanoil_Barbu@hotmail.ro",
+    "accounts" : [ {
+      "IBAN" : "RO65POOB8944016386845896",
+      "balance" : 3461.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Lucas",
+    "lastName" : "Garnier",
+    "email" : "Lucas_Garnier@outlook.fr",
+    "accounts" : [ {
+      "IBAN" : "RO69POOB6209498372540635",
+      "balance" : 5845.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Margaux",
+    "lastName" : "Nicolas",
+    "email" : "Margaux_Nicolas@gmail.fr",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 4782.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Georgeta",
+    "lastName" : "Nistor",
+    "email" : "Georgeta_Nistor@outlook.ro",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 3359.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  } ],
+  "timestamp" : 10
+}, {
+  "result" : "Command 'payOnline' at timestamp 11 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
+    "firstName" : "Emanoil",
+    "lastName" : "Barbu",
+    "email" : "Emanoil_Barbu@hotmail.ro",
+    "accounts" : [ {
+      "IBAN" : "RO65POOB8944016386845896",
+      "balance" : 4198.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Lucas",
+    "lastName" : "Garnier",
+    "email" : "Lucas_Garnier@outlook.fr",
+    "accounts" : [ {
+      "IBAN" : "RO69POOB6209498372540635",
+      "balance" : 6204.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Margaux",
+    "lastName" : "Nicolas",
+    "email" : "Margaux_Nicolas@gmail.fr",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 5707.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Georgeta",
+    "lastName" : "Nistor",
+    "email" : "Georgeta_Nistor@outlook.ro",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 4144.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  } ],
+  "timestamp" : 16
+}, {
+  "result" : "Command 'splitPayment' at timestamp 17 is not implemented yet."
+}, {
+  "result" : "Command 'splitPayment' at timestamp 18 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 19 is not implemented yet."
+} ]

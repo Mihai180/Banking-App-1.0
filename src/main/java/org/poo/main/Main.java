@@ -5,7 +5,14 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.poo.checker.Checker;
 import org.poo.checker.CheckerConstants;
+import org.poo.command.Command;
+import org.poo.command.CommandFactory;
+import org.poo.fileio.CommandInput;
 import org.poo.fileio.ObjectInput;
+import org.poo.fileio.UserInput;
+import org.poo.service.*;
+import org.poo.utils.Utils;
+import org.poo.visitor.command.ConcreteCommandVisitor;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,6 +99,47 @@ public final class Main {
          * output.add(objectNode);
          *
          */
+
+        Utils.resetRandom();
+
+        UserService userService = new UserService();
+        AccountService accountService = new AccountService(userService);
+        MerchantService merchantService = new MerchantService();
+        ExchangeService exchangeService = new ExchangeService();
+        CardService cardService = new CardService(userService, accountService, merchantService, exchangeService);
+        //TransactionService transactionService = new TransactionService(userService, accountService);
+        //ReportService reportService = new ReportService(accountService);
+
+        if (inputData.getUsers() != null) {
+            for (UserInput userInput : inputData.getUsers()) {
+                userService.createUser(userInput);
+            }
+        }
+
+        CommandFactory commandFactory = new CommandFactory();
+
+        ConcreteCommandVisitor visitor = new ConcreteCommandVisitor(
+                userService,
+                accountService,
+                cardService,
+                //transactionService,
+                //reportService,
+                //merchantService,
+                //exchangeService,
+                output,
+                objectMapper
+        );
+
+        if (inputData.getCommands() != null) {
+            for (CommandInput cmdInput : inputData.getCommands()) {
+                Command command = commandFactory.createCommand(cmdInput);
+                command.accept(visitor);
+            }
+        }
+
+        userService.clear();
+        accountService.clear();
+        cardService.clear();
 
         ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
         objectWriter.writeValue(new File(filePath2), output);

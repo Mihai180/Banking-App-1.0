@@ -1,1 +1,130 @@
-[ ]
+[ {
+  "command" : "printUsers",
+  "output" : [ {
+    "firstName" : "Cosmin",
+    "lastName" : "Popescu",
+    "email" : "Cosmin_Popescu@yahoo.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Marina",
+    "lastName" : "Diaconescu",
+    "email" : "Marina_Diaconescu@outlook.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Andrew",
+    "lastName" : "Snyder",
+    "email" : "Andrew_Snyder@outlook.us",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 615.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Andrew",
+    "lastName" : "Klein",
+    "email" : "Andrew_Klein@gmail.us",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Ryan",
+    "lastName" : "Powell",
+    "email" : "Ryan_Powell@gmail.us",
+    "accounts" : [ {
+      "IBAN" : "RO69POOB6209498372540635",
+      "balance" : 1500.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Daniel",
+    "lastName" : "Masson",
+    "email" : "Daniel_Masson@outlook.fr",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 1708.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  } ],
+  "timestamp" : 7
+}, {
+  "result" : "Command 'payOnline' at timestamp 11 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 13 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 14 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 15 is not implemented yet."
+}, {
+  "result" : "Command 'payOnline' at timestamp 16 is not implemented yet."
+}, {
+  "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
+    "firstName" : "Cosmin",
+    "lastName" : "Popescu",
+    "email" : "Cosmin_Popescu@yahoo.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Marina",
+    "lastName" : "Diaconescu",
+    "email" : "Marina_Diaconescu@outlook.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Andrew",
+    "lastName" : "Snyder",
+    "email" : "Andrew_Snyder@outlook.us",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 615.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Andrew",
+    "lastName" : "Klein",
+    "email" : "Andrew_Klein@gmail.us",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Ryan",
+    "lastName" : "Powell",
+    "email" : "Ryan_Powell@gmail.us",
+    "accounts" : [ {
+      "IBAN" : "RO69POOB6209498372540635",
+      "balance" : 1500.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
+    "firstName" : "Daniel",
+    "lastName" : "Masson",
+    "email" : "Daniel_Masson@outlook.fr",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 11169.0,
+      "currency" : "EUR",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "8207906978464446",
+        "status" : "active"
+      } ]
+    } ]
+  } ],
+  "timestamp" : 18
+}, {
+  "result" : "Command 'splitPayment' at timestamp 28 is not implemented yet."
+}, {
+  "result" : "Command 'splitPayment' at timestamp 29 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 30 is not implemented yet."
+}, {
+  "result" : "Command 'splitPayment' at timestamp 33 is not implemented yet."
+}, {
+  "result" : "Command 'printTransactions' at timestamp 34 is not implemented yet."
+} ]
