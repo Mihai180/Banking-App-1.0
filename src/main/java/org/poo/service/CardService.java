@@ -133,26 +133,23 @@ public class CardService {
          */
     }
 
-    public void payOnline(String cardNumber, double amount, String currency, String email) {
+    public String payOnline(String cardNumber, double amount, String currency, String email) {
         Card card = cardsByNumber.get(cardNumber);
 
         if (card == null) {
-            System.out.println("Error: Card not found.");
-            return;
+            return "Card not found";
         }
 
         if (!card.getOwner().getEmail().equals(email)) {
-            System.out.println("Error: Unauthorized access to card.");
-            return;
-        }
-
-        if (card.getAccount().getBalance() < amount) {
-            System.out.println("Error: Insufficient funds.");
-            return;
+            return "Error: Unauthorized access to card.";
         }
 
         if (!card.getAccount().getCurrency().equals(currency)) {
             amount = exchangeService.convertCurrency(currency, card.getAccount().getCurrency(), amount);
+        }
+
+        if (card.getAccount().getBalance() < amount) {
+            return "Error: Insufficient funds.";
         }
 
         card.makePayment(amount);
@@ -167,6 +164,7 @@ public class CardService {
         card.getAccount().addTransaction(transaction);
 
          */
+        return "Success";
     }
 
 

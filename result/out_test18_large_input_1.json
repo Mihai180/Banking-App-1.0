@@ -244,7 +244,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 34435.0,
+      "balance" : 30553.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ {
@@ -396,7 +396,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 34435.0,
+      "balance" : 30553.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ {
@@ -600,7 +600,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 34435.0,
+      "balance" : 30553.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ {
@@ -645,7 +645,7 @@
     "email" : "Victoria_Koeman@hotmail.nl",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 14124.0,
+      "balance" : 14228.637142857142,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -818,7 +818,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 34435.0,
+      "balance" : 30553.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ {
@@ -863,7 +863,7 @@
     "email" : "Victoria_Koeman@hotmail.nl",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 14124.0,
+      "balance" : 14228.637142857142,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1074,7 +1074,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 35322.0,
+      "balance" : 31440.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -1113,7 +1113,7 @@
     "email" : "Victoria_Koeman@hotmail.nl",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 14543.0,
+      "balance" : 14647.637142857142,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -1305,7 +1305,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 35322.0,
+      "balance" : 31440.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -1344,7 +1344,7 @@
     "email" : "Victoria_Koeman@hotmail.nl",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 14543.0,
+      "balance" : 14647.637142857142,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -1366,7 +1366,7 @@
     "email" : "Job_Sire-Segerszoen@yandex.nl",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 844.0,
+      "balance" : 892.125,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1639,7 +1639,7 @@
     "email" : "Sachi_Brahmbhatt@protonmail.in",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 35322.0,
+      "balance" : 31440.0,
       "currency" : "INR",
       "type" : "classic",
       "cards" : [ ]
@@ -1678,7 +1678,7 @@
     "email" : "Victoria_Koeman@hotmail.nl",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 14543.0,
+      "balance" : 14647.637142857142,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
@@ -1700,7 +1700,7 @@
     "email" : "Job_Sire-Segerszoen@yandex.nl",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 844.0,
+      "balance" : 892.125,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {

@@ -66,7 +66,7 @@
     "email" : "Andre_Martin@gmail.fr",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 712.0,
+      "balance" : 495.33333333333326,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -76,6 +76,13 @@
     } ]
   } ],
   "timestamp" : 22
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 26,
+    "description" : "Card not found"
+  },
+  "timestamp" : 26
 }, {
   "result" : "Command 'printTransactions' at timestamp 27 is not implemented yet."
 } ]

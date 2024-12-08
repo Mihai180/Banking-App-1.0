@@ -139,6 +139,19 @@ public class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(PayOnlineCommand command) {
-        cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
+        String result = cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
+
+        if (result.equals("Card not found")) {
+            ObjectNode cmdResult = mapper.createObjectNode();
+            cmdResult.put("command", command.getName());
+
+            ObjectNode outputNode = mapper.createObjectNode();
+            outputNode.put("timestamp", command.getTimestamp());
+            outputNode.put("description", result);
+
+            cmdResult.set("output", outputNode);
+            this.output.add(cmdResult);
+            cmdResult.put("timestamp", command.getTimestamp());
+        }
     }
 }

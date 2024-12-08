@@ -20,7 +20,7 @@
     "email" : "David_Rogers@gmail.us",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 1143.0,
+      "balance" : 1140.5,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {

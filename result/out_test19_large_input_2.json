@@ -46,7 +46,7 @@
     "email" : "Leanne_Scott-Davies@yandex.nz",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 1568.0,
+      "balance" : 1597.0,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -80,7 +80,7 @@
     "email" : "Gina_Johnson@mail.com.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 477.0,
+      "balance" : 534.5384615384615,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -94,7 +94,7 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 777.0,
+      "balance" : 711.6666666666666,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -122,7 +122,7 @@
     "email" : "Sandra_Arnold@icloud.us",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 8262.0,
+      "balance" : 8289.181818181818,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
@@ -198,6 +198,104 @@
   } ],
   "timestamp" : 38
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 78,
+    "description" : "Card not found"
+  },
+  "timestamp" : 78
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 79,
+    "description" : "Card not found"
+  },
+  "timestamp" : 79
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 80,
+    "description" : "Card not found"
+  },
+  "timestamp" : 80
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 81,
+    "description" : "Card not found"
+  },
+  "timestamp" : 81
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 82,
+    "description" : "Card not found"
+  },
+  "timestamp" : 82
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 83,
+    "description" : "Card not found"
+  },
+  "timestamp" : 83
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 84,
+    "description" : "Card not found"
+  },
+  "timestamp" : 84
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 85,
+    "description" : "Card not found"
+  },
+  "timestamp" : 85
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 86,
+    "description" : "Card not found"
+  },
+  "timestamp" : 86
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 87,
+    "description" : "Card not found"
+  },
+  "timestamp" : 87
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 88,
+    "description" : "Card not found"
+  },
+  "timestamp" : 88
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 89,
+    "description" : "Card not found"
+  },
+  "timestamp" : 89
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 90,
+    "description" : "Card not found"
+  },
+  "timestamp" : 90
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 91,
+    "description" : "Card not found"
+  },
+  "timestamp" : 91
+}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Selma",
@@ -225,7 +323,7 @@
     "email" : "Leanne_Scott-Davies@yandex.nz",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2034.0,
+      "balance" : 1996.111111111111,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -259,7 +357,7 @@
     "email" : "Gina_Johnson@mail.com.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 6634.0,
+      "balance" : 6691.538461538462,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -273,7 +371,7 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 1536.0,
+      "balance" : 1612.9738095238095,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -301,7 +399,7 @@
     "email" : "Sandra_Arnold@icloud.us",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 7892.0,
+      "balance" : 7872.070707070707,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
@@ -509,6 +607,104 @@
 }, {
   "result" : "Command 'report' at timestamp 124 is not implemented yet."
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 151,
+    "description" : "Card not found"
+  },
+  "timestamp" : 151
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 152,
+    "description" : "Card not found"
+  },
+  "timestamp" : 152
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 153,
+    "description" : "Card not found"
+  },
+  "timestamp" : 153
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 154,
+    "description" : "Card not found"
+  },
+  "timestamp" : 154
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 155,
+    "description" : "Card not found"
+  },
+  "timestamp" : 155
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 156,
+    "description" : "Card not found"
+  },
+  "timestamp" : 156
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 157,
+    "description" : "Card not found"
+  },
+  "timestamp" : 157
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 158,
+    "description" : "Card not found"
+  },
+  "timestamp" : 158
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 159,
+    "description" : "Card not found"
+  },
+  "timestamp" : 159
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 160,
+    "description" : "Card not found"
+  },
+  "timestamp" : 160
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 161,
+    "description" : "Card not found"
+  },
+  "timestamp" : 161
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 162,
+    "description" : "Card not found"
+  },
+  "timestamp" : 162
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 163,
+    "description" : "Card not found"
+  },
+  "timestamp" : 163
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 164,
+    "description" : "Card not found"
+  },
+  "timestamp" : 164
+}, {
   "result" : "Command 'sendMoney' at timestamp 167 is not implemented yet."
 }, {
   "result" : "Command 'sendMoney' at timestamp 168 is not implemented yet."
@@ -552,7 +748,7 @@
     "email" : "Leanne_Scott-Davies@yandex.nz",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2118.0,
+      "balance" : 2080.1111111111113,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -575,7 +771,7 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 7169.0,
+      "balance" : 5846.25,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -589,7 +785,7 @@
     "email" : "Gina_Johnson@mail.com.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 6685.3,
+      "balance" : 6742.838461538462,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -603,7 +799,7 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 1809.0,
+      "balance" : 1885.9738095238095,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -617,7 +813,7 @@
     "email" : "Estera_Nistor@gmx.ro",
     "accounts" : [ {
       "IBAN" : "RO37POOB7013767509830666",
-      "balance" : 1641.0,
+      "balance" : 1376.375,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -631,7 +827,7 @@
     "email" : "Sandra_Arnold@icloud.us",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 10903.0,
+      "balance" : 10883.070707070707,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {

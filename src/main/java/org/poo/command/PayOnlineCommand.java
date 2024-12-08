@@ -3,6 +3,7 @@ package org.poo.command;
 import org.poo.visitor.command.CommandVisitor;
 
 public class PayOnlineCommand implements Command {
+    private String name;
     private String cardNumber;
     private double amount;
     private String currency;
@@ -11,7 +12,7 @@ public class PayOnlineCommand implements Command {
     private String commerciant;
     private String email;
 
-    public PayOnlineCommand(String cardNumber, double amount, String currency, int timestamp, String description, String commercient, String email) {
+    public PayOnlineCommand(String name, String cardNumber, double amount, String currency, int timestamp, String description, String commercient, String email) {
         this.cardNumber = cardNumber;
         this.amount = amount;
         this.currency = currency;
@@ -19,6 +20,7 @@ public class PayOnlineCommand implements Command {
         this.description = description;
         this.commerciant = commercient;
         this.email = email;
+        this.name = name;
     }
 
     public String getCardNumber() {
@@ -47,6 +49,10 @@ public class PayOnlineCommand implements Command {
 
     public String getEmail() {
         return email;
+    }
+    
+    public String getName() {
+        return name;
     }
 
     public void accept(CommandVisitor visitor) {

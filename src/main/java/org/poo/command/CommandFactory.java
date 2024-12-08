@@ -23,7 +23,7 @@ public class CommandFactory {
             case "setMinimumBalance":
                 return new SetMinBalanceCommand(input.getAccount(), input.getMinBalance());
             case "payOnline":
-                return new PayOnlineCommand(input.getCardNumber(), input.getAmount(), input.getCurrency(), input.getTimestamp(), input.getDescription(), input.getCommerciant(), input.getEmail());
+                return new PayOnlineCommand(commandName, input.getCardNumber(), input.getAmount(), input.getCurrency(), input.getTimestamp(), input.getDescription(), input.getCommerciant(), input.getEmail());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

@@ -25,6 +25,13 @@
   } ],
   "timestamp" : 7
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 9,
+    "description" : "Card not found"
+  },
+  "timestamp" : 9
+}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Nicole",
@@ -59,6 +66,13 @@
     } ]
   } ],
   "timestamp" : 12
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 14,
+    "description" : "Card not found"
+  },
+  "timestamp" : 14
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -151,7 +165,7 @@
     "email" : "Heather_Adams@yahoo.us",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 1173.0,
+      "balance" : 841.2222222222222,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {

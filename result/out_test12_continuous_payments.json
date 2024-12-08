@@ -139,6 +139,13 @@
 }, {
   "result" : "Command 'printTransactions' at timestamp 28 is not implemented yet."
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 30,
+    "description" : "Card not found"
+  },
+  "timestamp" : 30
+}, {
   "result" : "Command 'printTransactions' at timestamp 34 is not implemented yet."
 }, {
   "command" : "deleteAccount",

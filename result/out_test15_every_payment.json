@@ -51,6 +51,13 @@
   } ],
   "timestamp" : 7
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 11,
+    "description" : "Card not found"
+  },
+  "timestamp" : 11
+}, {
   "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
 }, {
   "command" : "printUsers",
@@ -60,7 +67,7 @@
     "email" : "Daniel_Masson@outlook.fr",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 10343.0,
+      "balance" : 10641.4,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {

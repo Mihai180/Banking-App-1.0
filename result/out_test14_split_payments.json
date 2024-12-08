@@ -49,6 +49,13 @@
   } ],
   "timestamp" : 10
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 11,
+    "description" : "Card not found"
+  },
+  "timestamp" : 11
+}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Margaux",

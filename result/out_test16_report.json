@@ -82,6 +82,20 @@
 }, {
   "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
 }, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 23,
+    "description" : "Card not found"
+  },
+  "timestamp" : 23
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 24,
+    "description" : "Card not found"
+  },
+  "timestamp" : 24
+}, {
   "result" : "Command 'report' at timestamp 25 is not implemented yet."
 }, {
   "result" : "Command 'report' at timestamp 26 is not implemented yet."
