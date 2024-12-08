@@ -4,19 +4,19 @@ import org.poo.model.merchant.Merchant;
 import org.poo.visitor.transaction.TransactionVisitor;
 
 public class PaymentTransaction extends Transaction {
-    private Merchant merchant;
+    private String merchant;
     private String category;
     private String currency;
 
     public PaymentTransaction(int timestamp, String description, double amount, String status,
-                              Merchant merchant, String category, String currency) {
+                              String merchant, String category, String currency) {
         super(timestamp, description, amount, status);
         this.merchant = merchant;
         this.category = category;
         this.currency = currency;
     }
 
-    public Merchant getMerchant() {
+    public String getMerchant() {
         return merchant;
     }
 

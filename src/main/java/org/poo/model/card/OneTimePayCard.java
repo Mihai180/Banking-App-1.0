@@ -12,12 +12,12 @@ public class OneTimePayCard extends Card {
     }
 
     @Override
-    public void makePayment(double amount) throws Exception {
+    public void makePayment(double amount) {
         if (isBlocked) {
-            throw new Exception("Card is blocked");
+            System.out.println("You can't pay this amount because isBlocked");
         }
         if (isUsed) {
-            throw new Exception("This card has been used!");
+            System.out.println("You can't pay this amount because is used");
         }
         account.withdraw(amount);
         isUsed = true;

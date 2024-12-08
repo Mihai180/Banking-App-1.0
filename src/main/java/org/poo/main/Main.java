@@ -8,6 +8,7 @@ import org.poo.checker.CheckerConstants;
 import org.poo.command.Command;
 import org.poo.command.CommandFactory;
 import org.poo.fileio.CommandInput;
+import org.poo.fileio.ExchangeInput;
 import org.poo.fileio.ObjectInput;
 import org.poo.fileio.UserInput;
 import org.poo.service.*;
@@ -116,6 +117,10 @@ public final class Main {
             }
         }
 
+        if (inputData.getExchangeRates() != null) {
+            exchangeService.loadExchangeRates(Arrays.asList(inputData.getExchangeRates()));
+        }
+
         CommandFactory commandFactory = new CommandFactory();
 
         ConcreteCommandVisitor visitor = new ConcreteCommandVisitor(
@@ -125,7 +130,7 @@ public final class Main {
                 //transactionService,
                 //reportService,
                 //merchantService,
-                //exchangeService,
+                exchangeService,
                 output,
                 objectMapper
         );

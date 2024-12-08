@@ -9,9 +9,9 @@ public class RegularCard extends Card {
     }
 
     @Override
-    public void makePayment(double amount) throws Exception {
+    public void makePayment(double amount) {
         if (isBlocked) {
-            throw new Exception("Card is blocked");
+            System.out.println("You can't pay this amount because isBlocked");
         }
         account.withdraw(amount);
     }

@@ -3,7 +3,6 @@ package org.poo.model.account;
 import org.poo.model.card.Card;
 import org.poo.model.transaction.Transaction;
 import org.poo.model.user.User;
-import org.poo.visitor.account.AccountVisitor;
 
 import java.util.ArrayList;
 
@@ -62,9 +61,9 @@ public abstract class Account {
         this.balance += amount;
     }
 
-    public void withdraw(Double amount) throws Exception {
+    public void withdraw(Double amount) {
         if (balance - amount < 0) {
-            throw new Exception("Insufficient funds");
+            System.out.println("Insufficient funds");
         }
         this.balance -= amount;
     }
@@ -80,8 +79,4 @@ public abstract class Account {
     public String getAccountType() {
         return null;
     }
-
-    public abstract void accept(AccountVisitor visitor);
-
-
 }

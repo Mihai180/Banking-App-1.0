@@ -32,26 +32,8 @@
 }, {
   "result" : "Command 'printTransactions' at timestamp 17 is not implemented yet."
 }, {
-  "result" : "Command 'payOnline' at timestamp 21 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
-    "firstName" : "Jan",
-    "lastName" : "Ababe",
-    "email" : "Jan_Ababe@outlook.ro",
-    "accounts" : [ {
-      "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 670.0,
-      "currency" : "RON",
-      "type" : "classic",
-      "cards" : [ ]
-    } ]
-  }, {
-    "firstName" : "Alice",
-    "lastName" : "Dima",
-    "email" : "Alice_Dima@hotmail.ro",
-    "accounts" : [ ]
-  }, {
     "firstName" : "Marinela",
     "lastName" : "Puscasu",
     "email" : "Marinela_Puscasu@hotmail.ro",
@@ -63,12 +45,28 @@
       "cards" : [ ]
     } ]
   }, {
+    "firstName" : "Alice",
+    "lastName" : "Dima",
+    "email" : "Alice_Dima@hotmail.ro",
+    "accounts" : [ ]
+  }, {
+    "firstName" : "Jan",
+    "lastName" : "Ababe",
+    "email" : "Jan_Ababe@outlook.ro",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 670.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
+  }, {
     "firstName" : "Andre",
     "lastName" : "Martin",
     "email" : "Andre_Martin@gmail.fr",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 842.0,
+      "balance" : 712.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -78,14 +76,6 @@
     } ]
   } ],
   "timestamp" : 22
-}, {
-  "result" : "Command 'payOnline' at timestamp 23 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 24 is not implemented yet."
-}, {
-  "result" : "Command 'deleteCard' at timestamp 25 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 26 is not implemented yet."
 }, {
   "result" : "Command 'printTransactions' at timestamp 27 is not implemented yet."
 } ]

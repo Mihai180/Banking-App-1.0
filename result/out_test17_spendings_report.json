@@ -1,23 +1,6 @@
 [ {
   "command" : "printUsers",
   "output" : [ {
-    "firstName" : "Anthony",
-    "lastName" : "Graham",
-    "email" : "Anthony_Graham@yahoo.us",
-    "accounts" : [ {
-      "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 423.0,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    }, {
-      "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 334.0,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ ]
-    } ]
-  }, {
     "firstName" : "Simion",
     "lastName" : "Mazilescu",
     "email" : "Simion_Mazilescu@yahoo.ro",
@@ -34,17 +17,7 @@
       "type" : "classic",
       "cards" : [ ]
     } ]
-  } ],
-  "timestamp" : 9
-}, {
-  "result" : "Command 'payOnline' at timestamp 11 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 12 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 13 is not implemented yet."
-}, {
-  "command" : "printUsers",
-  "output" : [ {
+  }, {
     "firstName" : "Anthony",
     "lastName" : "Graham",
     "email" : "Anthony_Graham@yahoo.us",
@@ -61,13 +34,19 @@
       "type" : "classic",
       "cards" : [ ]
     } ]
-  }, {
+  } ],
+  "timestamp" : 9
+}, {
+  "result" : "Command 'sendMoney' at timestamp 13 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
     "firstName" : "Simion",
     "lastName" : "Mazilescu",
     "email" : "Simion_Mazilescu@yahoo.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 2613.0,
+      "balance" : 319.79999999999995,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -81,16 +60,27 @@
       "type" : "classic",
       "cards" : [ ]
     } ]
+  }, {
+    "firstName" : "Anthony",
+    "lastName" : "Graham",
+    "email" : "Anthony_Graham@yahoo.us",
+    "accounts" : [ {
+      "IBAN" : "RO90POOB5450777208072365",
+      "balance" : 423.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    }, {
+      "IBAN" : "RO65POOB8944016386845896",
+      "balance" : 334.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
   } ],
   "timestamp" : 14
 }, {
   "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 18 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 23 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 24 is not implemented yet."
 }, {
   "result" : "Command 'spendingsReport' at timestamp 25 is not implemented yet."
 }, {

@@ -1,8 +1,4 @@
 [ {
-  "result" : "Command 'deleteCard' at timestamp 5 is not implemented yet."
-}, {
-  "result" : "Command 'deleteCard' at timestamp 6 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Nicole",
@@ -13,10 +9,7 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     } ]
   }, {
     "firstName" : "Heather",
@@ -27,18 +20,11 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "7901879264253296",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     } ]
   } ],
   "timestamp" : 7
 }, {
-  "result" : "Command 'payOnline' at timestamp 9 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 11 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Nicole",
@@ -50,9 +36,6 @@
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      }, {
         "cardNumber" : "7004757825892043",
         "status" : "active"
       } ]
@@ -72,18 +55,11 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "7901879264253296",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     } ]
   } ],
   "timestamp" : 12
 }, {
-  "result" : "Command 'deleteCard' at timestamp 13 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 14 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Nicole",
@@ -94,13 +70,7 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      }, {
-        "cardNumber" : "7004757825892043",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     }, {
       "IBAN" : "RO90POOB5450777208072365",
       "balance" : 0.0,
@@ -117,10 +87,7 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "7901879264253296",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     } ]
   } ],
   "timestamp" : 15
@@ -135,13 +102,7 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      }, {
-        "cardNumber" : "7004757825892043",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     }, {
       "IBAN" : "RO90POOB5450777208072365",
       "balance" : 0.0,
@@ -159,17 +120,12 @@
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7901879264253296",
-        "status" : "active"
-      }, {
         "cardNumber" : "6796819982034243",
         "status" : "active"
       } ]
     } ]
   } ],
   "timestamp" : 19
-}, {
-  "result" : "Command 'payOnline' at timestamp 20 is not implemented yet."
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -181,13 +137,7 @@
       "balance" : 0.0,
       "currency" : "USD",
       "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      }, {
-        "cardNumber" : "7004757825892043",
-        "status" : "active"
-      } ]
+      "cards" : [ ]
     }, {
       "IBAN" : "RO90POOB5450777208072365",
       "balance" : 0.0,
@@ -205,9 +155,6 @@
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7901879264253296",
-        "status" : "active"
-      }, {
         "cardNumber" : "6796819982034243",
         "status" : "active"
       } ]

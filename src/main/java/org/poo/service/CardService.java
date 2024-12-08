@@ -1,11 +1,11 @@
 package org.poo.service;
 
+import org.poo.exception.CardNotFoundException;
 import org.poo.model.account.Account;
 import org.poo.model.card.Card;
+import org.poo.model.card.OneTimePayCard;
 import org.poo.model.card.RegularCard;
-import org.poo.model.transaction.CardCreationTransaction;
-import org.poo.model.transaction.ErrorTransaction;
-import org.poo.model.transaction.Transaction;
+import org.poo.model.transaction.*;
 import org.poo.model.user.User;
 import org.poo.utils.Utils;
 
@@ -53,9 +53,6 @@ public class CardService {
          */
 
         if (!account.getOwner().getEmail().equals(email)) {
-            //System.err.println("Error: User does not own this account");
-
-            // Crearea unei tranzacții de tip ErrorTransaction pentru acces neautorizat
             Transaction errorTransaction = new ErrorTransaction(
                     (int) (System.currentTimeMillis() / 1000),
                     "Unauthorized card creation attempt",
@@ -66,12 +63,17 @@ public class CardService {
 
             account.addTransaction(errorTransaction);
             return;
-            //return null;
         }
 
         User user = userService.getUserByEmail(email);
         String cardNumber = Utils.generateCardNumber();
-        Card card = new RegularCard(cardNumber, account, user);
+        Card card = null;
+        if (cardType == "regularCard") {
+            card = new RegularCard(cardNumber, account, user);
+        } else if (cardType == "oneTimeCard") {
+            card = new OneTimePayCard(cardNumber, account, user);
+        }
+        //Card card = new RegularCard(cardNumber, account, user);
         cardsByNumber.put(cardNumber, card);
         account.addCard(card);
 
@@ -89,6 +91,84 @@ public class CardService {
          */
         //return card;
     }
+
+    public void deleteCard(String cardNumber, String email) {
+        Card card = cardsByNumber.get(cardNumber);
+        if (card == null) {
+            Transaction errorTransaction = new ErrorTransaction(
+                    (int) (System.currentTimeMillis() / 1000),
+                    "Card deletion failed",
+                    0.0,
+                    "failure",
+                    "Card with number " + cardNumber + " does not exist."
+            );
+            return;
+        }
+
+        if (!card.getOwner().getEmail().equals(email)) {
+            Transaction errorTransaction = new ErrorTransaction(
+                    (int) (System.currentTimeMillis() / 1000),
+                    "Unauthorized card deletion attempt",
+                    0.0,
+                    "failure",
+                    "User with email " + email + " does not own the card with number " + cardNumber
+            );
+            card.getAccount().addTransaction(errorTransaction);
+            return;
+        }
+
+        cardsByNumber.remove(cardNumber);
+        card.getAccount().getCards().remove(card);
+
+        /*Transaction txn = new CardDeletionTransaction(
+                (int)(System.currentTimeMillis()/1000),
+                "Card Deleted",
+                0.0,
+                "success",
+                cardNumber
+        );
+
+        card.getAccount().addTransaction(txn);
+
+         */
+    }
+
+    public void payOnline(String cardNumber, double amount, String currency, String email) {
+        Card card = cardsByNumber.get(cardNumber);
+
+        if (card == null) {
+            System.out.println("Error: Card not found.");
+            return;
+        }
+
+        if (!card.getOwner().getEmail().equals(email)) {
+            System.out.println("Error: Unauthorized access to card.");
+            return;
+        }
+
+        if (card.getAccount().getBalance() < amount) {
+            System.out.println("Error: Insufficient funds.");
+            return;
+        }
+
+        if (!card.getAccount().getCurrency().equals(currency)) {
+            amount = exchangeService.convertCurrency(currency, card.getAccount().getCurrency(), amount);
+        }
+
+        card.makePayment(amount);
+        /*Transaction transaction = new PaymentTransaction(
+                timestamp,
+                description,
+                amount,
+                "success",
+                commerciant
+        );
+
+        card.getAccount().addTransaction(transaction);
+
+         */
+    }
+
 
     public Map<String, Card> getCardsByNumber() {
         return cardsByNumber;

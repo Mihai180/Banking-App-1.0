@@ -1,7 +1,6 @@
 package org.poo.model.account;
 
 import org.poo.model.user.User;
-import org.poo.visitor.account.AccountVisitor;
 
 public class SavingsAccount extends Account {
     private double interestRate;
@@ -28,9 +27,5 @@ public class SavingsAccount extends Account {
 
     public String getAccountType() {
         return "savings";
-    }
-
-    public void accept(AccountVisitor visitor) {
-        visitor.visit(this);
     }
 }

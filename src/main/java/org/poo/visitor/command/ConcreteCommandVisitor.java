@@ -16,7 +16,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     private TransactionService transactionService;
     private ReportService reportService;
     //private MerchantService merchantService;
-    //private ExchangeService exchangeService;
+    private ExchangeService exchangeService;
 
     private ArrayNode output;
     private ObjectMapper mapper;
@@ -27,7 +27,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                                   //TransactionService transactionService,
                                   //ReportService reportService,
                                   //MerchantService merchantService,
-                                  //ExchangeService exchangeService,
+                                  ExchangeService exchangeService,
                                   ArrayNode output,
                                   ObjectMapper mapper) {
         this.userService = userService;
@@ -107,6 +107,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 + command.getTimestamp() + " is not implemented yet.");
     }
 
+    @Override
     public void visit(DeleteAccountCommand command) {
         ObjectNode cmdResult = mapper.createObjectNode();
         cmdResult.put("command", command.getCommandName());
@@ -124,5 +125,20 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         cmdResult.set("output", outputNode);
         this.output.add(cmdResult);
         cmdResult.put("timestamp", command.getTimestamp());
+    }
+
+    @Override
+    public void visit(DeleteCardCommand command) {
+        cardService.deleteCard(command.getCardNumber(), command.getEmail());
+    }
+
+    @Override
+    public void visit(SetMinBalanceCommand command) {
+        accountService.setMinBalance(command.getAccountIban(), command.getMinBalance());
+    }
+
+    @Override
+    public void visit(PayOnlineCommand command) {
+        cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
     }
 }

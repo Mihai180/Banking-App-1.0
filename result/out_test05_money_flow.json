@@ -66,14 +66,6 @@
   } ],
   "timestamp" : 11
 }, {
-  "result" : "Command 'payOnline' at timestamp 12 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 13 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 14 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 16 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Decebal",
@@ -81,7 +73,7 @@
     "email" : "Decebal_Popa@gmail.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 898.0,
+      "balance" : 385.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -90,7 +82,7 @@
       } ]
     }, {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 7050.0,
+      "balance" : 6694.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -104,7 +96,7 @@
     "email" : "Emmanuel_Munoz_de_Gautier@gmail.fr",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 5976.0,
+      "balance" : 5875.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {

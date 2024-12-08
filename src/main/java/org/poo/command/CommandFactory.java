@@ -1,8 +1,6 @@
 package org.poo.command;
 
 import org.poo.fileio.CommandInput;
-import org.poo.service.*;
-import org.poo.service.AccountService;
 
 public class CommandFactory {
     public Command createCommand(CommandInput input) {
@@ -20,7 +18,12 @@ public class CommandFactory {
                 return new CreateCardCommand(commandName, input.getTimestamp(), input.getAccount(), input.getEmail());
             case "deleteAccount":
                 return new DeleteAccountCommand(commandName, input.getTimestamp(), input.getAccount(), input.getEmail());
-
+            case "deleteCard":
+                return new DeleteCardCommand(input.getCardNumber(), input.getEmail());
+            case "setMinimumBalance":
+                return new SetMinBalanceCommand(input.getAccount(), input.getMinBalance());
+            case "payOnline":
+                return new PayOnlineCommand(input.getCardNumber(), input.getAmount(), input.getCurrency(), input.getTimestamp(), input.getDescription(), input.getCommerciant(), input.getEmail());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

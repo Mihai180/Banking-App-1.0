@@ -14,7 +14,11 @@ public class CreateCardCommand implements Command {
         this.commandName = commandName;
         this.timestamp = timestamp;
         this.accountIBAN = accountIBAN;
-        this.cardType = cardType;
+        if (commandName.equals("createCard")) {
+            this.cardType = "regularCard";
+        } else if (commandName.equals("createOneTimeCard")) {
+            this.cardType = "oneTimeCard";
+        }
         this.email = email;
     }
 

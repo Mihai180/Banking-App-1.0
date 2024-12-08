@@ -46,7 +46,7 @@ public abstract class Card {
         return "active";
     }
 
-    public abstract void makePayment(double amount) throws Exception;
+    public abstract void makePayment(double amount);
 
     //public abstract void accept(CardVisitor visitor);
 }

@@ -1,6 +1,20 @@
 [ {
   "command" : "printUsers",
   "output" : [ {
+    "firstName" : "Patrick",
+    "lastName" : "Cabrera",
+    "email" : "Patrick_Cabrera@hotmail.us",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 557.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "8207906978464446",
+        "status" : "active"
+      } ]
+    } ]
+  }, {
     "firstName" : "Leslie",
     "lastName" : "Thomas",
     "email" : "Leslie_Thomas@yahoo.us",
@@ -21,20 +35,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    } ]
-  }, {
-    "firstName" : "Patrick",
-    "lastName" : "Cabrera",
-    "email" : "Patrick_Cabrera@hotmail.us",
-    "accounts" : [ {
-      "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 557.0,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      } ]
     } ]
   } ],
   "timestamp" : 8
@@ -47,6 +47,20 @@
 }, {
   "command" : "printUsers",
   "output" : [ {
+    "firstName" : "Patrick",
+    "lastName" : "Cabrera",
+    "email" : "Patrick_Cabrera@hotmail.us",
+    "accounts" : [ {
+      "IBAN" : "RO58POOB7344468893732422",
+      "balance" : 557.0,
+      "currency" : "USD",
+      "type" : "classic",
+      "cards" : [ {
+        "cardNumber" : "8207906978464446",
+        "status" : "active"
+      } ]
+    } ]
+  }, {
     "firstName" : "Leslie",
     "lastName" : "Thomas",
     "email" : "Leslie_Thomas@yahoo.us",
@@ -68,7 +82,15 @@
       "type" : "classic",
       "cards" : [ ]
     } ]
-  }, {
+  } ],
+  "timestamp" : 12
+}, {
+  "result" : "Command 'sendMoney' at timestamp 14 is not implemented yet."
+}, {
+  "result" : "Command 'sendMoney' at timestamp 15 is not implemented yet."
+}, {
+  "command" : "printUsers",
+  "output" : [ {
     "firstName" : "Patrick",
     "lastName" : "Cabrera",
     "email" : "Patrick_Cabrera@hotmail.us",
@@ -82,15 +104,7 @@
         "status" : "active"
       } ]
     } ]
-  } ],
-  "timestamp" : 12
-}, {
-  "result" : "Command 'sendMoney' at timestamp 14 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 15 is not implemented yet."
-}, {
-  "command" : "printUsers",
-  "output" : [ {
+  }, {
     "firstName" : "Leslie",
     "lastName" : "Thomas",
     "email" : "Leslie_Thomas@yahoo.us",
@@ -111,20 +125,6 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ ]
-    } ]
-  }, {
-    "firstName" : "Patrick",
-    "lastName" : "Cabrera",
-    "email" : "Patrick_Cabrera@hotmail.us",
-    "accounts" : [ {
-      "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 557.0,
-      "currency" : "USD",
-      "type" : "classic",
-      "cards" : [ {
-        "cardNumber" : "8207906978464446",
-        "status" : "active"
-      } ]
     } ]
   } ],
   "timestamp" : 16

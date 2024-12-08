@@ -6,10 +6,11 @@ import org.poo.model.user.User;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class UserService {
-    private Map<String, User> usersByEmail = new HashMap<>();
+    private Map<String, User> usersByEmail = new LinkedHashMap<>();
 
     public void createUser(UserInput userInput) {
         String email = userInput.getEmail();
@@ -31,15 +32,10 @@ public class UserService {
             throw new UserNotFoundException("User not found: " + email);
         }
 
-        if (user == null) {
-            System.err.println("Error: User not found with email: " + email);
-            return null;
-        }
-
         return user;
     }
 
     public Map<String, User> getAllUsers() {
-        return new HashMap<>(usersByEmail);
+        return new LinkedHashMap<>(usersByEmail);
     }
 }

@@ -1,21 +1,11 @@
 [ {
   "result" : "Command 'checkCardStatus' at timestamp 3 is not implemented yet."
 }, {
-  "result" : "Command 'setMinimumBalance' at timestamp 5 is not implemented yet."
-}, {
   "result" : "Command 'checkCardStatus' at timestamp 6 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 7 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 8 is not implemented yet."
-}, {
-  "result" : "Command 'payOnline' at timestamp 9 is not implemented yet."
 }, {
   "result" : "Command 'checkCardStatus' at timestamp 10 is not implemented yet."
 }, {
   "result" : "Command 'printTransactions' at timestamp 11 is not implemented yet."
-}, {
-  "result" : "Command 'setMinimumBalance' at timestamp 15 is not implemented yet."
 }, {
   "result" : "Command 'checkCardStatus' at timestamp 19 is not implemented yet."
 }, {
@@ -30,7 +20,7 @@
     "email" : "David_Rogers@gmail.us",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 1775.0,
+      "balance" : 1143.0,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {

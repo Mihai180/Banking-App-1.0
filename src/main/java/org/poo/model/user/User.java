@@ -1,7 +1,6 @@
 package org.poo.model.user;
 
 import org.poo.model.account.Account;
-import org.poo.visitor.user.UserVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,9 +61,5 @@ public class User {
             }
         }
         return null;
-   }
-
-   public void accept (UserVisitor visitor) {
-        visitor.visit(this);
    }
 }

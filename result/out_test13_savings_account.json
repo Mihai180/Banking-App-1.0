@@ -1,6 +1,4 @@
 [ {
-  "result" : "Command 'payOnline' at timestamp 13 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Beniamin",
@@ -8,7 +6,7 @@
     "email" : "Beniamin_Popa@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 1452.0,
+      "balance" : 1160.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -49,8 +47,6 @@
 }, {
   "result" : "Command 'changeInterestRate' at timestamp 15 is not implemented yet."
 }, {
-  "result" : "Command 'payOnline' at timestamp 16 is not implemented yet."
-}, {
   "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
 }, {
   "command" : "printUsers",
@@ -60,7 +56,7 @@
     "email" : "Beniamin_Popa@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 1452.0,
+      "balance" : 1160.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -74,7 +70,7 @@
     "email" : "Christine_Carpenter@yahoo.us",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 1107.0,
+      "balance" : 678.0,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
@@ -114,7 +110,7 @@
     "email" : "Beniamin_Popa@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 1452.0,
+      "balance" : 1160.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -128,7 +124,7 @@
     "email" : "Christine_Carpenter@yahoo.us",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 1107.0,
+      "balance" : 678.0,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {

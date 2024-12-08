@@ -8,6 +8,7 @@ import org.poo.model.account.SavingsAccount;
 import org.poo.model.card.Card;
 import org.poo.model.card.RegularCard;
 import org.poo.model.transaction.AccountCreationTransaction;
+import org.poo.model.transaction.MinBalanceSettingTransaction;
 import org.poo.model.transaction.Transaction;
 import org.poo.model.user.User;
 import org.poo.utils.Utils;
@@ -69,7 +70,6 @@ public class AccountService {
             throw new AccountNotFoundException("Account not found with IBAN: from addFunds " + iban);
         }
 
-        // Add the funds to the account
         account.deposit(amount);
     }
 
@@ -79,7 +79,6 @@ public class AccountService {
             throw new IllegalArgumentException("User not found with email: " + email);
         }
 
-        // Find the account to delete by IBAN
         Account accountToRemove = null;
         for (Account account : user.getAccounts()) {
             if (account.getIban().equals(iban)) {
@@ -96,7 +95,6 @@ public class AccountService {
             throw new IllegalArgumentException("Balance must be zero to delete the account.");
         }
 
-        // Remove the account from the user's list of accounts
         user.getAccounts().remove(accountToRemove);
         accountsByIban.remove(iban);
     }
@@ -104,4 +102,25 @@ public class AccountService {
     public Account getAccountByIBAN(String iban) {
         return accountsByIban.get(iban);
     }
+
+    public void setMinBalance(String accountIBAN, double minBalance) {
+        Account account = getAccountByIBAN(accountIBAN);
+        /*if (!account.getOwner().getEmail().equals(email)) {
+            throw new IllegalArgumentException("User does not own the account");
+        }
+
+         */
+        account.setMinimumBalance(minBalance);
+
+        Transaction txn = new MinBalanceSettingTransaction(
+                (int)(System.currentTimeMillis()/1000),
+                "Min Balance Set",
+                0.0,
+                "success",
+                minBalance
+        );
+        account.addTransaction(txn);
+    }
+
+
 }
