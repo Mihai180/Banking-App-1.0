@@ -104,11 +104,11 @@ public final class Main {
         Utils.resetRandom();
 
         UserService userService = new UserService();
-        AccountService accountService = new AccountService(userService);
-        MerchantService merchantService = new MerchantService();
         ExchangeService exchangeService = new ExchangeService();
+        AccountService accountService = new AccountService(userService, exchangeService);
+        MerchantService merchantService = new MerchantService();
         CardService cardService = new CardService(userService, accountService, merchantService, exchangeService);
-        //TransactionService transactionService = new TransactionService(userService, accountService);
+        TransactionService transactionService = new TransactionService(userService);
         //ReportService reportService = new ReportService(accountService);
 
         if (inputData.getUsers() != null) {
@@ -127,7 +127,7 @@ public final class Main {
                 userService,
                 accountService,
                 cardService,
-                //transactionService,
+                transactionService,
                 //reportService,
                 //merchantService,
                 exchangeService,

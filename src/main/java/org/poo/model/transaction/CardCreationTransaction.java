@@ -5,9 +5,10 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class CardCreationTransaction extends Transaction {
     private String cardType;
     private String cardNumber;
-    public CardCreationTransaction(int timestamp, String description, double amount, String status,
+    public CardCreationTransaction(int timestamp,
                                    String cardType, String cardNumber) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "CardCreation";
         this.cardType = cardType;
         this.cardNumber = cardNumber;
     }
@@ -23,4 +24,6 @@ public class CardCreationTransaction extends Transaction {
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

@@ -53,7 +53,7 @@ public class CardService {
          */
 
         if (!account.getOwner().getEmail().equals(email)) {
-            Transaction errorTransaction = new ErrorTransaction(
+            /*Transaction errorTransaction = new ErrorTransaction(
                     (int) (System.currentTimeMillis() / 1000),
                     "Unauthorized card creation attempt",
                     0.0,
@@ -62,6 +62,8 @@ public class CardService {
             );
 
             account.addTransaction(errorTransaction);
+
+             */
             return;
         }
 
@@ -95,18 +97,20 @@ public class CardService {
     public void deleteCard(String cardNumber, String email) {
         Card card = cardsByNumber.get(cardNumber);
         if (card == null) {
-            Transaction errorTransaction = new ErrorTransaction(
+            /*Transaction errorTransaction = new ErrorTransaction(
                     (int) (System.currentTimeMillis() / 1000),
                     "Card deletion failed",
                     0.0,
                     "failure",
                     "Card with number " + cardNumber + " does not exist."
             );
+
+             */
             return;
         }
 
         if (!card.getOwner().getEmail().equals(email)) {
-            Transaction errorTransaction = new ErrorTransaction(
+            /*Transaction errorTransaction = new ErrorTransaction(
                     (int) (System.currentTimeMillis() / 1000),
                     "Unauthorized card deletion attempt",
                     0.0,
@@ -114,6 +118,8 @@ public class CardService {
                     "User with email " + email + " does not own the card with number " + cardNumber
             );
             card.getAccount().addTransaction(errorTransaction);
+
+             */
             return;
         }
 

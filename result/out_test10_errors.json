@@ -1,26 +1,23 @@
 [ {
-  "result" : "Command 'sendMoney' at timestamp 3 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 5 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 6 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 7 is not implemented yet."
-}, {
-  "result" : "Command 'printTransactions' at timestamp 8 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 5,
+    "description" : "Medical checkup at Regina Maria",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "870.0 RON",
+    "transferType" : "sent"
+  } ],
+  "timestamp" : 8
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "success" : "Account deleted",
-    "timestamp" : 10
+    "error" : "Balance must be zero to delete the account."
   },
   "timestamp" : 10
-}, {
-  "result" : "Command 'sendMoney' at timestamp 11 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 13 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 14 is not implemented yet."
 }, {
   "command" : "deleteAccount",
   "output" : {
@@ -28,9 +25,33 @@
   },
   "timestamp" : 15
 }, {
-  "result" : "Command 'sendMoney' at timestamp 16 is not implemented yet."
-}, {
-  "result" : "Command 'printTransactions' at timestamp 17 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 5,
+    "description" : "Medical checkup at Regina Maria",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "870.0 RON",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 11,
+    "description" : "Miscellaneous cash expenses",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "86.0 RON",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 16,
+    "description" : "Electricity and gas bills",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO90POOB5450777208072365",
+    "amount" : "83.0 RON",
+    "transferType" : "sent"
+  } ],
+  "timestamp" : 17
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -39,7 +60,7 @@
     "email" : "Marinela_Puscasu@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 2389.0,
+      "balance" : 1350.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -48,14 +69,20 @@
     "firstName" : "Alice",
     "lastName" : "Dima",
     "email" : "Alice_Dima@hotmail.ro",
-    "accounts" : [ ]
+    "accounts" : [ {
+      "IBAN" : "RO69POOB6209498372540635",
+      "balance" : 956.0,
+      "currency" : "RON",
+      "type" : "classic",
+      "cards" : [ ]
+    } ]
   }, {
     "firstName" : "Jan",
     "lastName" : "Ababe",
     "email" : "Jan_Ababe@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 670.0,
+      "balance" : 753.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -84,5 +111,10 @@
   },
   "timestamp" : 26
 }, {
-  "result" : "Command 'printTransactions' at timestamp 27 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 18,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 27
 } ]

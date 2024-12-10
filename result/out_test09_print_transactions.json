@@ -1,10 +1,4 @@
 [ {
-  "result" : "Command 'setAlias' at timestamp 7 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 8 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 9 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Laurie",
@@ -42,17 +36,19 @@
   } ],
   "timestamp" : 10
 }, {
-  "result" : "Command 'sendMoney' at timestamp 11 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 12 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 13 is not implemented yet."
-}, {
-  "result" : "Command 'printTransactions' at timestamp 14 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 18 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 11,
+    "description" : "Miscellaneous online expenses",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "109.0 USD",
+    "transferType" : "sent"
+  } ],
+  "timestamp" : 14
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -61,7 +57,7 @@
     "email" : "Laurie_Johnson@gmail.us",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 3500.0,
+      "balance" : 3283.0,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
@@ -72,7 +68,7 @@
     "email" : "Alicia_Stafford@gmail.us",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 813.0,
+      "balance" : 922.0,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
@@ -89,9 +85,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 197.0,
+      "balance" : 283.4,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   } ],

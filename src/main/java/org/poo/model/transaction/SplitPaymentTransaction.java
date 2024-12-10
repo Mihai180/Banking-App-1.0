@@ -11,9 +11,10 @@ public class SplitPaymentTransaction extends Transaction {
     private Map<String, Double> participants; // Account IBAN to amount
     private String currency;
 
-    public SplitPaymentTransaction(int timestamp, String description, double amount, String status, Merchant merchant,
+    public SplitPaymentTransaction(int timestamp, Merchant merchant,
                                    String category, Map<String, Double> participants, String currency) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "SplitPayment";
         this.merchant = merchant;
         this.category = category;
         this.participants = participants;

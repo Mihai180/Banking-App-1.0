@@ -2,6 +2,7 @@ package org.poo.service;
 
 import org.poo.exception.UserNotFoundException;
 import org.poo.fileio.UserInput;
+import org.poo.model.account.Account;
 import org.poo.model.user.User;
 
 import java.util.Collection;
@@ -37,5 +38,19 @@ public class UserService {
 
     public Map<String, User> getAllUsers() {
         return new LinkedHashMap<>(usersByEmail);
+    }
+
+    public void setAlias(String email, String aliasName, String accountIban) {
+        User user = getUserByEmail(email);
+        user.addAlias(aliasName, accountIban);
+    }
+
+    public String getIbanByAlias(String email, String aliasName) {
+        User user = getUserByEmail(email);
+        Account account = user.getAccountByAlias(aliasName);
+        if (account == null) {
+            throw new IllegalArgumentException("Alias not found: " + aliasName);
+        }
+        return account.getIban();
     }
 }

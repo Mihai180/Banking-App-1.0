@@ -5,9 +5,9 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class CardDeletionTransaction extends Transaction {
     private String cardNumber;
 
-    public CardDeletionTransaction(int timestamp, String description, double amount,
-                                   String status, String cardNumber) {
-        super(timestamp, description, amount, status);
+    public CardDeletionTransaction(int timestamp, String cardNumber) {
+        super(timestamp);
+        this.description = "CardDeletion";
         this.cardNumber = cardNumber;
     }
 
@@ -18,4 +18,5 @@ public class CardDeletionTransaction extends Transaction {
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }
+
 }

@@ -5,9 +5,10 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class InterestRateChangeTransaction extends Transaction {
     private double oldInterestRate;
     private double newInterestRate;
-    public InterestRateChangeTransaction(int timestamp, String description, double amount, String status,
+    public InterestRateChangeTransaction(int timestamp,
                                          double oldInterestRate, double newInterestRate) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "InterestRateChange";
         this.oldInterestRate = oldInterestRate;
         this.newInterestRate = newInterestRate;
     }

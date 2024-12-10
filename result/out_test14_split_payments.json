@@ -108,5 +108,10 @@
 }, {
   "result" : "Command 'splitPayment' at timestamp 18 is not implemented yet."
 }, {
-  "result" : "Command 'printTransactions' at timestamp 19 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 19
 } ]

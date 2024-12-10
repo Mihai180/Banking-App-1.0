@@ -26,21 +26,17 @@ public class ExchangeService {
             if (rate.getFromCurrency().equalsIgnoreCase(fromCurrency) && rate.getToCurrency().equalsIgnoreCase(toCurrency)) {
                 return amount * rate.getRate();
             }
-            // Check reverse rate
             if (rate.getFromCurrency().equalsIgnoreCase(toCurrency) && rate.getToCurrency().equalsIgnoreCase(fromCurrency)) {
                 return amount / rate.getRate();
             }
         }
 
-        // Handle indirect conversions
         for (CurrencyExchangeRate rate : exchangeRates) {
             if (rate.getFromCurrency().equalsIgnoreCase(fromCurrency)) {
-                // Use an intermediate currency
                 double intermediateAmount = amount * rate.getRate();
                 return convertCurrency(rate.getToCurrency(), toCurrency, intermediateAmount);
             }
             if (rate.getToCurrency().equalsIgnoreCase(fromCurrency)) {
-                // Use an intermediate currency (reverse direction)
                 double intermediateAmount = amount / rate.getRate();
                 return convertCurrency(rate.getFromCurrency(), toCurrency, intermediateAmount);
             }

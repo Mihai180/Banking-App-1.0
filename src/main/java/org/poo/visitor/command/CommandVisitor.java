@@ -12,4 +12,7 @@ public interface CommandVisitor {
     void visit(DeleteCardCommand command);
     void visit(SetMinBalanceCommand command);
     void visit(PayOnlineCommand command);
+    void visit(SendMoneyCommand command);
+    void visit(SetAliasCommand command);
+    void visit(PrintTransactionsCommand command);
 }

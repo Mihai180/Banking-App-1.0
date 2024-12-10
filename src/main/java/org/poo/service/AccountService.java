@@ -19,9 +19,11 @@ import java.util.Map;
 public class AccountService {
     private Map<String, Account> accountsByIban = new HashMap<>();
     private UserService userService;
+    private ExchangeService exchangeService;
 
-    public AccountService(UserService userService) {
+    public AccountService(UserService userService, ExchangeService exchangeService) {
         this.userService = userService;
+        this.exchangeService = exchangeService;
     }
 
     public void clear() {
@@ -36,31 +38,17 @@ public class AccountService {
         }
         String iban = Utils.generateIBAN();
 
-        Account account = new ClassicAccount(iban, user, currency);;
-        /*if (accountType.equals("savings")) {
+        Account account = null;
+        if (accountType.equals("savings")) {
             account = new SavingsAccount(iban, user, currency, interestRate);
         } else {
             account = new ClassicAccount(iban, user, currency);
         }
 
-         */
-
         //accountsByIban.put(account.getIban(), account);
         user.addAccount(account);
         accountsByIban.put(iban, account);
-        /*Transaction txn = new AccountCreationTransaction(
-                (int)(System.currentTimeMillis() / 1000),
-                "Account Created",
-                0.0,
-                "success",
-                accountType,
-                currency,
-                0.0
-        );
 
-        account.addTransaction(txn);
-
-         */
         return account;
     }
 
@@ -112,7 +100,7 @@ public class AccountService {
          */
         account.setMinimumBalance(minBalance);
 
-        Transaction txn = new MinBalanceSettingTransaction(
+        /*Transaction txn = new MinBalanceSettingTransaction(
                 (int)(System.currentTimeMillis()/1000),
                 "Min Balance Set",
                 0.0,
@@ -120,7 +108,50 @@ public class AccountService {
                 minBalance
         );
         account.addTransaction(txn);
+
+         */
     }
 
+    public String sendMoney(String senderIban, double amount, String receiverAliasOrIBAN) {
+        String receiverIban = resolveAliasOrIBAN(receiverAliasOrIBAN);
+        if (receiverIban == null) {
+            return "Receiver account not found or invalid alias.";
+        }
 
+        Account senderAccount = getAccountByIBAN(senderIban);
+        Account receiverAccount = getAccountByIBAN(receiverIban);
+
+        if (senderAccount == null) {
+            return "Sender account not found.";
+        }
+
+        if (receiverAccount == null) {
+            return "Receiver account not found.";
+        }
+
+        double convertedAmount = exchangeService.convertCurrency(
+                senderAccount.getCurrency(),
+                receiverAccount.getCurrency(),
+                amount
+        );
+
+        if (senderAccount.getBalance() < amount) {
+            return "Insufficient funds in sender's account.";
+        }
+
+        senderAccount.withdraw(amount);
+
+        receiverAccount.deposit(convertedAmount);
+
+        return "Success";
+    }
+
+    private String resolveAliasOrIBAN(String aliasOrIBAN) {
+        for (User user : userService.getAllUsers().values()) {
+            if (user.getAliases().containsKey(aliasOrIBAN)) {
+                return user.getAliases().get(aliasOrIBAN);
+            }
+        }
+        return aliasOrIBAN;
+    }
 }

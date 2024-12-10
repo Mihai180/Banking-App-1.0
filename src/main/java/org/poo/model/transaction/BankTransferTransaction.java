@@ -7,9 +7,10 @@ public class BankTransferTransaction extends Transaction {
     private String toAccountIban;
     private String currency;
 
-    public BankTransferTransaction(int timestamp, String description, double amount, String status,
+    public BankTransferTransaction(int timestamp,
                                    String fromAccountIban, String toAccountIban, String currency) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "BankTransfer";
         this.fromAccountIban = fromAccountIban;
         this.toAccountIban = toAccountIban;
         this.currency = currency;
@@ -30,4 +31,6 @@ public class BankTransferTransaction extends Transaction {
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }
+
 }
+

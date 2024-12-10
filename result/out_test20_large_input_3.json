@@ -1,134 +1,4 @@
 [ {
-  "result" : "Command 'setAlias' at timestamp 201 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 202 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 203 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 204 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 205 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 206 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 207 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 208 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 209 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 210 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 211 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 212 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 213 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 214 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 215 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 216 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 217 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 218 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 219 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 220 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 221 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 222 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 223 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 224 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 225 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 226 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 227 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 228 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 229 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 230 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 231 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 232 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 233 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 234 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 235 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 236 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 237 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 238 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 239 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 240 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 241 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 242 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 243 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 244 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 245 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 246 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 247 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 248 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 249 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 250 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 251 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 252 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 253 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 254 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 255 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 256 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 257 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 258 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 259 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 260 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 261 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 262 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 263 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 264 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 265 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Gabor",
@@ -136,7 +6,7 @@
     "email" : "Gabor_Hasler@hotmail.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 95065.0,
+      "balance" : 90040.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
@@ -144,7 +14,7 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 2030.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -153,7 +23,7 @@
     "email" : "John_Schmidt@gmx.ch",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 4943.0,
+      "balance" : 5347.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
@@ -161,7 +31,7 @@
       "IBAN" : "RO46POOB9051076190383154",
       "balance" : 87133.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -170,7 +40,7 @@
     "email" : "Victoria_Rice@icloud.ch",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 1654.0,
+      "balance" : 338.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
@@ -178,7 +48,7 @@
       "IBAN" : "RO45POOB0388148432759748",
       "balance" : 1234.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -195,7 +65,7 @@
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 52962.0,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -210,9 +80,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO98POOB7190609943699593",
-      "balance" : 1912.0,
+      "balance" : 2052.909090909091,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -229,7 +99,7 @@
       "IBAN" : "RO50POOB3359236199018963",
       "balance" : 1388.0,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -244,9 +114,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO75POOB8279679254660818",
-      "balance" : 1227.0,
+      "balance" : 2650.6363636363635,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -255,7 +125,7 @@
     "email" : "Liam_Guthrie@hushmail.nz",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 48370.0,
+      "balance" : 49059.454545454544,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ ]
@@ -263,7 +133,7 @@
       "IBAN" : "RO37POOB8653914479106806",
       "balance" : 13536.0,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -280,7 +150,7 @@
       "IBAN" : "RO73POOB0363118755441573",
       "balance" : 9454.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -289,7 +159,7 @@
     "email" : "Roberta_Mocanu@aol.ro",
     "accounts" : [ {
       "IBAN" : "RO79POOB3616857825600958",
-      "balance" : 2752.0,
+      "balance" : 4417.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -297,7 +167,7 @@
       "IBAN" : "RO40POOB2135483650246268",
       "balance" : 2166.0,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -314,7 +184,7 @@
       "IBAN" : "RO75POOB1098983729823992",
       "balance" : 1912.0,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -331,7 +201,7 @@
       "IBAN" : "RO15POOB0048706387164463",
       "balance" : 1311.0,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -348,7 +218,7 @@
       "IBAN" : "RO97POOB5006417983475785",
       "balance" : 19910.0,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -365,7 +235,7 @@
       "IBAN" : "RO93POOB6760303931698665",
       "balance" : 8949.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -374,7 +244,7 @@
     "email" : "Christophe_Chopard@yahoo.ch",
     "accounts" : [ {
       "IBAN" : "RO98POOB8412955460158769",
-      "balance" : 6640.0,
+      "balance" : 6730.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ ]
@@ -382,7 +252,7 @@
       "IBAN" : "RO47POOB5866490978033060",
       "balance" : 21514.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -397,9 +267,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 1792.0,
+      "balance" : 2260.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -414,9 +284,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 756.0,
+      "balance" : 1499.7272727272725,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -433,7 +303,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 1472.0,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -450,7 +320,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 19402.0,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -465,9 +335,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 1111.0,
+      "balance" : 2199.0,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -482,9 +352,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : 1446.0,
+      "balance" : 2951.454545454545,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -501,7 +371,7 @@
       "IBAN" : "RO69POOB2312919212921100",
       "balance" : 1643.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -518,7 +388,7 @@
       "IBAN" : "RO24POOB6002156322256357",
       "balance" : 1559.0,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -533,9 +403,9 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO66POOB5231566576817248",
-      "balance" : 1408.0,
+      "balance" : 1968.181818181818,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   }, {
@@ -552,7 +422,7 @@
       "IBAN" : "RO01POOB9893132718323396",
       "balance" : 2610.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ ]
     } ]
   } ],
@@ -560,11 +430,105 @@
 }, {
   "result" : "Command 'splitPayment' at timestamp 370 is not implemented yet."
 }, {
-  "result" : "Command 'printTransactions' at timestamp 371 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 251,
+    "description" : "Electricity and water bills",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "1726.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 252,
+    "description" : "Transfer to a savings account at UBS",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO75POOB8279679254660818",
+    "amount" : "1740.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 253,
+    "description" : "ZVV pass for public transport",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO66POOB5231566576817248",
+    "amount" : "474.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 254,
+    "description" : "Weekly shopping from Coop",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "717.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 255,
+    "description" : "Repayment for a mortgage",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO49POOB4985907300499418",
+    "amount" : "368.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 26,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 371
 }, {
-  "result" : "Command 'printTransactions' at timestamp 372 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 2,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 256,
+    "description" : "Medical checkup at a private clinic",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO19POOB4981055641668812",
+    "amount" : "474.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 257,
+    "description" : "Tickets for a Swiss football match",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO98POOB7190609943699593",
+    "amount" : "155.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 258,
+    "description" : "Repayment for a mortgage",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO45POOB6505529013808948",
+    "amount" : "572.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 259,
+    "description" : "Tickets for a Swiss football match",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO19POOB5993192794373940",
+    "amount" : "748.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 260,
+    "description" : "Renewal of a Swisscom subscription",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO98POOB8412955460158769",
+    "amount" : "90.0 CHF",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 27,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 372
 }, {
-  "result" : "Command 'printTransactions' at timestamp 373 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 25,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 50,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 373
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -573,7 +537,7 @@
     "email" : "Gabor_Hasler@hotmail.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 96109.795,
+      "balance" : 91084.795,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -584,7 +548,7 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 2671.04,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "1733018068262537",
         "status" : "active"
@@ -596,7 +560,7 @@
     "email" : "John_Schmidt@gmx.ch",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 6668.95,
+      "balance" : 7072.95,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -607,7 +571,7 @@
       "IBAN" : "RO46POOB9051076190383154",
       "balance" : 87863.8,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "1952612794872207",
         "status" : "active"
@@ -619,7 +583,7 @@
     "email" : "Victoria_Rice@icloud.ch",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2484.375,
+      "balance" : 1168.375,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -630,7 +594,7 @@
       "IBAN" : "RO45POOB0388148432759748",
       "balance" : 68550.35714285714,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6988686155235949",
         "status" : "active"
@@ -653,7 +617,7 @@
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 54152.8125,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "0084627535411906",
         "status" : "active"
@@ -674,9 +638,9 @@
       } ]
     }, {
       "IBAN" : "RO98POOB7190609943699593",
-      "balance" : 2007.0,
+      "balance" : 2147.909090909091,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "5254952026068544",
         "status" : "active"
@@ -699,7 +663,7 @@
       "IBAN" : "RO50POOB3359236199018963",
       "balance" : 79418.61538461539,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8509650399173661",
         "status" : "active"
@@ -720,9 +684,9 @@
       } ]
     }, {
       "IBAN" : "RO75POOB8279679254660818",
-      "balance" : 2367.625,
+      "balance" : 3791.261363636364,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2912280039644439",
         "status" : "active"
@@ -734,7 +698,7 @@
     "email" : "Liam_Guthrie@hushmail.nz",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 49744.08,
+      "balance" : 50433.534545454546,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -745,7 +709,7 @@
       "IBAN" : "RO37POOB8653914479106806",
       "balance" : 14387.0,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4069340791718491",
         "status" : "active"
@@ -768,7 +732,7 @@
       "IBAN" : "RO73POOB0363118755441573",
       "balance" : 10027.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4729060187716142",
         "status" : "active"
@@ -780,7 +744,7 @@
     "email" : "Roberta_Mocanu@aol.ro",
     "accounts" : [ {
       "IBAN" : "RO79POOB3616857825600958",
-      "balance" : 4133.0,
+      "balance" : 5798.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -791,7 +755,7 @@
       "IBAN" : "RO40POOB2135483650246268",
       "balance" : 2729.0,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
         "status" : "active"
@@ -814,7 +778,7 @@
       "IBAN" : "RO75POOB1098983729823992",
       "balance" : 2532.909090909091,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2803408755782048",
         "status" : "active"
@@ -837,7 +801,7 @@
       "IBAN" : "RO15POOB0048706387164463",
       "balance" : 2379.1428571428573,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6467982927008637",
         "status" : "active"
@@ -860,7 +824,7 @@
       "IBAN" : "RO97POOB5006417983475785",
       "balance" : 20395.85714285714,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "0692077318511511",
         "status" : "active"
@@ -883,7 +847,7 @@
       "IBAN" : "RO93POOB6760303931698665",
       "balance" : 8862.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8686098479595515",
         "status" : "active"
@@ -895,7 +859,7 @@
     "email" : "Christophe_Chopard@yahoo.ch",
     "accounts" : [ {
       "IBAN" : "RO98POOB8412955460158769",
-      "balance" : 7609.0,
+      "balance" : 7699.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -906,7 +870,7 @@
       "IBAN" : "RO47POOB5866490978033060",
       "balance" : 22588.23076923077,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4435533800578624",
         "status" : "active"
@@ -927,9 +891,9 @@
       } ]
     }, {
       "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 2003.0,
+      "balance" : 2471.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8916302128573242",
         "status" : "active"
@@ -950,9 +914,9 @@
       } ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 101389.145,
+      "balance" : 102132.87227272728,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "9295697829422937",
         "status" : "active"
@@ -975,7 +939,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 1072.0,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8696843716078966",
         "status" : "active"
@@ -998,7 +962,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 20327.571428571428,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8145060794847555",
         "status" : "active"
@@ -1019,9 +983,9 @@
       } ]
     }, {
       "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 1403.5454545454545,
+      "balance" : 2491.5454545454545,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4097439592846732",
         "status" : "active"
@@ -1042,9 +1006,9 @@
       } ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : 2766.0,
+      "balance" : 4271.454545454545,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2107645074675430",
         "status" : "active"
@@ -1067,7 +1031,7 @@
       "IBAN" : "RO69POOB2312919212921100",
       "balance" : 3479.5014285714287,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2289183361654620",
         "status" : "active"
@@ -1090,7 +1054,7 @@
       "IBAN" : "RO24POOB6002156322256357",
       "balance" : 2375.0,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2578053935040541",
         "status" : "active"
@@ -1111,9 +1075,9 @@
       } ]
     }, {
       "IBAN" : "RO66POOB5231566576817248",
-      "balance" : 1674.2444444444445,
+      "balance" : 2234.4262626262625,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "5069598921863529",
         "status" : "active"
@@ -1136,7 +1100,7 @@
       "IBAN" : "RO01POOB9893132718323396",
       "balance" : 3176.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "7678041819946354",
         "status" : "active"
@@ -1165,120 +1129,6 @@
 }, {
   "result" : "Command 'splitPayment' at timestamp 484 is not implemented yet."
 }, {
-  "result" : "Command 'sendMoney' at timestamp 585 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 586 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 587 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 588 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 589 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 590 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 591 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 592 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 593 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 594 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 595 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 596 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 597 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 598 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 599 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 600 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 601 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 602 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 603 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 604 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 605 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 606 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 607 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 608 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 609 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 610 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 611 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 612 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 613 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 614 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 615 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 616 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 617 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 618 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 619 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 620 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 621 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 622 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 623 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 624 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 625 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 626 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 627 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 628 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 629 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 630 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 631 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 632 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 633 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 634 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 635 is not implemented yet."
-}, {
-  "result" : "Command 'setAlias' at timestamp 636 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 637 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 638 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 639 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 640 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 641 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Gabor",
@@ -1286,7 +1136,7 @@
     "email" : "Gabor_Hasler@hotmail.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 97468.795,
+      "balance" : 92443.795,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1297,7 +1147,7 @@
       "IBAN" : "RO36POOB6500477412147025",
       "balance" : 3184.04,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "1733018068262537",
         "status" : "active"
@@ -1309,7 +1159,7 @@
     "email" : "John_Schmidt@gmx.ch",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 7333.95,
+      "balance" : 7737.95,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1320,7 +1170,7 @@
       "IBAN" : "RO46POOB9051076190383154",
       "balance" : 89633.8,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "1952612794872207",
         "status" : "active"
@@ -1332,7 +1182,7 @@
     "email" : "Victoria_Rice@icloud.ch",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 3531.375,
+      "balance" : 2215.375,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1341,9 +1191,9 @@
       } ]
     }, {
       "IBAN" : "RO45POOB0388148432759748",
-      "balance" : 69566.35714285714,
+      "balance" : 65914.35714285714,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6988686155235949",
         "status" : "active"
@@ -1366,7 +1216,7 @@
       "IBAN" : "RO52POOB6271107854467609",
       "balance" : 55610.8125,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "0084627535411906",
         "status" : "active"
@@ -1378,7 +1228,7 @@
     "email" : "Ryan_Waters@gmx.us",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 38362.666666666664,
+      "balance" : 39055.777777777774,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ {
@@ -1387,9 +1237,9 @@
       } ]
     }, {
       "IBAN" : "RO98POOB7190609943699593",
-      "balance" : 2861.0,
+      "balance" : 3001.909090909091,
       "currency" : "USD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "5254952026068544",
         "status" : "active"
@@ -1412,7 +1262,7 @@
       "IBAN" : "RO50POOB3359236199018963",
       "balance" : 80257.61538461539,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8509650399173661",
         "status" : "active"
@@ -1424,7 +1274,7 @@
     "email" : "Arne_Kobelt_B.A.@icloud.de",
     "accounts" : [ {
       "IBAN" : "RO37POOB7013767509830666",
-      "balance" : 49747.0,
+      "balance" : 49505.0,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1433,9 +1283,9 @@
       } ]
     }, {
       "IBAN" : "RO75POOB8279679254660818",
-      "balance" : 3039.625,
+      "balance" : 4463.261363636364,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2912280039644439",
         "status" : "active"
@@ -1447,7 +1297,7 @@
     "email" : "Liam_Guthrie@hushmail.nz",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 56434.08,
+      "balance" : 57123.534545454546,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -1456,9 +1306,9 @@
       } ]
     }, {
       "IBAN" : "RO37POOB8653914479106806",
-      "balance" : 15540.0,
+      "balance" : 17810.545454545456,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4069340791718491",
         "status" : "active"
@@ -1479,9 +1329,9 @@
       } ]
     }, {
       "IBAN" : "RO73POOB0363118755441573",
-      "balance" : 10576.0,
+      "balance" : 12667.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4729060187716142",
         "status" : "active"
@@ -1493,7 +1343,7 @@
     "email" : "Roberta_Mocanu@aol.ro",
     "accounts" : [ {
       "IBAN" : "RO79POOB3616857825600958",
-      "balance" : 10182.0,
+      "balance" : 11847.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1502,9 +1352,9 @@
       } ]
     }, {
       "IBAN" : "RO40POOB2135483650246268",
-      "balance" : 3428.0,
+      "balance" : 14664.0,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6592968050400705",
         "status" : "active"
@@ -1525,9 +1375,9 @@
       } ]
     }, {
       "IBAN" : "RO75POOB1098983729823992",
-      "balance" : 3037.909090909091,
+      "balance" : 4559.575757575758,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2803408755782048",
         "status" : "active"
@@ -1548,9 +1398,9 @@
       } ]
     }, {
       "IBAN" : "RO15POOB0048706387164463",
-      "balance" : 3757.1428571428573,
+      "balance" : 16266.233766233765,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "6467982927008637",
         "status" : "active"
@@ -1562,7 +1412,7 @@
     "email" : "Claude_Tremblay@hotmail.ca",
     "accounts" : [ {
       "IBAN" : "RO33POOB4049920806186500",
-      "balance" : 94488.41428571429,
+      "balance" : 94837.96984126985,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -1573,7 +1423,7 @@
       "IBAN" : "RO97POOB5006417983475785",
       "balance" : 20937.85714285714,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "0692077318511511",
         "status" : "active"
@@ -1585,7 +1435,7 @@
     "email" : "Anouk_'s_Gravensande@hushmail.nl",
     "accounts" : [ {
       "IBAN" : "RO69POOB9846198978826791",
-      "balance" : 11018.625,
+      "balance" : 7234.625,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1596,7 +1446,7 @@
       "IBAN" : "RO93POOB6760303931698665",
       "balance" : 10200.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8686098479595515",
         "status" : "active"
@@ -1608,7 +1458,7 @@
     "email" : "Christophe_Chopard@yahoo.ch",
     "accounts" : [ {
       "IBAN" : "RO98POOB8412955460158769",
-      "balance" : 8298.0,
+      "balance" : 8388.0,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1617,9 +1467,9 @@
       } ]
     }, {
       "IBAN" : "RO47POOB5866490978033060",
-      "balance" : 23674.23076923077,
+      "balance" : 22986.23076923077,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4435533800578624",
         "status" : "active"
@@ -1640,9 +1490,9 @@
       } ]
     }, {
       "IBAN" : "RO45POOB6505529013808948",
-      "balance" : 2321.0,
+      "balance" : 2789.0,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8916302128573242",
         "status" : "active"
@@ -1663,9 +1513,9 @@
       } ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 102141.145,
+      "balance" : 102884.87227272728,
       "currency" : "EUR",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "9295697829422937",
         "status" : "active"
@@ -1688,7 +1538,7 @@
       "IBAN" : "RO04POOB3492426980939341",
       "balance" : 1823.0,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8696843716078966",
         "status" : "active"
@@ -1711,7 +1561,7 @@
       "IBAN" : "RO66POOB1088683052483887",
       "balance" : 21821.571428571428,
       "currency" : "MXN",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "8145060794847555",
         "status" : "active"
@@ -1732,9 +1582,9 @@
       } ]
     }, {
       "IBAN" : "RO19POOB5993192794373940",
-      "balance" : 2498.5454545454545,
+      "balance" : 3586.5454545454545,
       "currency" : "NZD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "4097439592846732",
         "status" : "active"
@@ -1755,9 +1605,9 @@
       } ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : 4567.0,
+      "balance" : 6072.454545454545,
       "currency" : "RON",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2107645074675430",
         "status" : "active"
@@ -1780,7 +1630,7 @@
       "IBAN" : "RO69POOB2312919212921100",
       "balance" : 4772.501428571429,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2289183361654620",
         "status" : "active"
@@ -1803,7 +1653,7 @@
       "IBAN" : "RO24POOB6002156322256357",
       "balance" : 4042.0,
       "currency" : "AUD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "2578053935040541",
         "status" : "active"
@@ -1824,9 +1674,9 @@
       } ]
     }, {
       "IBAN" : "RO66POOB5231566576817248",
-      "balance" : 3069.2444444444445,
+      "balance" : 3629.4262626262625,
       "currency" : "CAD",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "5069598921863529",
         "status" : "active"
@@ -1849,7 +1699,7 @@
       "IBAN" : "RO01POOB9893132718323396",
       "balance" : 4672.0,
       "currency" : "CHF",
-      "type" : "classic",
+      "type" : "savings",
       "cards" : [ {
         "cardNumber" : "7678041819946354",
         "status" : "active"

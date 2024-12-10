@@ -1,98 +1,88 @@
 package org.poo.visitor.transaction;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.model.transaction.*;
+import org.poo.service.AccountService;
+import org.poo.service.CardService;
+import org.poo.service.TransactionService;
+import org.poo.service.UserService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConcreteTransactionVisitor implements TransactionVisitor {
-    // Map pentru cantitatea de tranzactii per tipul de tranzactie
-    private Map<String, Double> totalAmountsByType;
+    private UserService userService;
+    private AccountService accountService;
+    private CardService cardService;
+    private TransactionService transactionService;
 
-    // Map pentru tranzactii in functie de categorie (pentru PaymentTransactions)
-    private Map<String, Double> spendingByCategory;
+    private ObjectNode transactionNode;
 
-    private ArrayList<Transaction> allTransactions;
-
-    public ConcreteTransactionVisitor() {
-        this.totalAmountsByType = new HashMap<>();
-        this.spendingByCategory = new HashMap<>();
-        this.allTransactions = new ArrayList<>();
+    public ConcreteTransactionVisitor(UserService userService,
+                                      AccountService accountService,
+                                      CardService cardService,
+                                      TransactionService transactionService,
+                                      ObjectNode transactionNode) {
+        this.userService = userService;
+        this.accountService = accountService;
+        this.cardService = cardService;
+        this.transactionService = transactionService;
+        this.transactionNode = transactionNode;
     }
 
-    private void processTransaction(Transaction transaction) {
-        allTransactions.add(transaction);
-
-        String transactionType = transaction.getClass().getSimpleName();
-
-        double amount = transaction.getAmount();
-
-        totalAmountsByType.merge(transactionType, amount, Double::sum);
-    }
-
-    public Map<String, Double> getTotalAmountsByType() {
-        return totalAmountsByType;
-    }
-
-    public Map<String, Double> getSpendingByCategory() {
-        return spendingByCategory;
-    }
-
-    public ArrayList<Transaction> getAllTransactions() {
-        return allTransactions;
-    }
-
-    @Override
     public void visit(AccountCreationTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
-    public void visit(BankTransferTransaction transaction) {
-        processTransaction(transaction);
+    public void visit(SendMoneyTransaction sendMoneyTransaction) {
+        double amount = sendMoneyTransaction.getAmount();
+        String currency = sendMoneyTransaction.getCurrency();
+
+        String amountWithCurrency = String.format("%.1f %s", amount, currency);
+
+        transactionNode.put("senderIBAN", sendMoneyTransaction.getSender());
+        transactionNode.put("receiverIBAN", sendMoneyTransaction.getReceiver());
+        transactionNode.put("amount", amountWithCurrency);
+        transactionNode.put("transferType", "sent");
     }
 
-    @Override
+    public void visit(BankTransferTransaction transaction){
+
+    }
+
     public void visit(CardCreationTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
     public void visit(CardDeletionTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
     public void visit(InterestRateChangeTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
     public void visit(InterestTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
-    public void visit(MinBalanceSettingTransaction transaction) {
-        processTransaction(transaction);
+    public void visit(MinBalanceSettingTransaction transaction){
+
     }
 
-    @Override
     public void visit(PaymentTransaction transaction) {
-        processTransaction(transaction);
-        String category = transaction.getCategory();
-        double amount = transaction.getAmount();
-        spendingByCategory.merge(category, amount, Double::sum);
+
     }
 
-    @Override
     public void visit(SplitPaymentTransaction transaction) {
-        processTransaction(transaction);
+
     }
 
-    @Override
     public void visit(ErrorTransaction transaction) {
-        processTransaction(transaction);
+
     }
+
 }

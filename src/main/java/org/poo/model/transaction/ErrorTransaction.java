@@ -5,9 +5,10 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class ErrorTransaction extends Transaction {
     private String errorMessage;
 
-    public ErrorTransaction(int timestamp, String description, double amount, String status,
+    public ErrorTransaction(int timestamp,
                             String errorMessage) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "Error";
         this.errorMessage = errorMessage;
     }
 

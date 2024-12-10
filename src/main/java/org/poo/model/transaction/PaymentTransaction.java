@@ -8,9 +8,10 @@ public class PaymentTransaction extends Transaction {
     private String category;
     private String currency;
 
-    public PaymentTransaction(int timestamp, String description, double amount, String status,
+    public PaymentTransaction(int timestamp,
                               String merchant, String category, String currency) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this. description = "PaymentTransaction";
         this.merchant = merchant;
         this.category = category;
         this.currency = currency;

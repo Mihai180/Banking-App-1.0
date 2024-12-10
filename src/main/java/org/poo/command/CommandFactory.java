@@ -24,6 +24,12 @@ public class CommandFactory {
                 return new SetMinBalanceCommand(input.getAccount(), input.getMinBalance());
             case "payOnline":
                 return new PayOnlineCommand(commandName, input.getCardNumber(), input.getAmount(), input.getCurrency(), input.getTimestamp(), input.getDescription(), input.getCommerciant(), input.getEmail());
+            case "sendMoney":
+                return new SendMoneyCommand(input.getAccount(), input.getAmount(), input.getReceiver(), input.getTimestamp(), input.getDescription());
+            case "setAlias":
+                return new SetAliasCommand(input.getEmail(), input.getAlias(), input.getAccount());
+            case "printTransactions":
+                return new PrintTransactionsCommand(input.getCommand(), input.getTimestamp(), input.getEmail());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

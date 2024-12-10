@@ -5,13 +5,16 @@
 }, {
   "result" : "Command 'checkCardStatus' at timestamp 10 is not implemented yet."
 }, {
-  "result" : "Command 'printTransactions' at timestamp 11 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 11
 }, {
   "result" : "Command 'checkCardStatus' at timestamp 19 is not implemented yet."
 }, {
   "result" : "Command 'checkCardStatus' at timestamp 20 is not implemented yet."
-}, {
-  "result" : "Command 'sendMoney' at timestamp 21 is not implemented yet."
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -34,7 +37,7 @@
     "email" : "Olivia_Suciu@yahoo.ro",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 58.0,
+      "balance" : 3.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -45,7 +48,7 @@
     "email" : "Carla_Valencia@yahoo.us",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 323.0,
+      "balance" : 506.33333333333337,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
@@ -53,5 +56,17 @@
   } ],
   "timestamp" : 22
 }, {
-  "result" : "Command 'printTransactions' at timestamp 23 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 13,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 21,
+    "description" : "Electricity and gas bills",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO90POOB5450777208072365",
+    "amount" : "55.0 RON",
+    "transferType" : "sent"
+  } ],
+  "timestamp" : 23
 } ]

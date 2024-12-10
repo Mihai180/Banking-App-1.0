@@ -5,9 +5,10 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class InterestTransaction extends Transaction {
     private double interestRate;
     private double interestAmount;
-    public InterestTransaction(int timestamp, String description, double amount, String status,
+    public InterestTransaction(int timestamp,
                                double interestRate, double interestAmount) {
-        super(timestamp, description, amount, status);
+        super(timestamp);
+        this.description = "Interest Transaction";
         this.interestRate = interestRate;
         this.interestAmount = interestAmount;
     }
@@ -23,4 +24,5 @@ public class InterestTransaction extends Transaction {
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }
+
 }

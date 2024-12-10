@@ -5,9 +5,9 @@ import org.poo.visitor.transaction.TransactionVisitor;
 public class MinBalanceSettingTransaction extends Transaction {
     private double minBalance;
 
-    public MinBalanceSettingTransaction(int timestamp, String description, double amount,
-                                        String status, double minBalance) {
-        super(timestamp, description, amount, status);
+    public MinBalanceSettingTransaction(int timestamp, double minBalance) {
+        super(timestamp);
+        this.description = "SetMinBalance";
         this.minBalance = minBalance;
     }
 

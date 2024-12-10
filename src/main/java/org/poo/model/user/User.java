@@ -11,7 +11,7 @@ public class User {
     private String lastName;
     private String email;
     private ArrayList<Account> accounts;
-    private Map<String, String> aliases; // aliasName -> accountIban
+    private Map<String, String> aliases;
 
     public User (String firstName, String lastName, String email) {
         this.firstName = firstName;

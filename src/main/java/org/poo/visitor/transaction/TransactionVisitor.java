@@ -13,4 +13,9 @@ public interface TransactionVisitor {
     void visit(PaymentTransaction transaction);
     void visit(SplitPaymentTransaction transaction);
     void visit(ErrorTransaction transaction);
+
+
+    //void visit(AccountCreationTransaction transaction);
+    void visit(SendMoneyTransaction transaction);
+
 }

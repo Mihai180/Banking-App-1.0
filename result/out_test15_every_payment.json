@@ -58,8 +58,6 @@
   },
   "timestamp" : 11
 }, {
-  "result" : "Command 'sendMoney' at timestamp 17 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Daniel",
@@ -67,7 +65,7 @@
     "email" : "Daniel_Masson@outlook.fr",
     "accounts" : [ {
       "IBAN" : "RO58POOB7344468893732422",
-      "balance" : 10641.4,
+      "balance" : 9416.4,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -86,7 +84,7 @@
     "email" : "Ryan_Powell@gmail.us",
     "accounts" : [ {
       "IBAN" : "RO69POOB6209498372540635",
-      "balance" : 1500.0,
+      "balance" : 2861.1111111111113,
       "currency" : "USD",
       "type" : "classic",
       "cards" : [ ]
@@ -119,9 +117,26 @@
 }, {
   "result" : "Command 'splitPayment' at timestamp 29 is not implemented yet."
 }, {
-  "result" : "Command 'printTransactions' at timestamp 30 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 17,
+    "description" : "Navigo pass for metro rides",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "1225.0 EUR",
+    "transferType" : "sent"
+  } ],
+  "timestamp" : 30
 }, {
   "result" : "Command 'splitPayment' at timestamp 33 is not implemented yet."
 }, {
-  "result" : "Command 'printTransactions' at timestamp 34 is not implemented yet."
+  "command" : "printTransactions",
+  "output" : [ {
+    "timestamp" : 21,
+    "description" : "New account created"
+  } ],
+  "timestamp" : 34
 } ]

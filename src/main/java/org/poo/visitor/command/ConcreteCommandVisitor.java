@@ -6,8 +6,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.command.*;
 import org.poo.model.account.Account;
 import org.poo.model.card.Card;
+import org.poo.model.transaction.AccountCreationTransaction;
+import org.poo.model.transaction.SendMoneyTransaction;
+import org.poo.model.transaction.Transaction;
 import org.poo.model.user.User;
 import org.poo.service.*;
+import org.poo.visitor.transaction.ConcreteTransactionVisitor;
+
+import java.util.List;
 
 public class ConcreteCommandVisitor implements CommandVisitor {
     private UserService userService;
@@ -24,7 +30,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     public ConcreteCommandVisitor(UserService userService,
                                   AccountService accountService,
                                   CardService cardService,
-                                  //TransactionService transactionService,
+                                  TransactionService transactionService,
                                   //ReportService reportService,
                                   //MerchantService merchantService,
                                   ExchangeService exchangeService,
@@ -33,7 +39,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         this.userService = userService;
         this.accountService = accountService;
         this.cardService = cardService;
-        //this.transactionService = transactionService;
+        this.transactionService = transactionService;
         //this.reportService = reportService;
         //this.merchantService = merchantService;
         //this.exchangeService = exchangeService;
@@ -86,6 +92,11 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     @Override
     public void visit(AddAccountCommand command) {
         Account newAccount = accountService.createAccount(command.getEmail(), command.getAccountType(), command.getCurrency(), command.getInterestRate());
+        if (newAccount != null) {
+            Transaction transaction = new AccountCreationTransaction(command.getTimestamp());
+
+            newAccount.addTransaction(transaction);
+        }
         //addResult("Account created for user: " + command.getEmail() + " with IBAN " + newAccount.getIban());
     }
 
@@ -153,5 +164,49 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             this.output.add(cmdResult);
             cmdResult.put("timestamp", command.getTimestamp());
         }
+    }
+
+    @Override
+    public void visit(SendMoneyCommand command) {
+        String result = accountService.sendMoney(command.getAccount(), command.getAmount(), command.getReciever());
+        if (result == "Success" && accountService.getAccountByIBAN(command.getAccount()) != null) {
+            String currency = accountService.getAccountByIBAN(command.getAccount()).getCurrency();
+            Transaction transaction = new SendMoneyTransaction(command.getTimestamp(), command.getDescription(), command.getAccount(), command.getReciever(),
+                    command.getAmount(), currency);
+            accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
+        }
+    }
+
+    @Override
+    public void visit(SetAliasCommand command) {
+        userService.setAlias(command.getEmail(), command.getAlias(), command.getAccount());
+    }
+
+    @Override
+    public void visit(PrintTransactionsCommand command) {
+        ObjectNode cmdResult = mapper.createObjectNode();
+        cmdResult.put("command", command.getCommand());
+
+        ArrayNode outputTransactions = mapper.createArrayNode();
+
+        List<Transaction> transactions = transactionService.getTransactionsForUser(command.getEmail());
+        for (Transaction transaction : transactions) {
+            ObjectNode transactionNode = mapper.createObjectNode();
+            transactionNode.put("timestamp", transaction.getTimestamp());
+            transactionNode.put("description", transaction.getDescription());
+
+            ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
+                    cardService, transactionService, transactionNode);
+
+            if (transaction instanceof SendMoneyTransaction) {
+                transactionVisitor.visit(SendMoneyTransaction.class.cast(transaction));
+            }
+            outputTransactions.add(transactionNode);
+        }
+
+        cmdResult.set("output", outputTransactions);
+        cmdResult.put("timestamp", command.getTimestamp());
+
+        this.output.add(cmdResult);
     }
 }
