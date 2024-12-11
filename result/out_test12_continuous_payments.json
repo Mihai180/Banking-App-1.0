@@ -268,6 +268,9 @@
   "output" : [ {
     "timestamp" : 35,
     "description" : "New account created"
+  }, {
+    "timestamp" : 40,
+    "description" : "Insufficient funds"
   } ],
   "timestamp" : 42
 }, {

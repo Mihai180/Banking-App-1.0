@@ -140,7 +140,7 @@ public class AccountService {
         );
 
         if (senderAccount.getBalance() < amount) {
-            return "Insufficient funds in sender's account.";
+            return "Insufficient funds in sender's account";
         }
 
         senderAccount.withdraw(amount);

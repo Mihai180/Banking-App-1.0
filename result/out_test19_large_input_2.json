@@ -847,6 +847,9 @@
   }, {
     "timestamp" : 34,
     "description" : "New account created"
+  }, {
+    "timestamp" : 37,
+    "description" : "Insufficient funds"
   } ],
   "timestamp" : 173
 }, {

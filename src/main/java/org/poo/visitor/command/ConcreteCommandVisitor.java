@@ -220,6 +220,10 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                     command.getAmount(), currency);
             accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
         }
+        if (result.equals("Insufficient funds in sender's account")) {
+            Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
+            accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
+        }
     }
 
     @Override
