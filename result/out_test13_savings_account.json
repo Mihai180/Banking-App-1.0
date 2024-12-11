@@ -95,7 +95,8 @@
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 19
   },
   "timestamp" : 19
 }, {

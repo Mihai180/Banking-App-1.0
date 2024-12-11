@@ -6,13 +6,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.command.*;
 import org.poo.model.account.Account;
 import org.poo.model.card.Card;
-import org.poo.model.transaction.AccountCreationTransaction;
-import org.poo.model.transaction.SendMoneyTransaction;
-import org.poo.model.transaction.Transaction;
+import org.poo.model.transaction.*;
 import org.poo.model.user.User;
 import org.poo.service.*;
 import org.poo.visitor.transaction.ConcreteTransactionVisitor;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ConcreteCommandVisitor implements CommandVisitor {
@@ -42,7 +41,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         this.transactionService = transactionService;
         //this.reportService = reportService;
         //this.merchantService = merchantService;
-        //this.exchangeService = exchangeService;
+        this.exchangeService = exchangeService;
         this.output = output;
         this.mapper = mapper;
     }
@@ -108,8 +107,11 @@ public class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(CreateCardCommand command) {
-        cardService.createCard(command.getAccountIBAN(), command.getCardType(), command.getEmail());
-        //addResult("Card created for account: " + command.getAccountIBAN() + " with number: " + createdCard.getCardNumber());
+        Card result = cardService.createCard(command.getAccountIBAN(), command.getCardType(), command.getEmail());
+        if (result != null) {
+            Transaction transaction = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), command.getAccountIBAN(), result.getCardNumber());
+            accountService.getAccountByIBAN(command.getAccountIBAN()).addTransaction(transaction);
+        }
     }
 
     @Override
@@ -131,6 +133,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             outputNode.put("timestamp", command.getTimestamp());
         } catch (Exception e) {
             outputNode.put("error", e.getMessage());
+            outputNode.put("timestamp", command.getTimestamp());
         }
 
         cmdResult.set("output", outputNode);
@@ -140,6 +143,14 @@ public class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(DeleteCardCommand command) {
+        Card card = cardService.getCardByNumber(command.getCardNumber());
+        if (card != null) {
+            String iban = card.getAccount().getIban();
+            if (iban != null) {
+                Transaction transaction = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), iban);
+                accountService.getAccountByIBAN(iban).addTransaction(transaction);
+            }
+        }
         cardService.deleteCard(command.getCardNumber(), command.getEmail());
     }
 
@@ -151,7 +162,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     @Override
     public void visit(PayOnlineCommand command) {
         String result = cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
-
+        //this.output.add(result);
         if (result.equals("Card not found")) {
             ObjectNode cmdResult = mapper.createObjectNode();
             cmdResult.put("command", command.getName());
@@ -164,12 +175,46 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             this.output.add(cmdResult);
             cmdResult.put("timestamp", command.getTimestamp());
         }
+
+        User user = userService.getUserByEmail(command.getEmail());
+        if (user != null) {
+            Account associatedAccount = null;
+
+            for (Account account : user.getAccounts()) {
+                for (Card card : account.getCards()) {
+                    if (card.getCardNumber().equals(command.getCardNumber())) {
+                        associatedAccount = account;
+                        break;
+                    }
+                }
+                if (associatedAccount != null) {
+                    break;
+                }
+            }
+            if (associatedAccount != null) {
+                if (result.equals("Success")) {
+                    double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
+                    DecimalFormat df = new DecimalFormat("#.#########");
+                    double formattedAmount = Double.valueOf(df.format(convertedAmount));
+                    Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
+                    associatedAccount.addTransaction(transaction);
+                }
+                if (result.equals("Insufficient funds")) {
+                    Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
+                    associatedAccount.addTransaction(transaction);
+                }
+                if (result.equals("Card is frozen")) {
+                    Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
+                    associatedAccount.addTransaction(transaction);
+                }
+            }
+        }
     }
 
     @Override
     public void visit(SendMoneyCommand command) {
         String result = accountService.sendMoney(command.getAccount(), command.getAmount(), command.getReciever());
-        if (result == "Success" && accountService.getAccountByIBAN(command.getAccount()) != null) {
+        if (result.equals("Success") && accountService.getAccountByIBAN(command.getAccount()) != null) {
             String currency = accountService.getAccountByIBAN(command.getAccount()).getCurrency();
             Transaction transaction = new SendMoneyTransaction(command.getTimestamp(), command.getDescription(), command.getAccount(), command.getReciever(),
                     command.getAmount(), currency);
@@ -192,15 +237,11 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         List<Transaction> transactions = transactionService.getTransactionsForUser(command.getEmail());
         for (Transaction transaction : transactions) {
             ObjectNode transactionNode = mapper.createObjectNode();
-            transactionNode.put("timestamp", transaction.getTimestamp());
-            transactionNode.put("description", transaction.getDescription());
 
             ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
                     cardService, transactionService, transactionNode);
 
-            if (transaction instanceof SendMoneyTransaction) {
-                transactionVisitor.visit(SendMoneyTransaction.class.cast(transaction));
-            }
+            transaction.accept(transactionVisitor);
             outputTransactions.add(transactionNode);
         }
 
@@ -208,5 +249,26 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         cmdResult.put("timestamp", command.getTimestamp());
 
         this.output.add(cmdResult);
+    }
+
+    @Override
+    public void visit(CheckCardStatusCommand command) {
+        String result = cardService.checkCardStatus(command.getCardNumber());
+        if (result.equals("Card not found")) {
+            ObjectNode cmdResult = mapper.createObjectNode();
+            cmdResult.put("command", command.getCommand());
+            ObjectNode outputNode = mapper.createObjectNode();
+            outputNode.put("timestamp", command.getTimestamp());
+            outputNode.put("description", result);
+            cmdResult.set("output", outputNode);
+            cmdResult.put("timestamp", command.getTimestamp());
+            this.output.add(cmdResult);
+        }
+        if (result.equals("Insufficient funds")) {
+            Transaction transaction = new MinimumAmountOfFundsTransaction(command.getTimestamp());
+            cardService.getCardByNumber(command.getCardNumber()).getAccount().addTransaction(transaction);
+            cardService.getCardByNumber(command.getCardNumber()).block();
+        }
+
     }
 }

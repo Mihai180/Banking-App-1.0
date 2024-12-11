@@ -33,7 +33,7 @@ public class CardService {
         cardsByNumber.clear();
     }
 
-    public void createCard(String accountIBAN, String cardType, String email) {
+    public Card createCard(String accountIBAN, String cardType, String email) {
         /*if (user == null) {
             throw new IllegalArgumentException("User not found with email: " + email);
         }
@@ -53,18 +53,7 @@ public class CardService {
          */
 
         if (!account.getOwner().getEmail().equals(email)) {
-            /*Transaction errorTransaction = new ErrorTransaction(
-                    (int) (System.currentTimeMillis() / 1000),
-                    "Unauthorized card creation attempt",
-                    0.0,
-                    "failure",
-                    "User with email " + email + " does not own the account with IBAN " + accountIBAN
-            );
-
-            account.addTransaction(errorTransaction);
-
-             */
-            return;
+            return null;
         }
 
         User user = userService.getUserByEmail(email);
@@ -75,68 +64,24 @@ public class CardService {
         } else if (cardType == "oneTimeCard") {
             card = new OneTimePayCard(cardNumber, account, user);
         }
-        //Card card = new RegularCard(cardNumber, account, user);
         cardsByNumber.put(cardNumber, card);
         account.addCard(card);
 
-        /*Transaction txn = new CardCreationTransaction(
-                (int)(System.currentTimeMillis()/1000),
-                "Card Created",
-                0.0,
-                "success",
-                cardType,
-                cardNumber
-        );
-
-        account.addTransaction(txn);
-
-         */
-        //return card;
+        return card;
     }
 
     public void deleteCard(String cardNumber, String email) {
         Card card = cardsByNumber.get(cardNumber);
         if (card == null) {
-            /*Transaction errorTransaction = new ErrorTransaction(
-                    (int) (System.currentTimeMillis() / 1000),
-                    "Card deletion failed",
-                    0.0,
-                    "failure",
-                    "Card with number " + cardNumber + " does not exist."
-            );
-
-             */
             return;
         }
 
         if (!card.getOwner().getEmail().equals(email)) {
-            /*Transaction errorTransaction = new ErrorTransaction(
-                    (int) (System.currentTimeMillis() / 1000),
-                    "Unauthorized card deletion attempt",
-                    0.0,
-                    "failure",
-                    "User with email " + email + " does not own the card with number " + cardNumber
-            );
-            card.getAccount().addTransaction(errorTransaction);
-
-             */
             return;
         }
 
         cardsByNumber.remove(cardNumber);
         card.getAccount().getCards().remove(card);
-
-        /*Transaction txn = new CardDeletionTransaction(
-                (int)(System.currentTimeMillis()/1000),
-                "Card Deleted",
-                0.0,
-                "success",
-                cardNumber
-        );
-
-        card.getAccount().addTransaction(txn);
-
-         */
     }
 
     public String payOnline(String cardNumber, double amount, String currency, String email) {
@@ -146,8 +91,12 @@ public class CardService {
             return "Card not found";
         }
 
+        if (card.isBlocked()) {
+            return "Card is frozen";
+        }
+
         if (!card.getOwner().getEmail().equals(email)) {
-            return "Error: Unauthorized access to card.";
+            return "Unauthorized access to card";
         }
 
         if (!card.getAccount().getCurrency().equals(currency)) {
@@ -155,26 +104,47 @@ public class CardService {
         }
 
         if (card.getAccount().getBalance() < amount) {
-            return "Error: Insufficient funds.";
+            return "Insufficient funds";
         }
 
         card.makePayment(amount);
-        /*Transaction transaction = new PaymentTransaction(
-                timestamp,
-                description,
-                amount,
-                "success",
-                commerciant
-        );
 
-        card.getAccount().addTransaction(transaction);
+        double balance = card.getAccount().getBalance();
+        Double minBalance = card.getAccount().getMinimumBalance();
 
-         */
+        if (minBalance == null) {
+            return "Success";
+        }
+
+        if (balance <= minBalance) {
+            card.block();
+            return "frozen";
+        }
+
+        if ((minBalance - balance) <= 30) {
+            return "warning";
+        }
+
         return "Success";
     }
 
 
     public Map<String, Card> getCardsByNumber() {
         return cardsByNumber;
+    }
+
+    public Card getCardByNumber(String cardNumber) {
+        return cardsByNumber.get(cardNumber);
+    }
+
+    public String checkCardStatus(String cardNumber) {
+        Card card = cardsByNumber.get(cardNumber);
+        if (card == null) {
+            return "Card not found";
+        }
+        if (card.getAccount().getBalance() == 0) {
+            return "Insufficient funds";
+        }
+        return card.checkStatus();
     }
 }

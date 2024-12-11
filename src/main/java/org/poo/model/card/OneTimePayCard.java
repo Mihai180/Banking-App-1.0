@@ -23,6 +23,10 @@ public class OneTimePayCard extends Card {
         isUsed = true;
     }
 
+    public boolean isUsed() {
+        return isUsed;
+    }
+
     /*public void accept(CardVisitor visitor) {
         visitor.visit(this);
     }

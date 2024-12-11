@@ -58,6 +58,22 @@
   "output" : [ {
     "timestamp" : 1,
     "description" : "New account created"
+  }, {
+    "timestamp" : 5,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 6,
+    "description" : "Card payment",
+    "amount" : 130.0,
+    "commerciant" : "Zara"
+  }, {
+    "timestamp" : 7,
+    "description" : "Card payment",
+    "amount" : 120.0,
+    "commerciant" : "Zara"
   } ],
   "timestamp" : 14
 }, {
@@ -140,6 +156,33 @@
     "timestamp" : 1,
     "description" : "New account created"
   }, {
+    "timestamp" : 5,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 6,
+    "description" : "Card payment",
+    "amount" : 130.0,
+    "commerciant" : "Zara"
+  }, {
+    "timestamp" : 7,
+    "description" : "Card payment",
+    "amount" : 120.0,
+    "commerciant" : "Zara"
+  }, {
+    "timestamp" : 18,
+    "description" : "New card created",
+    "card" : "7004757825892043",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 21,
+    "description" : "Card payment",
+    "amount" : 38.7,
+    "commerciant" : "Zara"
+  }, {
     "timestamp" : 26,
     "description" : "Netflix subscription renewal",
     "senderIBAN" : "RO58POOB7344468893732422",
@@ -161,18 +204,63 @@
     "timestamp" : 1,
     "description" : "New account created"
   }, {
+    "timestamp" : 5,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 6,
+    "description" : "Card payment",
+    "amount" : 130.0,
+    "commerciant" : "Zara"
+  }, {
+    "timestamp" : 7,
+    "description" : "Card payment",
+    "amount" : 120.0,
+    "commerciant" : "Zara"
+  }, {
+    "timestamp" : 18,
+    "description" : "New card created",
+    "card" : "7004757825892043",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 21,
+    "description" : "Card payment",
+    "amount" : 38.7,
+    "commerciant" : "Zara"
+  }, {
     "timestamp" : 26,
     "description" : "Netflix subscription renewal",
     "senderIBAN" : "RO58POOB7344468893732422",
     "receiverIBAN" : "RO65POOB8944016386845896",
     "amount" : "242.0 USD",
     "transferType" : "sent"
+  }, {
+    "timestamp" : 29,
+    "description" : "The card has been destroyed",
+    "card" : "7004757825892043",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 31,
+    "description" : "Card payment",
+    "amount" : 70.0,
+    "commerciant" : "McDonalds"
+  }, {
+    "timestamp" : 32,
+    "description" : "New card created",
+    "card" : "1322658752653937",
+    "cardHolder" : "Brian_Price@hotmail.us",
+    "account" : "RO58POOB7344468893732422"
   } ],
   "timestamp" : 34
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 37
   },
   "timestamp" : 37
 }, {
@@ -185,7 +273,8 @@
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 45
   },
   "timestamp" : 45
 }, {

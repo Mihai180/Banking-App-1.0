@@ -20,13 +20,16 @@ public class AccountService {
     private Map<String, Account> accountsByIban = new HashMap<>();
     private UserService userService;
     private ExchangeService exchangeService;
+    private boolean minBalanceSet;
 
     public AccountService(UserService userService, ExchangeService exchangeService) {
         this.userService = userService;
         this.exchangeService = exchangeService;
+        this.minBalanceSet = false;
     }
 
     public void clear() {
+
         accountsByIban.clear();
     }
 
@@ -80,7 +83,7 @@ public class AccountService {
         }
 
         if (accountToRemove.getBalance() != 0.0) {
-            throw new IllegalArgumentException("Balance must be zero to delete the account.");
+            throw new IllegalArgumentException("Account couldn't be deleted - see org.poo.transactions for details");
         }
 
         user.getAccounts().remove(accountToRemove);
@@ -110,6 +113,7 @@ public class AccountService {
         account.addTransaction(txn);
 
          */
+        minBalanceSet = true;
     }
 
     public String sendMoney(String senderIban, double amount, String receiverAliasOrIBAN) {
@@ -153,5 +157,9 @@ public class AccountService {
             }
         }
         return aliasOrIBAN;
+    }
+
+    public boolean isMinBalanceSet() {
+       return minBalanceSet;
     }
 }

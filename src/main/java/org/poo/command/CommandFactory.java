@@ -19,7 +19,7 @@ public class CommandFactory {
             case "deleteAccount":
                 return new DeleteAccountCommand(commandName, input.getTimestamp(), input.getAccount(), input.getEmail());
             case "deleteCard":
-                return new DeleteCardCommand(input.getCardNumber(), input.getEmail());
+                return new DeleteCardCommand(input.getTimestamp(), input.getCardNumber(), input.getEmail());
             case "setMinimumBalance":
                 return new SetMinBalanceCommand(input.getAccount(), input.getMinBalance());
             case "payOnline":
@@ -30,6 +30,8 @@ public class CommandFactory {
                 return new SetAliasCommand(input.getEmail(), input.getAlias(), input.getAccount());
             case "printTransactions":
                 return new PrintTransactionsCommand(input.getCommand(), input.getTimestamp(), input.getEmail());
+            case "checkCardStatus":
+                return new CheckCardStatusCommand(input.getCardNumber(), input.getTimestamp(), input.getCommand());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

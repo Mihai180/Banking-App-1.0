@@ -1119,7 +1119,12 @@
 }, {
   "result" : "Command 'report' at timestamp 479 is not implemented yet."
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 480 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 480,
+    "description" : "Card not found"
+  },
+  "timestamp" : 480
 }, {
   "result" : "Command 'splitPayment' at timestamp 481 is not implemented yet."
 }, {

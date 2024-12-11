@@ -3,13 +3,15 @@
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 9
   },
   "timestamp" : 9
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 36
   },
   "timestamp" : 36
 }, {
@@ -547,47 +549,103 @@
   } ],
   "timestamp" : 92
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 93 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 99,
+    "description" : "Card not found"
+  },
+  "timestamp" : 99
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 94 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 100,
+    "description" : "Card not found"
+  },
+  "timestamp" : 100
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 95 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 101,
+    "description" : "Card not found"
+  },
+  "timestamp" : 101
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 96 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 102,
+    "description" : "Card not found"
+  },
+  "timestamp" : 102
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 97 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 103,
+    "description" : "Card not found"
+  },
+  "timestamp" : 103
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 98 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 104,
+    "description" : "Card not found"
+  },
+  "timestamp" : 104
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 99 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 105,
+    "description" : "Card not found"
+  },
+  "timestamp" : 105
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 100 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 106,
+    "description" : "Card not found"
+  },
+  "timestamp" : 106
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 101 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 107,
+    "description" : "Card not found"
+  },
+  "timestamp" : 107
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 102 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 108,
+    "description" : "Card not found"
+  },
+  "timestamp" : 108
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 103 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 109,
+    "description" : "Card not found"
+  },
+  "timestamp" : 109
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 104 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 110,
+    "description" : "Card not found"
+  },
+  "timestamp" : 110
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 105 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 111,
+    "description" : "Card not found"
+  },
+  "timestamp" : 111
 }, {
-  "result" : "Command 'checkCardStatus' at timestamp 106 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 107 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 108 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 109 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 110 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 111 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 112 is not implemented yet."
-}, {
-  "result" : "Command 'checkCardStatus' at timestamp 115 is not implemented yet."
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 112,
+    "description" : "Card not found"
+  },
+  "timestamp" : 112
 }, {
   "result" : "Command 'splitPayment' at timestamp 116 is not implemented yet."
 }, {
@@ -599,6 +657,28 @@
   "output" : [ {
     "timestamp" : 5,
     "description" : "New account created"
+  }, {
+    "timestamp" : 20,
+    "description" : "New card created",
+    "card" : "7901879264253296",
+    "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
+    "account" : "RO90POOB5450777208072365"
+  }, {
+    "timestamp" : 27,
+    "description" : "Card payment",
+    "amount" : 16.0,
+    "commerciant" : "Microsoft"
+  }, {
+    "timestamp" : 72,
+    "description" : "Card payment",
+    "amount" : 152.888888889,
+    "commerciant" : "KFC"
+  }, {
+    "timestamp" : 113,
+    "description" : "New card created",
+    "card" : "5088727507344799",
+    "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
+    "account" : "RO90POOB5450777208072365"
   } ],
   "timestamp" : 119
 }, {
@@ -711,6 +791,27 @@
   }, {
     "timestamp" : 6,
     "description" : "New account created"
+  }, {
+    "timestamp" : 21,
+    "description" : "New card created",
+    "card" : "7004757825892043",
+    "cardHolder" : "Georgel_Nistor@yandex.ro",
+    "account" : "RO65POOB8944016386845896"
+  }, {
+    "timestamp" : 28,
+    "description" : "Card payment",
+    "amount" : 1915.0,
+    "commerciant" : "Gucci"
+  }, {
+    "timestamp" : 73,
+    "description" : "Card payment",
+    "amount" : 190.0,
+    "commerciant" : "Starbucks"
+  }, {
+    "timestamp" : 146,
+    "description" : "Card payment",
+    "amount" : 1608.75,
+    "commerciant" : "McDonalds"
   } ],
   "timestamp" : 172
 }, {
@@ -718,6 +819,17 @@
   "output" : [ {
     "timestamp" : 4,
     "description" : "New account created"
+  }, {
+    "timestamp" : 19,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Selma_Birnbaum@icloud.de",
+    "account" : "RO69POOB6209498372540635"
+  }, {
+    "timestamp" : 26,
+    "description" : "Card payment",
+    "amount" : 49.0,
+    "commerciant" : "HP"
   }, {
     "timestamp" : 33,
     "description" : "Transfer to a Commerzbank savings account",

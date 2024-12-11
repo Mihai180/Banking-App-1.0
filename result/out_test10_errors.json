@@ -15,13 +15,15 @@
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 10
   },
   "timestamp" : 10
 }, {
   "command" : "deleteAccount",
   "output" : {
-    "error" : "Balance must be zero to delete the account."
+    "error" : "Account couldn't be deleted - see org.poo.transactions for details",
+    "timestamp" : 15
   },
   "timestamp" : 15
 }, {
@@ -115,6 +117,29 @@
   "output" : [ {
     "timestamp" : 18,
     "description" : "New account created"
+  }, {
+    "timestamp" : 20,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Andre_Martin@gmail.fr",
+    "account" : "RO65POOB8944016386845896"
+  }, {
+    "timestamp" : 21,
+    "description" : "Card payment",
+    "amount" : 346.666666667,
+    "commerciant" : "KFC"
+  }, {
+    "timestamp" : 23,
+    "description" : "Insufficient funds"
+  }, {
+    "timestamp" : 24,
+    "description" : "Insufficient funds"
+  }, {
+    "timestamp" : 25,
+    "description" : "The card has been destroyed",
+    "card" : "8207906978464446",
+    "cardHolder" : "Andre_Martin@gmail.fr",
+    "account" : "RO65POOB8944016386845896"
   } ],
   "timestamp" : 27
 } ]

@@ -41,7 +41,7 @@ public abstract class Card {
 
     public String checkStatus() {
         if (isBlocked) {
-            return "Blocked";
+            return "frozen";
         }
         return "active";
     }

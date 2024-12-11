@@ -122,6 +122,32 @@
     "timestamp" : 1,
     "description" : "New account created"
   }, {
+    "timestamp" : 12,
+    "description" : "New card created",
+    "card" : "8207906978464446",
+    "cardHolder" : "Daniel_Masson@outlook.fr",
+    "account" : "RO58POOB7344468893732422"
+  }, {
+    "timestamp" : 13,
+    "description" : "Card payment",
+    "amount" : 81.0,
+    "commerciant" : "Amazon"
+  }, {
+    "timestamp" : 14,
+    "description" : "Card payment",
+    "amount" : 213.0,
+    "commerciant" : "Microsoft"
+  }, {
+    "timestamp" : 15,
+    "description" : "Card payment",
+    "amount" : 74.6,
+    "commerciant" : "KFC"
+  }, {
+    "timestamp" : 16,
+    "description" : "Card payment",
+    "amount" : 159.0,
+    "commerciant" : "H&M"
+  }, {
     "timestamp" : 17,
     "description" : "Navigo pass for metro rides",
     "senderIBAN" : "RO58POOB7344468893732422",
