@@ -20,12 +20,10 @@ public class AccountService {
     private Map<String, Account> accountsByIban = new HashMap<>();
     private UserService userService;
     private ExchangeService exchangeService;
-    private boolean minBalanceSet;
 
     public AccountService(UserService userService, ExchangeService exchangeService) {
         this.userService = userService;
         this.exchangeService = exchangeService;
-        this.minBalanceSet = false;
     }
 
     public void clear() {
@@ -113,7 +111,6 @@ public class AccountService {
         account.addTransaction(txn);
 
          */
-        minBalanceSet = true;
     }
 
     public String sendMoney(String senderIban, double amount, String receiverAliasOrIBAN) {
@@ -159,7 +156,13 @@ public class AccountService {
         return aliasOrIBAN;
     }
 
-    public boolean isMinBalanceSet() {
-       return minBalanceSet;
+    public void changeInterestRate (String iban, Double interestRate) {
+        Account account = getAccountByIBAN(iban);
+        if (account instanceof SavingsAccount) {
+            if (account == null) {
+                throw new IllegalArgumentException("Account not found with IBAN: " + iban);
+            }
+            ((SavingsAccount) account).setInterestRate(interestRate);
+        }
     }
 }

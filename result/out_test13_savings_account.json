@@ -45,8 +45,6 @@
   } ],
   "timestamp" : 14
 }, {
-  "result" : "Command 'changeInterestRate' at timestamp 15 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Beniamin",
@@ -99,8 +97,6 @@
     "timestamp" : 19
   },
   "timestamp" : 19
-}, {
-  "result" : "Command 'changeInterestRate' at timestamp 20 is not implemented yet."
 }, {
   "command" : "printUsers",
   "output" : [ {

@@ -273,6 +273,10 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             cardService.getCardByNumber(command.getCardNumber()).getAccount().addTransaction(transaction);
             cardService.getCardByNumber(command.getCardNumber()).block();
         }
+    }
 
+    @Override
+    public void visit(ChangeInterestRateCommand command) {
+        accountService.changeInterestRate(command.getAccount(), command.getIntrestRate());
     }
 }

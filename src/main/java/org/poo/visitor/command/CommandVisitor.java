@@ -16,4 +16,5 @@ public interface CommandVisitor {
     void visit(SetAliasCommand command);
     void visit(PrintTransactionsCommand command);
     void visit(CheckCardStatusCommand command);
+    void visit(ChangeInterestRateCommand command);
 }

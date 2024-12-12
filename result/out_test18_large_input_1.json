@@ -787,8 +787,6 @@
   } ],
   "timestamp" : 78
 }, {
-  "result" : "Command 'changeInterestRate' at timestamp 79 is not implemented yet."
-}, {
   "result" : "Command 'addInterest' at timestamp 80 is not implemented yet."
 }, {
   "command" : "printUsers",

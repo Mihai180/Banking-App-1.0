@@ -1,6 +1,4 @@
 [ {
-  "result" : "Command 'changeInterestRate' at timestamp 2 is not implemented yet."
-}, {
   "command" : "deleteAccount",
   "output" : {
     "error" : "Account couldn't be deleted - see org.poo.transactions for details",

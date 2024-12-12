@@ -32,6 +32,8 @@ public class CommandFactory {
                 return new PrintTransactionsCommand(input.getCommand(), input.getTimestamp(), input.getEmail());
             case "checkCardStatus":
                 return new CheckCardStatusCommand(input.getCardNumber(), input.getTimestamp(), input.getCommand());
+            case "changeInterestRate":
+                return new ChangeInterestRateCommand(input.getTimestamp(), input.getAccount(), input.getInterestRate());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }
