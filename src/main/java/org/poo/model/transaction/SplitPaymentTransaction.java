@@ -3,38 +3,38 @@ package org.poo.model.transaction;
 import org.poo.model.merchant.Merchant;
 import org.poo.visitor.transaction.TransactionVisitor;
 
+import java.util.List;
 import java.util.Map;
 
 public class SplitPaymentTransaction extends Transaction {
-    private Merchant merchant;
-    private String category;
-    private Map<String, Double> participants; // Account IBAN to amount
-    private String currency;
+    String currency;
+    String amount;
+    double splitAmount;
+    List<String> involvedAccounts;
 
-    public SplitPaymentTransaction(int timestamp, Merchant merchant,
-                                   String category, Map<String, Double> participants, String currency) {
+    public SplitPaymentTransaction(int timestamp, String currency, String amount, List<String> involvedAccounts, double splitAmount) {
         super(timestamp);
-        this.description = "SplitPayment";
-        this.merchant = merchant;
-        this.category = category;
-        this.participants = participants;
+        this.description = "Split payment of ";
         this.currency = currency;
+        this.amount = amount;
+        this.involvedAccounts = involvedAccounts;
+        this.splitAmount = splitAmount;
     }
 
-    public Merchant getMerchant() {
-        return merchant;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public Map<String, Double> getParticipants() {
-        return participants;
+    public String getAmount() {
+        return amount;
     }
 
     public String getCurrency() {
         return currency;
+    }
+
+    public List<String> getInvolvedAccounts() {
+        return involvedAccounts;
+    }
+
+    public double getSplitAmount() {
+        return splitAmount;
     }
 
     public void accept(TransactionVisitor visitor) {

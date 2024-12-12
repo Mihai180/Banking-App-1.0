@@ -34,6 +34,8 @@ public class CommandFactory {
                 return new CheckCardStatusCommand(input.getCardNumber(), input.getTimestamp(), input.getCommand());
             case "changeInterestRate":
                 return new ChangeInterestRateCommand(input.getTimestamp(), input.getAccount(), input.getInterestRate());
+            case "splitPayment":
+                return new SplitPaymentCommand(input.getAccounts(), input.getTimestamp(), input.getCurrency(), input.getAmount());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

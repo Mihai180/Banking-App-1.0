@@ -113,10 +113,6 @@
   } ],
   "timestamp" : 18
 }, {
-  "result" : "Command 'splitPayment' at timestamp 28 is not implemented yet."
-}, {
-  "result" : "Command 'splitPayment' at timestamp 29 is not implemented yet."
-}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 1,
@@ -156,8 +152,6 @@
     "transferType" : "sent"
   } ],
   "timestamp" : 30
-}, {
-  "result" : "Command 'splitPayment' at timestamp 33 is not implemented yet."
 }, {
   "command" : "printTransactions",
   "output" : [ {

@@ -221,8 +221,6 @@
   } ],
   "timestamp" : 28
 }, {
-  "result" : "Command 'splitPayment' at timestamp 48 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Sachi",

@@ -14,6 +14,7 @@ import org.poo.model.user.User;
 import org.poo.utils.Utils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountService {
@@ -156,7 +157,7 @@ public class AccountService {
         return aliasOrIBAN;
     }
 
-    public void changeInterestRate (String iban, Double interestRate) {
+    public void changeInterestRate(String iban, Double interestRate) {
         Account account = getAccountByIBAN(iban);
         if (account instanceof SavingsAccount) {
             if (account == null) {
@@ -164,5 +165,25 @@ public class AccountService {
             }
             ((SavingsAccount) account).setInterestRate(interestRate);
         }
+    }
+
+    public String splitPayment(List<String> accounts, String currency, double amount) {
+        int nrOfAccounts = accounts.size();
+        double splitAmount = amount/nrOfAccounts;
+        for (String iban : accounts) {
+            Account account = getAccountByIBAN(iban);
+            if (account == null) {
+                return "Account not found with IBAN: " + iban;
+            }
+            double convertedAmount = splitAmount;
+            if (!account.getCurrency().equals(currency)) {
+                convertedAmount = exchangeService.convertCurrency(currency, account.getCurrency(), splitAmount);
+            }
+            if (account.getBalance() < amount) {
+                return "Insufficient funds";
+            }
+            account.withdraw(convertedAmount);
+        }
+        return "Success";
     }
 }

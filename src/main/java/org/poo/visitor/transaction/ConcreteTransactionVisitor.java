@@ -1,5 +1,7 @@
 package org.poo.visitor.transaction;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.model.transaction.*;
 import org.poo.service.AccountService;
@@ -7,11 +9,14 @@ import org.poo.service.CardService;
 import org.poo.service.TransactionService;
 import org.poo.service.UserService;
 
+import java.util.List;
+
 public class ConcreteTransactionVisitor implements TransactionVisitor {
     private UserService userService;
     private AccountService accountService;
     private CardService cardService;
     private TransactionService transactionService;
+    private ObjectMapper mapper;
 
     private ObjectNode transactionNode;
 
@@ -19,12 +24,14 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
                                       AccountService accountService,
                                       CardService cardService,
                                       TransactionService transactionService,
-                                      ObjectNode transactionNode) {
+                                      ObjectNode transactionNode,
+                                      ObjectMapper mapper) {
         this.userService = userService;
         this.accountService = accountService;
         this.cardService = cardService;
         this.transactionService = transactionService;
         this.transactionNode = transactionNode;
+        this.mapper = mapper;
     }
 
     public void visit(AccountCreationTransaction transaction) {
@@ -85,6 +92,18 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("description", transaction.getDescription());
     }
 
+    public void visit(SplitPaymentTransaction transaction) {
+        transactionNode.put("timestamp", transaction.getTimestamp());
+        transactionNode.put("description", transaction.getDescription() + transaction.getAmount() + " " + transaction.getCurrency());
+        transactionNode.put("currency", transaction.getCurrency());
+        transactionNode.put("amount", transaction.getSplitAmount());
+        ArrayNode involvedAccountsArray = mapper.createArrayNode();
+        for (String iban : transaction.getInvolvedAccounts()) {
+            involvedAccountsArray.add(iban);
+        }
+        transactionNode.set("involvedAccounts", involvedAccountsArray);
+    }
+
     public void visit(BankTransferTransaction transaction){
 
     }
@@ -98,10 +117,6 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
     }
 
     public void visit(MinBalanceSettingTransaction transaction){
-
-    }
-
-    public void visit(SplitPaymentTransaction transaction) {
 
     }
 

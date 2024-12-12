@@ -12,6 +12,7 @@ import org.poo.service.*;
 import org.poo.visitor.transaction.ConcreteTransactionVisitor;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteCommandVisitor implements CommandVisitor {
@@ -243,7 +244,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             ObjectNode transactionNode = mapper.createObjectNode();
 
             ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
-                    cardService, transactionService, transactionNode);
+                    cardService, transactionService, transactionNode, mapper);
 
             transaction.accept(transactionVisitor);
             outputTransactions.add(transactionNode);
@@ -278,5 +279,20 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     @Override
     public void visit(ChangeInterestRateCommand command) {
         accountService.changeInterestRate(command.getAccount(), command.getIntrestRate());
+    }
+
+    @Override
+    public void visit(SplitPaymentCommand command) {
+        String result = accountService.splitPayment(command.getAccounts(), command.getCurrency(), command.getAmount());
+        if (result.equals("Success")) {
+            double amount = command.getAmount()/command.getAccounts().size();
+            String formattedAmount = String.format("%.2f", command.getAmount());
+            Transaction transaction = new SplitPaymentTransaction(command.getTimestamp(), command.getCurrency(), formattedAmount, command.getAccounts(), amount);
+            List<String> accounts = command.getAccounts();
+            for (String iban : accounts) {
+                Account account = accountService.getAccountByIBAN(iban);
+                account.addTransaction(transaction);
+            }
+        }
     }
 }

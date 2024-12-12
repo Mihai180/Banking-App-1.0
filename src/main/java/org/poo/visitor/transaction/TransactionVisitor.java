@@ -11,11 +11,11 @@ public interface TransactionVisitor {
     void visit(CardDeletionTransaction transaction);
     void visit(MinimumAmountOfFundsTransaction transaction);
     void visit(FrozenCardTransaction transaction);
+    void visit(SplitPaymentTransaction transaction);
 
     void visit(BankTransferTransaction transaction);
     void visit(InterestRateChangeTransaction transaction);
     void visit(InterestTransaction transaction);
     void visit(MinBalanceSettingTransaction transaction);
-    void visit(SplitPaymentTransaction transaction);
     void visit(ErrorTransaction transaction);
 }

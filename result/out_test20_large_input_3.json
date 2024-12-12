@@ -428,8 +428,6 @@
   } ],
   "timestamp" : 269
 }, {
-  "result" : "Command 'splitPayment' at timestamp 370 is not implemented yet."
-}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 1,
@@ -1126,14 +1124,6 @@
   },
   "timestamp" : 480
 }, {
-  "result" : "Command 'splitPayment' at timestamp 481 is not implemented yet."
-}, {
-  "result" : "Command 'splitPayment' at timestamp 482 is not implemented yet."
-}, {
-  "result" : "Command 'splitPayment' at timestamp 483 is not implemented yet."
-}, {
-  "result" : "Command 'splitPayment' at timestamp 484 is not implemented yet."
-}, {
   "command" : "printUsers",
   "output" : [ {
     "firstName" : "Gabor",
@@ -1196,7 +1186,7 @@
       } ]
     }, {
       "IBAN" : "RO45POOB0388148432759748",
-      "balance" : 65914.35714285714,
+      "balance" : 64399.6164021164,
       "currency" : "CHF",
       "type" : "savings",
       "cards" : [ {
@@ -1265,7 +1255,7 @@
       } ]
     }, {
       "IBAN" : "RO50POOB3359236199018963",
-      "balance" : 80257.61538461539,
+      "balance" : 78054.35612535613,
       "currency" : "NZD",
       "type" : "savings",
       "cards" : [ {
@@ -1288,7 +1278,7 @@
       } ]
     }, {
       "IBAN" : "RO75POOB8279679254660818",
-      "balance" : 4463.261363636364,
+      "balance" : 3223.928030303031,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ {
@@ -1348,7 +1338,7 @@
     "email" : "Roberta_Mocanu@aol.ro",
     "accounts" : [ {
       "IBAN" : "RO79POOB3616857825600958",
-      "balance" : 11847.0,
+      "balance" : 9920.5,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1472,7 +1462,7 @@
       } ]
     }, {
       "IBAN" : "RO47POOB5866490978033060",
-      "balance" : 22986.23076923077,
+      "balance" : 21452.23076923077,
       "currency" : "CHF",
       "type" : "savings",
       "cards" : [ {
