@@ -13,7 +13,9 @@ import org.poo.visitor.transaction.ConcreteTransactionVisitor;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ConcreteCommandVisitor implements CommandVisitor {
     private UserService userService;
@@ -294,5 +296,85 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 account.addTransaction(transaction);
             }
         }
+    }
+
+    @Override
+    public void visit(ReportCommand command) {
+        ObjectNode reportResult = mapper.createObjectNode();
+        reportResult.put("command", command.getCommand());
+        Account account = accountService.getAccountByIBAN(command.getAccount());
+        if (account == null) {
+            return;
+        }
+        ObjectNode outputNode = mapper.createObjectNode();
+        outputNode.put("IBAN", account.getIban());
+        outputNode.put("balance", account.getBalance());
+        outputNode.put("currency", account.getCurrency());
+        ArrayNode transactionsArray = mapper.createArrayNode();
+        List<Transaction> transactions = accountService.getTransactions(command.getAccount());
+        for (Transaction transaction : transactions) {
+            if (transaction.getTimestamp() >= command.getStartTimestamp() &&
+                    transaction.getTimestamp() <= command.getEndTimestamp()) {
+                ObjectNode transactionNode = mapper.createObjectNode();
+
+                ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
+                        cardService, transactionService, transactionNode, mapper);
+
+                transaction.accept(transactionVisitor);
+                transactionsArray.add(transactionNode);
+            }
+        }
+        outputNode.set("transactions", transactionsArray);
+        reportResult.set("output", outputNode);
+        reportResult.put("timestamp", command.getTimestamp());
+        this.output.add(reportResult);
+    }
+
+    @Override
+    public void visit(SpendingsReportCommand command) {
+        ObjectNode reportResult = mapper.createObjectNode();
+        reportResult.put("command", command.getCommand());
+        Account account = accountService.getAccountByIBAN(command.getAccount());
+        if (account == null) {
+            return;
+        }
+        ObjectNode outputNode = mapper.createObjectNode();
+        outputNode.put("IBAN", account.getIban());
+        outputNode.put("balance", account.getBalance());
+        outputNode.put("currency", account.getCurrency());
+        ArrayNode transactionsArray = mapper.createArrayNode();
+        List<Transaction> transactions = accountService.getTransactions(command.getAccount());
+        Map<String, Double> commerciantsTotals = new HashMap<>();
+        for (Transaction transaction : transactions) {
+            if (transaction.getTimestamp() >= command.getStartTimestamp() &&
+                    transaction.getTimestamp() <= command.getEndTimestamp() &&
+                    transaction instanceof CardPaymentTransaction) {
+                ObjectNode transactionNode = mapper.createObjectNode();
+                ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
+                        cardService, transactionService, transactionNode, mapper);
+
+                transaction.accept(transactionVisitor);
+                transactionsArray.add(transactionNode);
+
+                String commerciant = ((CardPaymentTransaction) transaction).getCommerciant();
+                double amount = ((CardPaymentTransaction) transaction).getAmount();
+                commerciantsTotals.merge(commerciant, amount, Double::sum);
+            }
+        }
+        outputNode.set("transactions", transactionsArray);
+        List<Map.Entry<String, Double>> commerciantsList = new ArrayList<>(commerciantsTotals.entrySet());
+        commerciantsList.sort(Map.Entry.comparingByKey());
+        ArrayNode commerciantsArray = mapper.createArrayNode();
+        for (Map.Entry<String, Double> entry : commerciantsList) {
+            ObjectNode commerciantNode = mapper.createObjectNode();
+            commerciantNode.put("commerciant", entry.getKey());
+            commerciantNode.put("total", entry.getValue());
+            commerciantsArray.add(commerciantNode);
+        }
+
+        outputNode.set("commerciants", commerciantsArray);
+        reportResult.set("output", outputNode);
+        reportResult.put("timestamp", command.getTimestamp());
+        this.output.add(reportResult);
     }
 }

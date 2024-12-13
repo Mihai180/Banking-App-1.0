@@ -36,6 +36,10 @@ public class CommandFactory {
                 return new ChangeInterestRateCommand(input.getTimestamp(), input.getAccount(), input.getInterestRate());
             case "splitPayment":
                 return new SplitPaymentCommand(input.getAccounts(), input.getTimestamp(), input.getCurrency(), input.getAmount());
+            case "report":
+                return new ReportCommand(input.getCommand(), input.getTimestamp(), input.getStartTimestamp(), input.getEndTimestamp(), input.getAccount());
+            case "spendingsReport":
+                return new SpendingsReportCommand(input.getStartTimestamp(), input.getEndTimestamp(), input.getTimestamp(), input.getCommand(), input.getAccount());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

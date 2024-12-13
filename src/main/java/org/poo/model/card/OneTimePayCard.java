@@ -2,6 +2,7 @@ package org.poo.model.card;
 
 import org.poo.model.account.Account;
 import org.poo.model.user.User;
+import org.poo.utils.Utils;
 
 public class OneTimePayCard extends Card {
     private boolean isUsed;
@@ -21,6 +22,7 @@ public class OneTimePayCard extends Card {
         }
         account.withdraw(amount);
         isUsed = true;
+        setCardNumber(Utils.generateCardNumber());
     }
 
     public boolean isUsed() {

@@ -179,11 +179,19 @@ public class AccountService {
             if (!account.getCurrency().equals(currency)) {
                 convertedAmount = exchangeService.convertCurrency(currency, account.getCurrency(), splitAmount);
             }
-            if (account.getBalance() < amount) {
+            if (account.getBalance() < convertedAmount) {
                 return "Insufficient funds";
             }
             account.withdraw(convertedAmount);
         }
         return "Success";
+    }
+
+    public List<Transaction> getTransactions(String iban) {
+        Account account = getAccountByIBAN(iban);
+        if (account == null) {
+            throw new IllegalArgumentException("Account not found with IBAN: " + iban);
+        }
+        return account.getTransactions();
     }
 }

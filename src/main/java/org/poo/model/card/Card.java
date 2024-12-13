@@ -46,6 +46,10 @@ public abstract class Card {
         return "active";
     }
 
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
     public abstract void makePayment(double amount);
 
     //public abstract void accept(CardVisitor visitor);

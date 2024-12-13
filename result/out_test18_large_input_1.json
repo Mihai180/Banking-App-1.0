@@ -108,9 +108,14 @@
   } ],
   "timestamp" : 6
 }, {
-  "result" : "Command 'report' at timestamp 26 is not implemented yet."
-}, {
-  "result" : "Command 'report' at timestamp 27 is not implemented yet."
+  "command" : "report",
+  "output" : {
+    "IBAN" : "RO58POOB7344468893732422",
+    "balance" : 51504.25,
+    "currency" : "INR",
+    "transactions" : [ ]
+  },
+  "timestamp" : 26
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -363,9 +368,31 @@
   } ],
   "timestamp" : 53
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 54 is not implemented yet."
-}, {
-  "result" : "Command 'spendingsReport' at timestamp 55 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO58POOB7344468893732422",
+    "balance" : 41457.25,
+    "currency" : "INR",
+    "transactions" : [ {
+      "timestamp" : 43,
+      "description" : "Card payment",
+      "amount" : 83.0,
+      "commerciant" : "Adidas"
+    }, {
+      "timestamp" : 44,
+      "description" : "Card payment",
+      "amount" : 21280.0,
+      "commerciant" : "KFC"
+    } ],
+    "commerciants" : [ {
+      "commerciant" : "Adidas",
+      "total" : 83.0
+    }, {
+      "commerciant" : "KFC",
+      "total" : 21280.0
+    } ]
+  },
+  "timestamp" : 54
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -569,7 +596,15 @@
   } ],
   "timestamp" : 71
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 75 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO53POOB7122855990652257",
+    "balance" : 0.0,
+    "currency" : "CHF",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 75
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -1421,13 +1456,43 @@
   } ],
   "timestamp" : 156
 }, {
-  "result" : "Command 'report' at timestamp 166 is not implemented yet."
+  "command" : "report",
+  "output" : {
+    "IBAN" : "RO69POOB6209498372540635",
+    "balance" : 16301.759999999998,
+    "currency" : "NZD",
+    "transactions" : [ ]
+  },
+  "timestamp" : 166
 }, {
-  "result" : "Command 'report' at timestamp 167 is not implemented yet."
+  "command" : "report",
+  "output" : {
+    "IBAN" : "RO65POOB8944016386845896",
+    "balance" : 14669.339999999998,
+    "currency" : "EUR",
+    "transactions" : [ ]
+  },
+  "timestamp" : 167
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 170 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO76POOB4035116042454483",
+    "balance" : 917.1964285714286,
+    "currency" : "EUR",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 170
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 171 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO19POOB4981055641668812",
+    "balance" : 520.8928571428571,
+    "currency" : "CAD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 171
 }, {
   "command" : "printUsers",
   "output" : [ {
@@ -1501,7 +1566,7 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6796819982034243",
+        "cardNumber" : "4686471658318359",
         "status" : "active"
       } ]
     } ]
@@ -1856,7 +1921,7 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6796819982034243",
+        "cardNumber" : "4686471658318359",
         "status" : "active"
       } ]
     } ]

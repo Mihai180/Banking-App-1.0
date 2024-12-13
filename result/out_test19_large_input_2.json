@@ -24,7 +24,7 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8207906978464446",
+        "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
     }, {
@@ -44,7 +44,7 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7901879264253296",
+        "cardNumber" : "7317745095154687",
         "status" : "active"
       } ]
     } ]
@@ -64,7 +64,7 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7004757825892043",
+        "cardNumber" : "3951521356076921",
         "status" : "active"
       } ]
     } ]
@@ -78,7 +78,7 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6796819982034243",
+        "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
     } ]
@@ -92,7 +92,7 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "4686471658318359",
+        "cardNumber" : "7746115164990298",
         "status" : "active"
       } ]
     } ]
@@ -106,7 +106,7 @@
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "1322658752653937",
+        "cardNumber" : "5779026319169555",
         "status" : "active"
       } ]
     } ]
@@ -120,7 +120,7 @@
       "currency" : "USD",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "0466992784477761",
+        "cardNumber" : "1952612794872207",
         "status" : "active"
       } ]
     } ]
@@ -301,7 +301,7 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8207906978464446",
+        "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
     }, {
@@ -321,7 +321,7 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7901879264253296",
+        "cardNumber" : "0084627535411906",
         "status" : "active"
       } ]
     } ]
@@ -341,7 +341,7 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7004757825892043",
+        "cardNumber" : "8509650399173661",
         "status" : "active"
       } ]
     } ]
@@ -355,7 +355,7 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6796819982034243",
+        "cardNumber" : "4069340791718491",
         "status" : "active"
       } ]
     } ]
@@ -369,7 +369,7 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "4686471658318359",
+        "cardNumber" : "6592968050400705",
         "status" : "active"
       } ]
     } ]
@@ -383,7 +383,7 @@
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "1322658752653937",
+        "cardNumber" : "6467982927008637",
         "status" : "active"
       } ]
     } ]
@@ -397,7 +397,7 @@
       "currency" : "USD",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "0466992784477761",
+        "cardNumber" : "8686098479595515",
         "status" : "active"
       } ]
     } ]
@@ -645,6 +645,13 @@
   },
   "timestamp" : 112
 }, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 115,
+    "description" : "Card not found"
+  },
+  "timestamp" : 115
+}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 5,
@@ -656,25 +663,28 @@
     "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
     "account" : "RO90POOB5450777208072365"
   }, {
-    "timestamp" : 27,
-    "description" : "Card payment",
-    "amount" : 16.0,
-    "commerciant" : "Microsoft"
-  }, {
-    "timestamp" : 72,
-    "description" : "Card payment",
-    "amount" : 152.888888889,
-    "commerciant" : "KFC"
-  }, {
     "timestamp" : 113,
     "description" : "New card created",
-    "card" : "5088727507344799",
+    "card" : "8916302128573242",
     "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
     "account" : "RO90POOB5450777208072365"
   } ],
   "timestamp" : 119
 }, {
-  "result" : "Command 'report' at timestamp 124 is not implemented yet."
+  "command" : "report",
+  "output" : {
+    "IBAN" : "RO90POOB5450777208072365",
+    "balance" : 1996.111111111111,
+    "currency" : "NZD",
+    "transactions" : [ {
+      "timestamp" : 113,
+      "description" : "New card created",
+      "card" : "8916302128573242",
+      "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
+      "account" : "RO90POOB5450777208072365"
+    } ]
+  },
+  "timestamp" : 124
 }, {
   "command" : "payOnline",
   "output" : {
@@ -788,26 +798,11 @@
     "cardHolder" : "Georgel_Nistor@yandex.ro",
     "account" : "RO65POOB8944016386845896"
   }, {
-    "timestamp" : 28,
-    "description" : "Card payment",
-    "amount" : 1915.0,
-    "commerciant" : "Gucci"
-  }, {
-    "timestamp" : 73,
-    "description" : "Card payment",
-    "amount" : 190.0,
-    "commerciant" : "Starbucks"
-  }, {
     "timestamp" : 123,
     "description" : "Split payment of 1393.00 EUR",
     "currency" : "EUR",
     "amount" : 348.25,
     "involvedAccounts" : [ "RO30POOB9523423715747796", "RO19POOB4981055641668812", "RO65POOB8944016386845896", "RO68POOB1848616931405475" ]
-  }, {
-    "timestamp" : 146,
-    "description" : "Card payment",
-    "amount" : 1608.75,
-    "commerciant" : "McDonalds"
   } ],
   "timestamp" : 172
 }, {
@@ -821,11 +816,6 @@
     "card" : "8207906978464446",
     "cardHolder" : "Selma_Birnbaum@icloud.de",
     "account" : "RO69POOB6209498372540635"
-  }, {
-    "timestamp" : 26,
-    "description" : "Card payment",
-    "amount" : 49.0,
-    "commerciant" : "HP"
   }, {
     "timestamp" : 33,
     "description" : "Transfer to a Commerzbank savings account",
@@ -873,7 +863,7 @@
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8207906978464446",
+        "cardNumber" : "5088727507344799",
         "status" : "active"
       } ]
     }, {
@@ -893,10 +883,10 @@
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7901879264253296",
+        "cardNumber" : "8696843716078966",
         "status" : "active"
       }, {
-        "cardNumber" : "5088727507344799",
+        "cardNumber" : "8916302128573242",
         "status" : "active"
       } ]
     } ]
@@ -916,7 +906,7 @@
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7004757825892043",
+        "cardNumber" : "4097439592846732",
         "status" : "active"
       } ]
     } ]
@@ -930,7 +920,7 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6796819982034243",
+        "cardNumber" : "2289183361654620",
         "status" : "active"
       } ]
     } ]
@@ -940,11 +930,11 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 1885.9738095238095,
+      "balance" : 1610.9738095238095,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "4686471658318359",
+        "cardNumber" : "5069598921863529",
         "status" : "active"
       } ]
     } ]
@@ -958,7 +948,7 @@
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "1322658752653937",
+        "cardNumber" : "1851641428290185",
         "status" : "active"
       } ]
     } ]
@@ -972,7 +962,7 @@
       "currency" : "USD",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "0466992784477761",
+        "cardNumber" : "9281102140265301",
         "status" : "active"
       } ]
     } ]
@@ -1004,7 +994,7 @@
     "email" : "Frederique_Laflamme@zoho.ca",
     "accounts" : [ {
       "IBAN" : "RO96POOB6738272785416988",
-      "balance" : 1107.0,
+      "balance" : 783.5954545454546,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ ]
@@ -1063,7 +1053,7 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "3951521356076921",
+        "cardNumber" : "6052309891235892",
         "status" : "active"
       } ]
     } ]
@@ -1099,7 +1089,7 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "7317745095154687",
+        "cardNumber" : "8221841196640096",
         "status" : "active"
       } ]
     } ]
@@ -1128,43 +1118,203 @@
   } ],
   "timestamp" : 175
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 176 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO90POOB5450777208072365",
+    "balance" : 2101.311111111111,
+    "currency" : "NZD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 176
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 177 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO65POOB8944016386845896",
+    "balance" : 3009.147727272728,
+    "currency" : "RON",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 177
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 178 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO58POOB2721178218599590",
+    "balance" : 6723.563461538462,
+    "currency" : "CHF",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 178
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 179 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO76POOB4035116042454483",
+    "balance" : 1610.9738095238095,
+    "currency" : "CAD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 179
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 180 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO37POOB7013767509830666",
+    "balance" : 1390.8392857142858,
+    "currency" : "RON",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 180
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 181 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO19POOB4981055641668812",
+    "balance" : 10510.570707070707,
+    "currency" : "USD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 181
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 182 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO30POOB9523423715747796",
+    "balance" : 2290.75,
+    "currency" : "EUR",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 182
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 183 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO79POOB3616857825600958",
+    "balance" : 1006.0,
+    "currency" : "NZD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 183
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 184 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO00POOB5687892910835215",
+    "balance" : 558.0,
+    "currency" : "GBP",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 184
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 185 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO96POOB6738272785416988",
+    "balance" : 783.5954545454546,
+    "currency" : "CAD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 185
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 186 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO33POOB4049920806186500",
+    "balance" : 7476.0,
+    "currency" : "INR",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 186
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 187 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO69POOB9846198978826791",
+    "balance" : 1800.0,
+    "currency" : "RON",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 187
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 188 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO98POOB8412955460158769",
+    "balance" : 4991.636363636363,
+    "currency" : "MXN",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 188
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 189 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO32POOB0130532963818359",
+    "balance" : 212.0,
+    "currency" : "INR",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 189
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 190 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO68POOB1848616931405475",
+    "balance" : 6077.972222222223,
+    "currency" : "CAD",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 190
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 191 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO10POOB4354933866366881",
+    "balance" : 798.0,
+    "currency" : "EUR",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 191
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 192 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO33POOB9999273999620457",
+    "balance" : 189.0,
+    "currency" : "MXN",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 192
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 193 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO38POOB0964823730995794",
+    "balance" : 11308.0,
+    "currency" : "CHF",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 193
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 194 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO53POOB7122855990652257",
+    "balance" : 1024.0,
+    "currency" : "CHF",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 194
 }, {
-  "result" : "Command 'spendingsReport' at timestamp 195 is not implemented yet."
+  "command" : "spendingsReport",
+  "output" : {
+    "IBAN" : "RO71POOB1634969878734749",
+    "balance" : 2951.0,
+    "currency" : "CHF",
+    "transactions" : [ ],
+    "commerciants" : [ ]
+  },
+  "timestamp" : 195
 } ]
