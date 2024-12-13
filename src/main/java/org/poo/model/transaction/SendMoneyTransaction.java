@@ -7,15 +7,21 @@ public class SendMoneyTransaction extends Transaction {
     private String receiver;
     private double amount;
     private String currency;
+    private String transferType;
 
     public SendMoneyTransaction(int timestamp, String description, String sender, String receiver,
-                                double amount, String currency) {
+                                double amount, String currency, String transferType) {
         super(timestamp);
         this.sender = sender;
         this.receiver = receiver;
         this.amount = amount;
         this.description = description;
         this.currency = currency;
+        this.transferType = transferType;
+    }
+
+    public String getTransferType() {
+        return transferType;
     }
 
     public String getSender() {

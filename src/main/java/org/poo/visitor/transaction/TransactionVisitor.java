@@ -12,6 +12,8 @@ public interface TransactionVisitor {
     void visit(MinimumAmountOfFundsTransaction transaction);
     void visit(FrozenCardTransaction transaction);
     void visit(SplitPaymentTransaction transaction);
+    void visit(InssuficientFundsForSplitTransaction transaction);
+    void visit(AccountDeletionErrorTransaction transaction);
 
     void visit(BankTransferTransaction transaction);
     void visit(InterestRateChangeTransaction transaction);

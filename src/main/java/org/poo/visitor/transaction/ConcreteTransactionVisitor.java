@@ -45,12 +45,12 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         double amount = sendMoneyTransaction.getAmount();
         String currency = sendMoneyTransaction.getCurrency();
 
-        String amountWithCurrency = String.format("%.1f %s", amount, currency);
+        String amountWithCurrency = amount + " " + currency;
 
         transactionNode.put("senderIBAN", sendMoneyTransaction.getSender());
         transactionNode.put("receiverIBAN", sendMoneyTransaction.getReceiver());
         transactionNode.put("amount", amountWithCurrency);
-        transactionNode.put("transferType", "sent");
+        transactionNode.put("transferType", sendMoneyTransaction.getTransferType());
     }
 
     public void visit(CardCreationTransaction transaction) {
@@ -92,6 +92,7 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("description", transaction.getDescription());
     }
 
+    @Override
     public void visit(SplitPaymentTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription() + transaction.getAmount() + " " + transaction.getCurrency());
@@ -102,6 +103,25 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
             involvedAccountsArray.add(iban);
         }
         transactionNode.set("involvedAccounts", involvedAccountsArray);
+    }
+
+    @Override
+    public void visit(InssuficientFundsForSplitTransaction transaction) {
+        transactionNode.put("timestamp", transaction.getTimestamp());
+        transactionNode.put("description", transaction.getDescription());
+        transactionNode.put("currency", transaction.getCurrency());
+        transactionNode.put("amount", transaction.getSplitAmount());
+        ArrayNode involvedAccountsArray = mapper.createArrayNode();
+        for (String iban : transaction.getInvolvedAccounts()) {
+            involvedAccountsArray.add(iban);
+        }
+        transactionNode.set("involvedAccounts", involvedAccountsArray);
+        transactionNode.put("error", transaction.getError());
+    }
+
+    public void visit(AccountDeletionErrorTransaction transaction) {
+        transactionNode.put("timestamp", transaction.getTimestamp());
+        transactionNode.put("description", transaction.getDescription());
     }
 
     public void visit(BankTransferTransaction transaction){

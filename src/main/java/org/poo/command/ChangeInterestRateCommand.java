@@ -6,11 +6,17 @@ public class ChangeInterestRateCommand implements Command {
     private int timestamp;
     private String account;
     private double IntrestRate;
+    private String command;
 
-    public ChangeInterestRateCommand(int timestamp, String account, double IntrestRate) {
+    public ChangeInterestRateCommand(int timestamp, String account, double IntrestRate, String command) {
         this.timestamp = timestamp;
         this.account = account;
         this.IntrestRate = IntrestRate;
+        this.command = command;
+    }
+
+    public String getCommand() {
+        return command;
     }
 
     public int getTimestamp() {

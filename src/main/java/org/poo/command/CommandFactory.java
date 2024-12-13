@@ -33,13 +33,15 @@ public class CommandFactory {
             case "checkCardStatus":
                 return new CheckCardStatusCommand(input.getCardNumber(), input.getTimestamp(), input.getCommand());
             case "changeInterestRate":
-                return new ChangeInterestRateCommand(input.getTimestamp(), input.getAccount(), input.getInterestRate());
+                return new ChangeInterestRateCommand(input.getTimestamp(), input.getAccount(), input.getInterestRate(), input.getCommand());
             case "splitPayment":
                 return new SplitPaymentCommand(input.getAccounts(), input.getTimestamp(), input.getCurrency(), input.getAmount());
             case "report":
                 return new ReportCommand(input.getCommand(), input.getTimestamp(), input.getStartTimestamp(), input.getEndTimestamp(), input.getAccount());
             case "spendingsReport":
                 return new SpendingsReportCommand(input.getStartTimestamp(), input.getEndTimestamp(), input.getTimestamp(), input.getCommand(), input.getAccount());
+            case "addInterest":
+                return new AddInterestCommand(input.getCommand(), input.getAccount(), input.getTimestamp());
             default:
                 return new NotImplementedCommand(commandName, input.getTimestamp());
         }

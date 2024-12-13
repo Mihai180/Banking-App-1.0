@@ -20,4 +20,5 @@ public interface CommandVisitor {
     void visit(SplitPaymentCommand command);
     void visit(ReportCommand command);
     void visit(SpendingsReportCommand command);
+    void visit(AddInterestCommand command);
 }

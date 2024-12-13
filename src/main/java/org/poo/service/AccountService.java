@@ -14,6 +14,7 @@ import org.poo.model.user.User;
 import org.poo.utils.Utils;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -157,19 +158,24 @@ public class AccountService {
         return aliasOrIBAN;
     }
 
-    public void changeInterestRate(String iban, Double interestRate) {
+    public String changeInterestRate(String iban, Double interestRate) {
         Account account = getAccountByIBAN(iban);
-        if (account instanceof SavingsAccount) {
-            if (account == null) {
-                throw new IllegalArgumentException("Account not found with IBAN: " + iban);
-            }
+        if (account == null) {
+            throw new IllegalArgumentException("Account not found with IBAN: " + iban);
+        }
+        if (account.getAccountType().equals("classic")) {
+            return "This is not a savings account";
+        }
+        if (account.getAccountType().equals("savings")) {
             ((SavingsAccount) account).setInterestRate(interestRate);
         }
+        return "Success";
     }
 
     public String splitPayment(List<String> accounts, String currency, double amount) {
         int nrOfAccounts = accounts.size();
         double splitAmount = amount/nrOfAccounts;
+        String lastIban = null;
         for (String iban : accounts) {
             Account account = getAccountByIBAN(iban);
             if (account == null) {
@@ -179,10 +185,27 @@ public class AccountService {
             if (!account.getCurrency().equals(currency)) {
                 convertedAmount = exchangeService.convertCurrency(currency, account.getCurrency(), splitAmount);
             }
-            if (account.getBalance() < convertedAmount) {
-                return "Insufficient funds";
+            /*if (account.getBalance() < convertedAmount) {
+                return "Account " + account.getIban() + " has insufficient funds for a split payment.";
             }
-            account.withdraw(convertedAmount);
+
+             */
+            if (account.getBalance() < convertedAmount) {
+                lastIban = iban;
+            }
+        }
+        if (lastIban != null) {
+            return "Account " + lastIban + " has insufficient funds for a split payment.";
+        }
+        for (String iban : accounts) {
+            Account account = getAccountByIBAN(iban);
+            if (account != null) {
+                double convertedAmount = splitAmount;
+                if (!account.getCurrency().equals(currency)) {
+                    convertedAmount = exchangeService.convertCurrency(currency, account.getCurrency(), splitAmount);
+                }
+                account.withdraw(convertedAmount);
+            }
         }
         return "Success";
     }
@@ -193,5 +216,17 @@ public class AccountService {
             throw new IllegalArgumentException("Account not found with IBAN: " + iban);
         }
         return account.getTransactions();
+    }
+
+    public String addInterestRate(String iban) {
+        Account account = getAccountByIBAN(iban);
+        if (account == null) {
+            return "Account not found with IBAN: " + iban;
+        }
+        if (account.getAccountType().equals("classic")) {
+            return "This is not a savings account";
+        }
+        ((SavingsAccount) account).addInterest();
+        return "Success";
     }
 }
