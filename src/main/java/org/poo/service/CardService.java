@@ -113,10 +113,20 @@ public class CardService {
 
          */
 
-        String result = card.makePayment(amount);
+        String result = card.makePayment(amount, cardsByNumber);
 
         if (result.equals("You can't pay this amount because is used")) {
             return result;
+        }
+
+        if (result.equals("Success") && card instanceof OneTimePayCard) {
+            String newCardNumber = card.getCardNumber();
+            Card newCard = cardsByNumber.get(newCardNumber);
+
+            if (newCard != null && newCard != card) {
+                ((OneTimePayCard)newCard).setIsUsed(false);
+            }
+            return "New card generated successfully: " + newCardNumber;
         }
 
         double balance = card.getAccount().getBalance();
@@ -150,19 +160,28 @@ public class CardService {
     }
 
     public String checkCardStatus(String cardNumber) {
-        Card card = cardsByNumber.get(cardNumber);
-        if (card == null || (card instanceof OneTimePayCard && ((OneTimePayCard) card).isUsed())) {
+        //Card card = cardsByNumber.get(cardNumber);
+        for (User user : userService.getAllUsers().values()) {
+            for (Account account : user.getAccounts()) {
+                for (Card actualcard : account.getCards()) {
+                    if (actualcard.getCardNumber().equals(cardNumber)) {
+                        Card card = actualcard;
+                        if (card.getAccount().getBalance() == 0) {
+                            return "Insufficient funds";
+                        }
+                        return card.checkStatus();
+                    }
+                }
+            }
+        }
+        //if (card == null || (card instanceof OneTimePayCard && ((OneTimePayCard) card).isUsed())) {
             return "Card not found";
-        }
-        if (card.getAccount().getBalance() == 0) {
-            return "Insufficient funds";
-        }
+        //}
 
         /*if (card.getAccount().getMinimumBalance() >= card.getAccount().getBalance()) {
             return "warning";
         }
 
          */
-        return card.checkStatus();
     }
 }

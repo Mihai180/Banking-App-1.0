@@ -124,11 +124,12 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("description", transaction.getDescription());
     }
 
-    public void visit(BankTransferTransaction transaction){
-
+    public void visit(InterestRateChangeTransaction transaction) {
+        transactionNode.put("timestamp", transaction.getTimestamp());
+        transactionNode.put("description", transaction.getDescription());
     }
 
-    public void visit(InterestRateChangeTransaction transaction) {
+    public void visit(BankTransferTransaction transaction){
 
     }
 

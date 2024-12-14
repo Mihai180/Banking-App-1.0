@@ -729,13 +729,6 @@
   },
   "timestamp" : 112
 }, {
-  "command" : "checkCardStatus",
-  "output" : {
-    "timestamp" : 115,
-    "description" : "Card not found"
-  },
-  "timestamp" : 115
-}, {
   "command" : "printTransactions",
   "output" : [ {
     "timestamp" : 5,
@@ -751,6 +744,18 @@
     "description" : "Card payment",
     "amount" : 16.0,
     "commerciant" : "Microsoft"
+  }, {
+    "timestamp" : 27,
+    "description" : "The card has been destroyed",
+    "card" : "7901879264253296",
+    "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
+    "account" : "RO90POOB5450777208072365"
+  }, {
+    "timestamp" : 27,
+    "description" : "New card created",
+    "card" : "7317745095154687",
+    "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
+    "account" : "RO90POOB5450777208072365"
   }, {
     "timestamp" : 113,
     "description" : "New card created",
@@ -962,6 +967,9 @@
     "timestamp" : 1,
     "description" : "New account created"
   }, {
+    "timestamp" : 2,
+    "description" : "Interest rate of the account changed to 0.81"
+  }, {
     "timestamp" : 6,
     "description" : "New account created"
   }, {
@@ -978,6 +986,18 @@
     "description" : "Card payment",
     "amount" : 1915.0,
     "commerciant" : "Gucci"
+  }, {
+    "timestamp" : 28,
+    "description" : "The card has been destroyed",
+    "card" : "7004757825892043",
+    "cardHolder" : "Georgel_Nistor@yandex.ro",
+    "account" : "RO65POOB8944016386845896"
+  }, {
+    "timestamp" : 28,
+    "description" : "New card created",
+    "card" : "3951521356076921",
+    "cardHolder" : "Georgel_Nistor@yandex.ro",
+    "account" : "RO65POOB8944016386845896"
   }, {
     "timestamp" : 116,
     "description" : "Split payment of 5500.00 CAD",
@@ -1030,6 +1050,18 @@
     "description" : "Card payment",
     "amount" : 49.0,
     "commerciant" : "HP"
+  }, {
+    "timestamp" : 26,
+    "description" : "The card has been destroyed",
+    "card" : "8207906978464446",
+    "cardHolder" : "Selma_Birnbaum@icloud.de",
+    "account" : "RO69POOB6209498372540635"
+  }, {
+    "timestamp" : 26,
+    "description" : "New card created",
+    "card" : "5088727507344799",
+    "cardHolder" : "Selma_Birnbaum@icloud.de",
+    "account" : "RO69POOB6209498372540635"
   }, {
     "timestamp" : 33,
     "description" : "Transfer to a Commerzbank savings account",

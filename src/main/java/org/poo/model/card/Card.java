@@ -2,6 +2,9 @@ package org.poo.model.card;
 
 import org.poo.model.account.Account;
 import org.poo.model.user.User;
+import org.poo.service.CardService;
+
+import java.util.Map;
 
 public abstract class Card {
     protected String cardNumber;
@@ -50,7 +53,7 @@ public abstract class Card {
         this.cardNumber = cardNumber;
     }
 
-    public abstract String makePayment(double amount);
+    public abstract String makePayment(double amount, Map<String, Card> cardsByNumber);
 
     //public abstract void accept(CardVisitor visitor);
 }

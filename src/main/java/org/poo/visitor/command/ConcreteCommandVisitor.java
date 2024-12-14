@@ -219,6 +219,13 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 double formattedAmount = Double.valueOf(df.format(convertedAmount));
                 Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
                 associatedAccount.addTransaction(transaction);
+                /*String newCardNumber = card.getCardNumber();
+                Card newCard = cardService.getCardByNumber(newCardNumber);
+                if (newCard != null && newCard != card) {
+                    ((OneTimePayCard) newCard).setIsUsed(false);
+                }
+
+                 */
             }
             if (result.equals("Insufficient funds")) {
                 Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
@@ -228,11 +235,20 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
                 associatedAccount.addTransaction(transaction);
             }
-            if (result.equals("New card generated successfully")) {
-                Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), associatedAccount.getIban());
-                associatedAccount.addTransaction(transaction1);
-                Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), associatedAccount.getIban(), command.getCardNumber());
-                associatedAccount.addTransaction(transaction2);
+            if (result.startsWith("New card generated successfully")) {
+                String[] resultParts = result.split(": ");
+                if (resultParts.length > 1) {
+                    String newCardNumber = resultParts[1];
+                    double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
+                    DecimalFormat df = new DecimalFormat("#.#########");
+                    double formattedAmount = Double.valueOf(df.format(convertedAmount));
+                    Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
+                    associatedAccount.addTransaction(transaction);
+                    Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), associatedAccount.getIban());
+                    associatedAccount.addTransaction(transaction1);
+                    Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), associatedAccount.getIban(), newCardNumber);
+                    associatedAccount.addTransaction(transaction2);
+                }
             }
         }
     }
@@ -325,6 +341,10 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             cmdResult.set("output", outputNode);
             cmdResult.put("timestamp", command.getTimestamp());
             this.output.add(cmdResult);
+        }
+        if (result.equals("Success")) {
+            Transaction transaction = new InterestRateChangeTransaction(command.getTimestamp(), command.getIntrestRate());
+            accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
         }
     }
 

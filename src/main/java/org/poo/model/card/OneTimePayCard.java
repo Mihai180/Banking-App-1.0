@@ -2,7 +2,10 @@ package org.poo.model.card;
 
 import org.poo.model.account.Account;
 import org.poo.model.user.User;
+import org.poo.service.CardService;
 import org.poo.utils.Utils;
+
+import java.util.Map;
 
 public class OneTimePayCard extends Card {
     private boolean isUsed;
@@ -13,7 +16,7 @@ public class OneTimePayCard extends Card {
     }
 
     @Override
-    public String makePayment(double amount) {
+    public String makePayment(double amount, Map<String, Card> cardsByNumber) {
         if (isBlocked) {
             return  "You can't pay this amount because isBlocked";
         }
@@ -28,8 +31,18 @@ public class OneTimePayCard extends Card {
         }
 
          */
-        setCardNumber(Utils.generateCardNumber());
         isUsed = true;
+        //String oldCardNumber = getCardNumber();
+        //System.out.println("Old Card Number: " + this.getCardNumber());
+        //cardsByNumber.remove(this.getCardNumber());
+        //System.out.println("Card removed from map. Current map: " + cardsByNumber.keySet());
+        setCardNumber(Utils.generateCardNumber());
+        //System.out.println("New Card Number: " + this.getCardNumber());
+
+        //cardsByNumber.remove(oldCardNumber);
+        //cardsByNumber.put(getCardNumber(), this);
+        //cardsByNumber.put(this.getCardNumber(), this);
+        //System.out.println("Card added to map. Updated map: " + cardsByNumber.keySet());
         return "Success";
     }
 
@@ -45,6 +58,10 @@ public class OneTimePayCard extends Card {
             return "used";
         }
         return "active";
+    }
+
+    public void setIsUsed(boolean isUsed) {
+        this.isUsed = isUsed;
     }
 
     /*public void accept(CardVisitor visitor) {
