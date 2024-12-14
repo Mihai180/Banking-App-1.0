@@ -107,7 +107,17 @@ public class CardService {
             return "Insufficient funds";
         }
 
-        card.makePayment(amount);
+        /*if (card instanceof OneTimePayCard) {
+            cardsByNumber.remove(cardNumber);
+        }
+
+         */
+
+        String result = card.makePayment(amount);
+
+        if (result.equals("You can't pay this amount because is used")) {
+            return result;
+        }
 
         double balance = card.getAccount().getBalance();
         Double minBalance = card.getAccount().getMinimumBalance();
@@ -116,14 +126,16 @@ public class CardService {
             return "Success";
         }
 
-        if (balance <= minBalance) {
+        /*if (balance <= minBalance) {
             card.block();
-            return "frozen";
+            return "Success";
         }
 
         if ((minBalance - balance) <= 30) {
-            return "warning";
+            return "Success";
         }
+
+         */
 
         return "Success";
     }
@@ -139,12 +151,18 @@ public class CardService {
 
     public String checkCardStatus(String cardNumber) {
         Card card = cardsByNumber.get(cardNumber);
-        if (card == null) {
+        if (card == null || (card instanceof OneTimePayCard && ((OneTimePayCard) card).isUsed())) {
             return "Card not found";
         }
         if (card.getAccount().getBalance() == 0) {
             return "Insufficient funds";
         }
+
+        /*if (card.getAccount().getMinimumBalance() >= card.getAccount().getBalance()) {
+            return "warning";
+        }
+
+         */
         return card.checkStatus();
     }
 }

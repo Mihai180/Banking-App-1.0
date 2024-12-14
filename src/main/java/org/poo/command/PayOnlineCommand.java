@@ -12,13 +12,13 @@ public class PayOnlineCommand implements Command {
     private String commerciant;
     private String email;
 
-    public PayOnlineCommand(String name, String cardNumber, double amount, String currency, int timestamp, String description, String commercient, String email) {
+    public PayOnlineCommand(String name, String cardNumber, double amount, String currency, int timestamp, String description, String commerciant, String email) {
         this.cardNumber = cardNumber;
         this.amount = amount;
         this.currency = currency;
         this.timestamp = timestamp;
         this.description = description;
-        this.commerciant = commercient;
+        this.commerciant = commerciant;
         this.email = email;
         this.name = name;
     }

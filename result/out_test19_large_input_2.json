@@ -194,6 +194,48 @@
 }, {
   "command" : "payOnline",
   "output" : {
+    "timestamp" : 72,
+    "description" : "Card not found"
+  },
+  "timestamp" : 72
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 73,
+    "description" : "Card not found"
+  },
+  "timestamp" : 73
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 74,
+    "description" : "Card not found"
+  },
+  "timestamp" : 74
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 75,
+    "description" : "Card not found"
+  },
+  "timestamp" : 75
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 76,
+    "description" : "Card not found"
+  },
+  "timestamp" : 76
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 77,
+    "description" : "Card not found"
+  },
+  "timestamp" : 77
+}, {
+  "command" : "payOnline",
+  "output" : {
     "timestamp" : 78,
     "description" : "Card not found"
   },
@@ -317,11 +359,11 @@
     "email" : "Leanne_Scott-Davies@yandex.nz",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 1996.111111111111,
+      "balance" : 2149.0,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "0084627535411906",
+        "cardNumber" : "7317745095154687",
         "status" : "active"
       } ]
     } ]
@@ -337,11 +379,11 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 6655.0,
+      "balance" : 6845.0,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8509650399173661",
+        "cardNumber" : "3951521356076921",
         "status" : "active"
       } ]
     } ]
@@ -351,11 +393,11 @@
     "email" : "Gina_Johnson@mail.com.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 6691.538461538462,
+      "balance" : 6847.538461538462,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "4069340791718491",
+        "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
     } ]
@@ -365,11 +407,11 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 1612.9738095238095,
+      "balance" : 1615.6666666666665,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6592968050400705",
+        "cardNumber" : "7746115164990298",
         "status" : "active"
       } ]
     } ]
@@ -379,11 +421,11 @@
     "email" : "Estera_Nistor@gmx.ro",
     "accounts" : [ {
       "IBAN" : "RO37POOB7013767509830666",
-      "balance" : 1125.0,
+      "balance" : 1895.0,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "6467982927008637",
+        "cardNumber" : "5779026319169555",
         "status" : "active"
       } ]
     } ]
@@ -393,11 +435,11 @@
     "email" : "Sandra_Arnold@icloud.us",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 7886.515151515152,
+      "balance" : 8357.626262626263,
       "currency" : "USD",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "8686098479595515",
+        "cardNumber" : "1952612794872207",
         "status" : "active"
       } ]
     } ]
@@ -549,6 +591,48 @@
 }, {
   "command" : "checkCardStatus",
   "output" : {
+    "timestamp" : 93,
+    "description" : "Card not found"
+  },
+  "timestamp" : 93
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 94,
+    "description" : "Card not found"
+  },
+  "timestamp" : 94
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 95,
+    "description" : "Card not found"
+  },
+  "timestamp" : 95
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 96,
+    "description" : "Card not found"
+  },
+  "timestamp" : 96
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 97,
+    "description" : "Card not found"
+  },
+  "timestamp" : 97
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
+    "timestamp" : 98,
+    "description" : "Card not found"
+  },
+  "timestamp" : 98
+}, {
+  "command" : "checkCardStatus",
+  "output" : {
     "timestamp" : 99,
     "description" : "Card not found"
   },
@@ -663,9 +747,14 @@
     "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
     "account" : "RO90POOB5450777208072365"
   }, {
+    "timestamp" : 27,
+    "description" : "Card payment",
+    "amount" : 16.0,
+    "commerciant" : "Microsoft"
+  }, {
     "timestamp" : 113,
     "description" : "New card created",
-    "card" : "8916302128573242",
+    "card" : "0084627535411906",
     "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
     "account" : "RO90POOB5450777208072365"
   }, {
@@ -695,12 +784,12 @@
   "command" : "report",
   "output" : {
     "IBAN" : "RO90POOB5450777208072365",
-    "balance" : 1996.111111111111,
+    "balance" : 2149.0,
     "currency" : "NZD",
     "transactions" : [ {
       "timestamp" : 113,
       "description" : "New card created",
-      "card" : "8916302128573242",
+      "card" : "0084627535411906",
       "cardHolder" : "Leanne_Scott-Davies@yandex.nz",
       "account" : "RO90POOB5450777208072365"
     }, {
@@ -727,6 +816,48 @@
     } ]
   },
   "timestamp" : 124
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 145,
+    "description" : "Card not found"
+  },
+  "timestamp" : 145
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 146,
+    "description" : "Card not found"
+  },
+  "timestamp" : 146
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 147,
+    "description" : "Card not found"
+  },
+  "timestamp" : 147
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 148,
+    "description" : "Card not found"
+  },
+  "timestamp" : 148
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 149,
+    "description" : "Card not found"
+  },
+  "timestamp" : 149
+}, {
+  "command" : "payOnline",
+  "output" : {
+    "timestamp" : 150,
+    "description" : "Card not found"
+  },
+  "timestamp" : 150
 }, {
   "command" : "payOnline",
   "output" : {
@@ -831,17 +962,22 @@
     "timestamp" : 1,
     "description" : "New account created"
   }, {
-    "timestamp" : 9,
-    "description" : "Account couldn't be deleted - there are funds remaining"
-  }, {
     "timestamp" : 6,
     "description" : "New account created"
+  }, {
+    "timestamp" : 9,
+    "description" : "Account couldn't be deleted - there are funds remaining"
   }, {
     "timestamp" : 21,
     "description" : "New card created",
     "card" : "7004757825892043",
     "cardHolder" : "Georgel_Nistor@yandex.ro",
     "account" : "RO65POOB8944016386845896"
+  }, {
+    "timestamp" : 28,
+    "description" : "Card payment",
+    "amount" : 1915.0,
+    "commerciant" : "Gucci"
   }, {
     "timestamp" : 116,
     "description" : "Split payment of 5500.00 CAD",
@@ -890,22 +1026,17 @@
     "cardHolder" : "Selma_Birnbaum@icloud.de",
     "account" : "RO69POOB6209498372540635"
   }, {
+    "timestamp" : 26,
+    "description" : "Card payment",
+    "amount" : 49.0,
+    "commerciant" : "HP"
+  }, {
     "timestamp" : 33,
     "description" : "Transfer to a Commerzbank savings account",
     "senderIBAN" : "RO69POOB6209498372540635",
     "receiverIBAN" : "RO19POOB4981055641668812",
     "amount" : "13.0 EUR",
     "transferType" : "sent"
-  }, {
-    "timestamp" : 35,
-    "description" : "Booking a trip to the Bavarian Alps",
-    "senderIBAN" : "RO69POOB6209498372540635",
-    "receiverIBAN" : "RO30POOB9523423715747796",
-    "amount" : "74.0 EUR",
-    "transferType" : "sent"
-  }, {
-    "timestamp" : 36,
-    "description" : "Account couldn't be deleted - there are funds remaining"
   }, {
     "timestamp" : 34,
     "description" : "New account created"
@@ -915,7 +1046,17 @@
     "senderIBAN" : "RO69POOB6209498372540635",
     "receiverIBAN" : "RO30POOB9523423715747796",
     "amount" : "74.0 EUR",
+    "transferType" : "sent"
+  }, {
+    "timestamp" : 35,
+    "description" : "Booking a trip to the Bavarian Alps",
+    "senderIBAN" : "RO69POOB6209498372540635",
+    "receiverIBAN" : "RO30POOB9523423715747796",
+    "amount" : "74.0 EUR",
     "transferType" : "received"
+  }, {
+    "timestamp" : 36,
+    "description" : "Account couldn't be deleted - there are funds remaining"
   }, {
     "timestamp" : 37,
     "description" : "Insufficient funds"
@@ -1004,14 +1145,14 @@
     "email" : "Leanne_Scott-Davies@yandex.nz",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2101.311111111111,
+      "balance" : 2498.2,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8696843716078966",
+        "cardNumber" : "7317745095154687",
         "status" : "active"
       }, {
-        "cardNumber" : "8916302128573242",
+        "cardNumber" : "0084627535411906",
         "status" : "active"
       } ]
     } ]
@@ -1027,11 +1168,11 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 4128.625,
+      "balance" : 5927.375,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "4097439592846732",
+        "cardNumber" : "3951521356076921",
         "status" : "active"
       } ]
     } ]
@@ -1041,11 +1182,11 @@
     "email" : "Gina_Johnson@mail.com.ch",
     "accounts" : [ {
       "IBAN" : "RO58POOB2721178218599590",
-      "balance" : 6997.213461538462,
+      "balance" : 7336.913461538462,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "2289183361654620",
+        "cardNumber" : "8431794639822740",
         "status" : "active"
       } ]
     } ]
@@ -1055,11 +1196,11 @@
     "email" : "Zachary_Martin@aol.ca",
     "accounts" : [ {
       "IBAN" : "RO76POOB4035116042454483",
-      "balance" : 1885.9738095238095,
+      "balance" : 2363.6666666666665,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "5069598921863529",
+        "cardNumber" : "7746115164990298",
         "status" : "active"
       } ]
     } ]
@@ -1069,11 +1210,11 @@
     "email" : "Estera_Nistor@gmx.ro",
     "accounts" : [ {
       "IBAN" : "RO37POOB7013767509830666",
-      "balance" : 1390.8392857142858,
+      "balance" : 2571.464285714286,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "1851641428290185",
+        "cardNumber" : "5779026319169555",
         "status" : "active"
       } ]
     } ]
@@ -1083,11 +1224,11 @@
     "email" : "Sandra_Arnold@icloud.us",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 10510.570707070707,
+      "balance" : 10996.68181818182,
       "currency" : "USD",
       "type" : "savings",
       "cards" : [ {
-        "cardNumber" : "9281102140265301",
+        "cardNumber" : "1952612794872207",
         "status" : "active"
       } ]
     } ]
@@ -1178,7 +1319,7 @@
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "6052309891235892",
+        "cardNumber" : "4069340791718491",
         "status" : "active"
       } ]
     } ]
@@ -1214,7 +1355,7 @@
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
-        "cardNumber" : "8221841196640096",
+        "cardNumber" : "8509650399173661",
         "status" : "active"
       } ]
     } ]
@@ -1246,7 +1387,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO90POOB5450777208072365",
-    "balance" : 2101.311111111111,
+    "balance" : 2498.2,
     "currency" : "NZD",
     "transactions" : [ ],
     "commerciants" : [ ]
@@ -1256,17 +1397,25 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO65POOB8944016386845896",
-    "balance" : 4128.625,
+    "balance" : 5927.375,
     "currency" : "RON",
-    "transactions" : [ ],
-    "commerciants" : [ ]
+    "transactions" : [ {
+      "timestamp" : 28,
+      "description" : "Card payment",
+      "amount" : 1915.0,
+      "commerciant" : "Gucci"
+    } ],
+    "commerciants" : [ {
+      "commerciant" : "Gucci",
+      "total" : 1915.0
+    } ]
   },
   "timestamp" : 177
 }, {
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO58POOB2721178218599590",
-    "balance" : 6997.213461538462,
+    "balance" : 7336.913461538462,
     "currency" : "CHF",
     "transactions" : [ ],
     "commerciants" : [ ]
@@ -1276,7 +1425,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO76POOB4035116042454483",
-    "balance" : 1885.9738095238095,
+    "balance" : 2363.6666666666665,
     "currency" : "CAD",
     "transactions" : [ ],
     "commerciants" : [ ]
@@ -1285,21 +1434,13 @@
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO37POOB7013767509830666",
-    "balance" : 1390.8392857142858,
-    "currency" : "RON",
-    "transactions" : [ ],
-    "commerciants" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 180
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO19POOB4981055641668812",
-    "balance" : 10510.570707070707,
-    "currency" : "USD",
-    "transactions" : [ ],
-    "commerciants" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 181
 }, {

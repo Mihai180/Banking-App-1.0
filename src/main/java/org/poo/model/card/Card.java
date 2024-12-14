@@ -50,7 +50,7 @@ public abstract class Card {
         this.cardNumber = cardNumber;
     }
 
-    public abstract void makePayment(double amount);
+    public abstract String makePayment(double amount);
 
     //public abstract void accept(CardVisitor visitor);
 }

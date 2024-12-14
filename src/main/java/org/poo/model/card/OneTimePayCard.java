@@ -13,20 +13,38 @@ public class OneTimePayCard extends Card {
     }
 
     @Override
-    public void makePayment(double amount) {
+    public String makePayment(double amount) {
         if (isBlocked) {
-            System.out.println("You can't pay this amount because isBlocked");
+            return  "You can't pay this amount because isBlocked";
         }
         if (isUsed) {
-            System.out.println("You can't pay this amount because is used");
+            return "You can't pay this amount because is used";
         }
         account.withdraw(amount);
-        isUsed = true;
+        /*if (result.equals("Success")) {
+            //isUsed = true;
+            setCardNumber(Utils.generateCardNumber());
+            return "New card generated successfully";
+        }
+
+         */
         setCardNumber(Utils.generateCardNumber());
+        isUsed = true;
+        return "Success";
     }
 
     public boolean isUsed() {
         return isUsed;
+    }
+
+    public String checkCardStatus() {
+        if (isBlocked) {
+            return "frozen";
+        }
+        if (isUsed) {
+            return "used";
+        }
+        return "active";
     }
 
     /*public void accept(CardVisitor visitor) {

@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.poo.command.*;
 import org.poo.model.account.Account;
+import org.poo.model.account.SavingsAccount;
 import org.poo.model.card.Card;
+import org.poo.model.card.OneTimePayCard;
 import org.poo.model.transaction.*;
 import org.poo.model.user.User;
 import org.poo.service.*;
@@ -14,10 +16,7 @@ import org.poo.visitor.transaction.ConcreteTransactionVisitor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ConcreteCommandVisitor implements CommandVisitor {
     private UserService userService;
@@ -80,6 +79,15 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                     ObjectNode cardNode = mapper.createObjectNode();
                     cardNode.put("cardNumber", card.getCardNumber());
                     cardNode.put("status", card.checkStatus());
+                    /*if (card instanceof OneTimePayCard) {
+                        cardNode.put("type", "OneTimePay");
+                    } else {
+                        cardNode.put("type", "Regular");
+                    }
+
+                     */
+
+
                     cardsArray.add(cardNode);
                 }
                 accountNode.set("cards", cardsArray);
@@ -170,20 +178,24 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     public void visit(PayOnlineCommand command) {
         String result = cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
         //this.output.add(result);
-        if (result.equals("Card not found")) {
+        if (result.equals("Card not found") || result.equals("You can't pay this amount because is used")) {
             ObjectNode cmdResult = mapper.createObjectNode();
             cmdResult.put("command", command.getName());
 
             ObjectNode outputNode = mapper.createObjectNode();
             outputNode.put("timestamp", command.getTimestamp());
-            outputNode.put("description", result);
+            outputNode.put("description", "Card not found");
 
             cmdResult.set("output", outputNode);
             this.output.add(cmdResult);
             cmdResult.put("timestamp", command.getTimestamp());
         }
 
-        User user = userService.getUserByEmail(command.getEmail());
+        Card card = cardService.getCardByNumber(command.getCardNumber());
+        if (card != null) {
+            Account associatedAccount = card.getAccount();
+
+        /*User user = userService.getUserByEmail(command.getEmail());
         if (user != null) {
             Account associatedAccount = null;
 
@@ -199,24 +211,33 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 }
             }
             if (associatedAccount != null) {
-                if (result.equals("Success")) {
-                    double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
-                    DecimalFormat df = new DecimalFormat("#.#########");
-                    double formattedAmount = Double.valueOf(df.format(convertedAmount));
-                    Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
-                    associatedAccount.addTransaction(transaction);
-                }
-                if (result.equals("Insufficient funds")) {
-                    Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
-                    associatedAccount.addTransaction(transaction);
-                }
-                if (result.equals("Card is frozen")) {
-                    Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
-                    associatedAccount.addTransaction(transaction);
-                }
+
+         */
+            if (result.equals("Success")) {
+                double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
+                DecimalFormat df = new DecimalFormat("#.#########");
+                double formattedAmount = Double.valueOf(df.format(convertedAmount));
+                Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
+                associatedAccount.addTransaction(transaction);
+            }
+            if (result.equals("Insufficient funds")) {
+                Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
+                associatedAccount.addTransaction(transaction);
+            }
+            if (result.equals("Card is frozen")) {
+                Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
+                associatedAccount.addTransaction(transaction);
+            }
+            if (result.equals("New card generated successfully")) {
+                Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), associatedAccount.getIban());
+                associatedAccount.addTransaction(transaction1);
+                Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), associatedAccount.getIban(), command.getCardNumber());
+                associatedAccount.addTransaction(transaction2);
             }
         }
     }
+      //  }
+    //}
 
     @Override
     public void visit(SendMoneyCommand command) {
@@ -255,6 +276,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         ArrayNode outputTransactions = mapper.createArrayNode();
 
         List<Transaction> transactions = transactionService.getTransactionsForUser(command.getEmail());
+        transactions.sort(Comparator.comparing(Transaction::getTimestamp));
         for (Transaction transaction : transactions) {
             ObjectNode transactionNode = mapper.createObjectNode();
 
@@ -388,6 +410,16 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             this.output.add(cmdResult);
             return;
         }
+        if (account instanceof SavingsAccount) {
+            ObjectNode cmdResult = mapper.createObjectNode();
+            cmdResult.put("command", command.getCommand());
+            ObjectNode outputNode = mapper.createObjectNode();
+            outputNode.put("error", "This kind of report is not supported for a saving account");
+            cmdResult.set("output", outputNode);
+            cmdResult.put("timestamp", command.getTimestamp());
+            this.output.add(cmdResult);
+            return;
+        }
         ObjectNode outputNode = mapper.createObjectNode();
         outputNode.put("IBAN", account.getIban());
         outputNode.put("balance", account.getBalance());
@@ -395,6 +427,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         ArrayNode transactionsArray = mapper.createArrayNode();
         List<Transaction> transactions = accountService.getTransactions(command.getAccount());
         Map<String, Double> commerciantsTotals = new HashMap<>();
+        assert transactions != null;
         for (Transaction transaction : transactions) {
             if (transaction.getTimestamp() >= command.getStartTimestamp() &&
                     transaction.getTimestamp() <= command.getEndTimestamp() &&

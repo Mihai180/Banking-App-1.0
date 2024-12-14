@@ -61,11 +61,12 @@ public abstract class Account {
         this.balance += amount;
     }
 
-    public void withdraw(Double amount) {
+    public String withdraw(Double amount) {
         if (balance - amount < 0) {
-            System.out.println("Insufficient funds");
+            return "Insufficient funds";
         }
         this.balance -= amount;
+        return "Success";
     }
 
     public void addTransaction(Transaction transaction) {
