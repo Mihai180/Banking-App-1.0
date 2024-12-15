@@ -55,6 +55,7 @@ public class PayOnlineCommand implements Command {
         return name;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

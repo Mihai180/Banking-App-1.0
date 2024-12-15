@@ -37,6 +37,7 @@ public class SendMoneyCommand implements Command {
         return description;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

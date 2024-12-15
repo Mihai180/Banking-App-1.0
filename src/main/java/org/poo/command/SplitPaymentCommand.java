@@ -33,6 +33,7 @@ public class SplitPaymentCommand implements Command{
         return amount;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

@@ -25,6 +25,7 @@ public class CheckCardStatusCommand implements Command{
         return timestamp;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

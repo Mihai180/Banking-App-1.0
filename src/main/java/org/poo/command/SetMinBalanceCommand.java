@@ -18,6 +18,7 @@ public class SetMinBalanceCommand implements Command{
         return minBalance;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

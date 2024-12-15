@@ -10,11 +10,12 @@ public class AccountCreationTransaction extends Transaction {
         this.description = "New account created";
     }
 
-    /*public void accept(TransactionVisitor visitor) {
-        visitor.visit(this);
+    @Override
+    public String getType() {
+        return "AccountCreation";
     }
 
-     */
+    @Override
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

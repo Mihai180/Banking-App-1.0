@@ -16,16 +16,13 @@ public class CardService {
     private Map<String, Card> cardsByNumber = new HashMap<>();
     private UserService userService;
     private AccountService accountService;
-    private MerchantService merchantService;
     private ExchangeService exchangeService;
 
     public CardService(UserService userService,
                        AccountService accountService,
-                       MerchantService merchantService,
                        ExchangeService exchangeService) {
         this.userService = userService;
         this.accountService = accountService;
-        this.merchantService = merchantService;
         this.exchangeService = exchangeService;
     }
 

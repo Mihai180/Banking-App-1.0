@@ -25,6 +25,7 @@ public class SetAliasCommand implements Command {
         return account;
     }
 
+    @Override
     public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }

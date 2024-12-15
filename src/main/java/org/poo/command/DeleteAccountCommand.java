@@ -31,9 +31,8 @@ public class DeleteAccountCommand implements Command {
         return email;
     }
 
+    @Override
    public void accept(CommandVisitor visitor) {
         visitor.visit(this);
     }
-
-
 }

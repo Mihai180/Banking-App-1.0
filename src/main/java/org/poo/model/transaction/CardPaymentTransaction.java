@@ -1,6 +1,9 @@
 package org.poo.model.transaction;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.poo.visitor.transaction.TransactionVisitor;
+
+import java.util.Map;
 
 public class CardPaymentTransaction extends Transaction {
     private String commerciant;
@@ -19,6 +22,10 @@ public class CardPaymentTransaction extends Transaction {
 
     public double getAmount() {
         return amount;
+    }
+
+    public String getType() {
+        return "CardPayment";
     }
 
     public void accept(TransactionVisitor visitor) {

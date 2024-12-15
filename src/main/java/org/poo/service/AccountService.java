@@ -8,7 +8,7 @@ import org.poo.model.account.SavingsAccount;
 import org.poo.model.card.Card;
 import org.poo.model.card.RegularCard;
 import org.poo.model.transaction.AccountCreationTransaction;
-import org.poo.model.transaction.MinBalanceSettingTransaction;
+//import org.poo.model.transaction.MinBalanceSettingTransaction;
 import org.poo.model.transaction.Transaction;
 import org.poo.model.user.User;
 import org.poo.utils.Utils;

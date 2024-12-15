@@ -9,6 +9,11 @@ public class AccountDeletionErrorTransaction extends Transaction {
     }
 
     @Override
+    public String getType() {
+        return "AccountDeletionError";
+    }
+
+    @Override
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

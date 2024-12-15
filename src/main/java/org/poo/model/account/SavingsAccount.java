@@ -25,6 +25,7 @@ public class SavingsAccount extends Account {
         this.interestRate = newInterestRate;
     }
 
+    @Override
     public String getAccountType() {
         return "savings";
     }

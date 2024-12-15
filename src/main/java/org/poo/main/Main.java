@@ -106,10 +106,8 @@ public final class Main {
         UserService userService = new UserService();
         ExchangeService exchangeService = new ExchangeService();
         AccountService accountService = new AccountService(userService, exchangeService);
-        MerchantService merchantService = new MerchantService();
-        CardService cardService = new CardService(userService, accountService, merchantService, exchangeService);
+        CardService cardService = new CardService(userService, accountService, exchangeService);
         TransactionService transactionService = new TransactionService(userService);
-        //ReportService reportService = new ReportService(accountService);
 
         if (inputData.getUsers() != null) {
             for (UserInput userInput : inputData.getUsers()) {
@@ -128,8 +126,6 @@ public final class Main {
                 accountService,
                 cardService,
                 transactionService,
-                //reportService,
-                //merchantService,
                 exchangeService,
                 output,
                 objectMapper

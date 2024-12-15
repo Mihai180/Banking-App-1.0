@@ -37,6 +37,10 @@ public class SplitPaymentTransaction extends Transaction {
         return splitAmount;
     }
 
+    public String getType() {
+        return "SplitPayment";
+    }
+
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

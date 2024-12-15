@@ -8,6 +8,10 @@ public class InterestRateChangeTransaction extends Transaction {
         this.description = "Interest rate of the account changed to " + newInterestRate;
     }
 
+    public String getType() {
+        return "InterestRateChange";
+    }
+
     @Override
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);

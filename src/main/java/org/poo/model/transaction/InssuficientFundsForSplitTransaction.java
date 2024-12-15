@@ -46,6 +46,10 @@ public class InssuficientFundsForSplitTransaction extends Transaction {
         return timestamp;
     }
 
+    public String getType() {
+        return "InssuficientFundsForSplit";
+    }
+
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

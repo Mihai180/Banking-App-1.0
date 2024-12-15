@@ -27,6 +27,12 @@ public class CardDeletionTransaction extends Transaction {
         return account;
     }
 
+    @Override
+    public String getType() {
+        return "CardDeletion";
+    }
+
+    @Override
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

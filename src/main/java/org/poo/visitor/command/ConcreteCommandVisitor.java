@@ -23,8 +23,6 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     private AccountService accountService;
     private CardService cardService;
     private TransactionService transactionService;
-    private ReportService reportService;
-    //private MerchantService merchantService;
     private ExchangeService exchangeService;
 
     private ArrayNode output;
@@ -34,8 +32,6 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                                   AccountService accountService,
                                   CardService cardService,
                                   TransactionService transactionService,
-                                  //ReportService reportService,
-                                  //MerchantService merchantService,
                                   ExchangeService exchangeService,
                                   ArrayNode output,
                                   ObjectMapper mapper) {
@@ -43,8 +39,6 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         this.accountService = accountService;
         this.cardService = cardService;
         this.transactionService = transactionService;
-        //this.reportService = reportService;
-        //this.merchantService = merchantService;
         this.exchangeService = exchangeService;
         this.output = output;
         this.mapper = mapper;
@@ -79,15 +73,6 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                     ObjectNode cardNode = mapper.createObjectNode();
                     cardNode.put("cardNumber", card.getCardNumber());
                     cardNode.put("status", card.checkStatus());
-                    /*if (card instanceof OneTimePayCard) {
-                        cardNode.put("type", "OneTimePay");
-                    } else {
-                        cardNode.put("type", "Regular");
-                    }
-
-                     */
-
-
                     cardsArray.add(cardNode);
                 }
                 accountNode.set("cards", cardsArray);
@@ -103,26 +88,26 @@ public class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(AddAccountCommand command) {
-        Account newAccount = accountService.createAccount(command.getEmail(), command.getAccountType(), command.getCurrency(), command.getInterestRate());
+        Account newAccount = accountService.createAccount(command.getEmail(),
+                command.getAccountType(), command.getCurrency(), command.getInterestRate());
         if (newAccount != null) {
             Transaction transaction = new AccountCreationTransaction(command.getTimestamp());
-
             newAccount.addTransaction(transaction);
         }
-        //addResult("Account created for user: " + command.getEmail() + " with IBAN " + newAccount.getIban());
     }
 
     @Override
     public void visit(AddFundsCommand command) {
         accountService.addFunds(command.getAccountIBAN(), command.getAmount());
-        //addResult("Funds added to account: " + command.getAccountIBAN());
     }
 
     @Override
     public void visit(CreateCardCommand command) {
-        Card result = cardService.createCard(command.getAccountIBAN(), command.getCardType(), command.getEmail());
+        Card result = cardService.createCard(command.getAccountIBAN(), command.getCardType(),
+                command.getEmail());
         if (result != null) {
-            Transaction transaction = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), command.getAccountIBAN(), result.getCardNumber());
+            Transaction transaction = new CardCreationTransaction(command.getTimestamp(),
+                    command.getEmail(), command.getAccountIBAN(), result.getCardNumber());
             accountService.getAccountByIBAN(command.getAccountIBAN()).addTransaction(transaction);
         }
     }
@@ -430,7 +415,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
             this.output.add(cmdResult);
             return;
         }
-        if (account instanceof SavingsAccount) {
+        if (account.getAccountType().equals("savings")) {
             ObjectNode cmdResult = mapper.createObjectNode();
             cmdResult.put("command", command.getCommand());
             ObjectNode outputNode = mapper.createObjectNode();
@@ -451,7 +436,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         for (Transaction transaction : transactions) {
             if (transaction.getTimestamp() >= command.getStartTimestamp() &&
                     transaction.getTimestamp() <= command.getEndTimestamp() &&
-                    transaction instanceof CardPaymentTransaction) {
+                    transaction.getType().equals("CardPayment")) {
                 ObjectNode transactionNode = mapper.createObjectNode();
                 ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
                         cardService, transactionService, transactionNode, mapper);

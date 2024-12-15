@@ -34,11 +34,13 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         this.mapper = mapper;
     }
 
+    @Override
     public void visit(AccountCreationTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
     }
 
+    @Override
     public void visit(SendMoneyTransaction sendMoneyTransaction) {
         transactionNode.put("timestamp", sendMoneyTransaction.getTimestamp());
         transactionNode.put("description", sendMoneyTransaction.getDescription());
@@ -53,6 +55,7 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("transferType", sendMoneyTransaction.getTransferType());
     }
 
+    @Override
     public void visit(CardCreationTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
@@ -61,6 +64,7 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("account", transaction.getAccount());
     }
 
+    @Override
     public void visit(CardPaymentTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
@@ -68,11 +72,13 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("commerciant", transaction.getCommerciant());
     }
 
+    @Override
     public void visit(InsufficientFundsTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
     }
 
+    @Override
     public void visit(CardDeletionTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
@@ -81,6 +87,7 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("account", transaction.getAccount());
     }
 
+    @Override
     public void visit(MinimumAmountOfFundsTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
@@ -119,30 +126,15 @@ public class ConcreteTransactionVisitor implements TransactionVisitor {
         transactionNode.put("error", transaction.getError());
     }
 
+    @Override
     public void visit(AccountDeletionErrorTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
     }
 
+    @Override
     public void visit(InterestRateChangeTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
     }
-
-    public void visit(BankTransferTransaction transaction){
-
-    }
-
-    public void visit(InterestTransaction transaction) {
-
-    }
-
-    public void visit(MinBalanceSettingTransaction transaction){
-
-    }
-
-    public void visit(ErrorTransaction transaction) {
-
-    }
-
 }

@@ -8,6 +8,10 @@ public class FrozenCardTransaction extends Transaction {
         this.description = "The card is frozen";
     }
 
+    public String getType() {
+        return "FrozenCard";
+    }
+
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

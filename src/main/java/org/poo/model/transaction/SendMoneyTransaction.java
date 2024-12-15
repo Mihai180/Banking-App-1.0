@@ -40,6 +40,10 @@ public class SendMoneyTransaction extends Transaction {
         return currency;
     }
 
+    public String getType() {
+        return "SendMoney";
+    }
+
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }

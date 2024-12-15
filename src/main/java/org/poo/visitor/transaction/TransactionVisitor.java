@@ -15,9 +15,4 @@ public interface TransactionVisitor {
     void visit(InssuficientFundsForSplitTransaction transaction);
     void visit(AccountDeletionErrorTransaction transaction);
     void visit(InterestRateChangeTransaction transaction);
-
-    void visit(BankTransferTransaction transaction);
-    void visit(InterestTransaction transaction);
-    void visit(MinBalanceSettingTransaction transaction);
-    void visit(ErrorTransaction transaction);
 }

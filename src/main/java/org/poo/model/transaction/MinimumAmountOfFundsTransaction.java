@@ -10,6 +10,10 @@ public class MinimumAmountOfFundsTransaction extends Transaction{
         this. description = "You have reached the minimum amount of funds, the card will be frozen";
     }
 
+    public String getType() {
+        return "MinimumAmountOfFunds";
+    }
+
     public void accept(TransactionVisitor visitor) {
         visitor.visit(this);
     }
