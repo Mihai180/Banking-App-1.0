@@ -1,18 +1,16 @@
 package org.poo.model.transaction;
 
-import org.poo.model.merchant.Merchant;
 import org.poo.visitor.transaction.TransactionVisitor;
-
 import java.util.List;
-import java.util.Map;
 
-public class SplitPaymentTransaction extends Transaction {
-    String currency;
-    String amount;
-    double splitAmount;
-    List<String> involvedAccounts;
+public final class SplitPaymentTransaction extends Transaction {
+    private final String currency;
+    private final String amount;
+    private final double splitAmount;
+    private final List<String> involvedAccounts;
 
-    public SplitPaymentTransaction(int timestamp, String currency, String amount, List<String> involvedAccounts, double splitAmount) {
+    public SplitPaymentTransaction(final int timestamp, final String currency, final String amount,
+                                   final List<String> involvedAccounts, final double splitAmount) {
         super(timestamp);
         this.description = "Split payment of ";
         this.currency = currency;
@@ -37,11 +35,13 @@ public class SplitPaymentTransaction extends Transaction {
         return splitAmount;
     }
 
+    @Override
     public String getType() {
         return "SplitPayment";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

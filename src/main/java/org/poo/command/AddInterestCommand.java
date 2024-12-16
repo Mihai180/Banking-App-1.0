@@ -2,11 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class AddInterestCommand implements Command {
-    private String command;
-    private String account;
-    private int timestamp;
-    public AddInterestCommand(String command, String account, int timestamp) {
+public final class AddInterestCommand implements Command {
+    private final String command;
+    private final String account;
+    private final int timestamp;
+    public AddInterestCommand(final String command, final String account, final int timestamp) {
         this.command = command;
         this.account = account;
         this.timestamp = timestamp;
@@ -25,7 +25,7 @@ public class AddInterestCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

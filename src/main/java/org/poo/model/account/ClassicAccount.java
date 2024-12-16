@@ -2,12 +2,17 @@ package org.poo.model.account;
 
 import org.poo.model.user.User;
 
-public class ClassicAccount extends Account {
-    public ClassicAccount(String iban, User owner, String currency) {
+public final class ClassicAccount extends Account {
+    public ClassicAccount(final String iban, final User owner, final String currency) {
         super(iban, owner, currency);
     }
 
     public String getAccountType() {
         return "classic";
+    }
+
+    @Override
+    public void changeInterestRate(final double newInterestRate) {
+
     }
 }

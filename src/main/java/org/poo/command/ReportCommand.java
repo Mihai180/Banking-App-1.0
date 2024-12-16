@@ -2,14 +2,15 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class ReportCommand implements Command {
-    private String command;
-    private int timestamp;
-    private int startTimestamp;
-    private int endTimestamp;
-    private String account;
+public final class ReportCommand implements Command {
+    private final String command;
+    private final int timestamp;
+    private final int startTimestamp;
+    private final int endTimestamp;
+    private final String account;
 
-    public ReportCommand(String command, int timestamp, int startTimestamp, int endTimestamp, String account) {
+    public ReportCommand(final String command, final int timestamp, final int startTimestamp,
+                         final int endTimestamp, final String account) {
         this.command = command;
         this.timestamp = timestamp;
         this.startTimestamp = startTimestamp;
@@ -38,7 +39,7 @@ public class ReportCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

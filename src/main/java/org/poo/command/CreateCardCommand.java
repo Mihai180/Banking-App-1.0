@@ -2,15 +2,15 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class CreateCardCommand implements Command {
-    private int timestamp;
-    private String commandName;
-    private String accountIBAN;
+public final class CreateCardCommand implements Command {
+    private final int timestamp;
+    private final String commandName;
+    private final String accountIBAN;
     private String cardType;
-    private String email;
+    private final String email;
 
-    public CreateCardCommand(String commandName, int timestamp,
-                             String accountIBAN, String email) {
+    public CreateCardCommand(final String commandName, final int timestamp,
+                             final String accountIBAN, final String email) {
         this.commandName = commandName;
         this.timestamp = timestamp;
         this.accountIBAN = accountIBAN;
@@ -43,7 +43,7 @@ public class CreateCardCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

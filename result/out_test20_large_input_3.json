@@ -1295,8 +1295,8 @@
 }, {
   "command" : "checkCardStatus",
   "output" : {
-    "timestamp" : 480,
-    "description" : "Card not found"
+    "description" : "Card not found",
+    "timestamp" : 480
   },
   "timestamp" : 480
 }, {

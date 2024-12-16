@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private ArrayList<Account> accounts;
-    private Map<String, String> aliases;
+public final class User {
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final ArrayList<Account> accounts;
+    private final Map<String, String> aliases;
 
-    public User (String firstName, String lastName, String email) {
+    public User(final String firstName, final String lastName, final String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -41,17 +41,31 @@ public class User {
         return aliases;
     }
 
-   public void addAccount(Account account) {
+    /**
+     *
+     * @param account
+     */
+    public void addAccount(final Account account) {
         if (account != null) {
             accounts.add(account);
         }
    }
 
-   public void addAlias(String aliasName, String AccountIban) {
-        aliases.put(aliasName, AccountIban);
+    /**
+     *
+     * @param aliasName
+     * @param accountIban
+     */
+   public void addAlias(final String aliasName, final String accountIban) {
+        aliases.put(aliasName, accountIban);
    }
 
-   public Account getAccountByAlias(String aliasName) {
+    /**
+     *
+     * @param aliasName
+     * @return
+     */
+   public Account getAccountByAlias(final String aliasName) {
         String accountIban = aliases.get(aliasName);
         if (accountIban != null) {
             for (Account account : accounts) {

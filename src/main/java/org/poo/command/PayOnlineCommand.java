@@ -2,17 +2,19 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class PayOnlineCommand implements Command {
-    private String name;
-    private String cardNumber;
-    private double amount;
-    private String currency;
-    private int timestamp;
-    private String description;
-    private String commerciant;
-    private String email;
+public final class PayOnlineCommand implements Command {
+    private final String name;
+    private final String cardNumber;
+    private final double amount;
+    private final String currency;
+    private final int timestamp;
+    private final String description;
+    private final String commerciant;
+    private final String email;
 
-    public PayOnlineCommand(String name, String cardNumber, double amount, String currency, int timestamp, String description, String commerciant, String email) {
+    public PayOnlineCommand(final String name, final String cardNumber, final double amount,
+                            final String currency, final int timestamp, final String description,
+                            final String commerciant, final String email) {
         this.cardNumber = cardNumber;
         this.amount = amount;
         this.currency = currency;
@@ -50,13 +52,13 @@ public class PayOnlineCommand implements Command {
     public String getEmail() {
         return email;
     }
-    
+
     public String getName() {
         return name;
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

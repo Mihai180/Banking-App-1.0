@@ -1,7 +1,7 @@
 package org.poo.exception;
 
 public class InsufficientFundsException extends RuntimeException {
-    public InsufficientFundsException(String message) {
+    public InsufficientFundsException(final String message) {
         super(message);
     }
 }

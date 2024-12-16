@@ -2,15 +2,16 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class AddAccountCommand implements Command {
-    private String commandName;
-    private int timestamp;
-    private String email;
-    private String accountType;
-    private String currency;
-    private Double interestRate;
-    public AddAccountCommand(String commandName, int timestamp,
-                             String email, String accountType, String currency, Double interestRate) {
+public final class AddAccountCommand implements Command {
+    private final String commandName;
+    private final int timestamp;
+    private final String email;
+    private final String accountType;
+    private final String currency;
+    private final Double interestRate;
+    public AddAccountCommand(final String commandName, final int timestamp,
+                             final String email, final String accountType, final String currency,
+                             final Double interestRate) {
         this.commandName = commandName;
         this.timestamp = timestamp;
         this.email = email;
@@ -44,7 +45,7 @@ public class AddAccountCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

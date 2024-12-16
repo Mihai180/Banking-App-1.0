@@ -15,7 +15,7 @@ public abstract class Account {
     protected Double minimumBalance;
     protected ArrayList<Card> cards;
 
-    public Account(String iban, User owner, String currency) {
+    public Account(final String iban, final User owner, final String currency) {
         this.iban = iban;
         this.owner = owner;
         this.currency = currency;
@@ -25,43 +25,84 @@ public abstract class Account {
         this.balance = 0.0;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIban() {
         return iban;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCurrency() {
         return currency;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getOwner() {
         return owner;
     }
 
+    /**
+     *
+     * @return
+     */
     public Double getMinimumBalance() {
         return minimumBalance;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }
 
-    public void setMinimumBalance(Double minimumBalance) {
+    /**
+     *
+     * @param minimumBalance
+     */
+    public void setMinimumBalance(final Double minimumBalance) {
         this.minimumBalance = minimumBalance;
     }
 
-    public void deposit(Double amount) {
+    /**
+     *
+     * @param amount
+     */
+    public void deposit(final Double amount) {
         this.balance += amount;
     }
 
-    public String withdraw(Double amount) {
+    /**
+     *
+     * @param amount
+     * @return
+     */
+    public String withdraw(final Double amount) {
         if (balance - amount < 0) {
             return "Insufficient funds";
         }
@@ -69,15 +110,33 @@ public abstract class Account {
         return "Success";
     }
 
-    public void addTransaction(Transaction transaction) {
+    /**
+     *
+     * @param transaction
+     */
+    public void addTransaction(final Transaction transaction) {
         this.transactions.add(transaction);
     }
 
-    public void addCard(Card card) {
+    /**
+     *
+     * @param card
+     */
+    public void addCard(final Card card) {
         this.cards.add(card);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAccountType() {
         return null;
     }
+
+    /**
+     *
+     * @param newInterestRate
+     */
+    public abstract void changeInterestRate(double newInterestRate);
 }

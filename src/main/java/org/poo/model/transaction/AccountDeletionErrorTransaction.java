@@ -2,8 +2,8 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class AccountDeletionErrorTransaction extends Transaction {
-    public AccountDeletionErrorTransaction(int timestamp) {
+public final class AccountDeletionErrorTransaction extends Transaction {
+    public AccountDeletionErrorTransaction(final int timestamp) {
         super(timestamp);
         this.description = "Account couldn't be deleted - there are funds remaining";
     }
@@ -14,7 +14,7 @@ public class AccountDeletionErrorTransaction extends Transaction {
     }
 
     @Override
-    public void accept(TransactionVisitor visitor) {
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

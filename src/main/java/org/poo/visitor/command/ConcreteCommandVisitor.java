@@ -3,38 +3,73 @@ package org.poo.visitor.command;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.poo.command.*;
+import org.poo.command.ReportCommand;
+import org.poo.command.AddInterestCommand;
+import org.poo.command.SpendingsReportCommand;
+import org.poo.command.SplitPaymentCommand;
+import org.poo.command.SetAliasCommand;
+import org.poo.command.SendMoneyCommand;
+import org.poo.command.PrintTransactionsCommand;
+import org.poo.command.PayOnlineCommand;
+import org.poo.command.DeleteCardCommand;
+import org.poo.command.PrintUsersCommand;
+import org.poo.command.SetMinBalanceCommand;
+import org.poo.command.ChangeInterestRateCommand;
+import org.poo.command.CheckCardStatusCommand;
+import org.poo.command.DeleteAccountCommand;
+import org.poo.command.CreateCardCommand;
+import org.poo.command.AddFundsCommand;
+import org.poo.command.NotImplementedCommand;
+import org.poo.command.AddAccountCommand;
 import org.poo.model.account.Account;
-import org.poo.model.account.SavingsAccount;
 import org.poo.model.card.Card;
-import org.poo.model.card.OneTimePayCard;
-import org.poo.model.transaction.*;
+import org.poo.model.transaction.SplitPaymentTransaction;
+import org.poo.model.transaction.SendMoneyTransaction;
+import org.poo.model.transaction.MinimumAmountOfFundsTransaction;
+import org.poo.model.transaction.InsufficientFundsTransaction;
+import org.poo.model.transaction.InssuficientFundsForSplitTransaction;
+import org.poo.model.transaction.CardPaymentTransaction;
+import org.poo.model.transaction.CardDeletionTransaction;
+import org.poo.model.transaction.CardCreationTransaction;
+import org.poo.model.transaction.AccountDeletionErrorTransaction;
+import org.poo.model.transaction.AccountCreationTransaction;
+import org.poo.model.transaction.FrozenCardTransaction;
+import org.poo.model.transaction.InterestRateChangeTransaction;
+import org.poo.model.transaction.Transaction;
 import org.poo.model.user.User;
-import org.poo.service.*;
+import org.poo.service.CardService;
+import org.poo.service.AccountService;
+import org.poo.service.ExchangeService;
+import org.poo.service.UserService;
+import org.poo.service.TransactionService;
 import org.poo.visitor.transaction.ConcreteTransactionVisitor;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Comparator;
+import java.util.ArrayList;
 
-public class ConcreteCommandVisitor implements CommandVisitor {
-    private UserService userService;
-    private AccountService accountService;
-    private CardService cardService;
-    private TransactionService transactionService;
-    private ExchangeService exchangeService;
 
-    private ArrayNode output;
-    private ObjectMapper mapper;
+public final class ConcreteCommandVisitor implements CommandVisitor {
+    private final UserService userService;
+    private final AccountService accountService;
+    private final CardService cardService;
+    private final TransactionService transactionService;
+    private final ExchangeService exchangeService;
+    private final ArrayNode output;
+    private final ObjectMapper mapper;
+    private static final int DECIMAL_PRECISION = 14;
 
-    public ConcreteCommandVisitor(UserService userService,
-                                  AccountService accountService,
-                                  CardService cardService,
-                                  TransactionService transactionService,
-                                  ExchangeService exchangeService,
-                                  ArrayNode output,
-                                  ObjectMapper mapper) {
+    public ConcreteCommandVisitor(final UserService userService,
+                                  final AccountService accountService,
+                                  final CardService cardService,
+                                  final TransactionService transactionService,
+                                  final ExchangeService exchangeService,
+                                  final ArrayNode output,
+                                  final ObjectMapper mapper) {
         this.userService = userService;
         this.accountService = accountService;
         this.cardService = cardService;
@@ -44,14 +79,74 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         this.mapper = mapper;
     }
 
-    private void addResult(String message) {
-        ObjectNode resultNode = mapper.createObjectNode();
-        resultNode.put("result", message);
-        output.add(resultNode);
+    private void notFoundResult(final String commandName, final String description,
+                                final int timestamp) {
+        ObjectNode cmdResult = mapper.createObjectNode();
+        cmdResult.put("command", commandName);
+        ObjectNode outputNode = mapper.createObjectNode();
+        outputNode.put("description", description);
+        outputNode.put("timestamp", timestamp);
+        cmdResult.set("output", outputNode);
+        cmdResult.put("timestamp", timestamp);
+        this.output.add(cmdResult);
+    }
+
+    private ObjectNode createReportOutputNode(final Account account,
+                                              final List<Transaction> transactions,
+                                              final long startTimestamp,
+                                              final long endTimestamp,
+                                              final String transactionType,
+                                              final Map<String, Double> commerciantsTotals) {
+        ObjectNode outputNode = mapper.createObjectNode();
+        outputNode.put("IBAN", account.getIban());
+        outputNode.put("balance", account.getBalance());
+        outputNode.put("currency", account.getCurrency());
+
+        ArrayNode transactionsArray = mapper.createArrayNode();
+        for (Transaction transaction : transactions) {
+            if (transaction.getTimestamp() >= startTimestamp
+                    && transaction.getTimestamp() <= endTimestamp
+            && (transactionType == null || transaction.getType().equals(transactionType))) {
+                ObjectNode transactionNode = mapper.createObjectNode();
+                ConcreteTransactionVisitor transactionVisitor =
+                        new ConcreteTransactionVisitor(transactionNode, mapper);
+                transaction.accept(transactionVisitor);
+                transactionsArray.add(transactionNode);
+                if ("CardPayment".equals(transaction.getType()) && commerciantsTotals != null) {
+                    String commerciant = ((CardPaymentTransaction) transaction).getCommerciant();
+                    double amount = ((CardPaymentTransaction) transaction).getAmount();
+                    commerciantsTotals.merge(commerciant, amount, Double::sum);
+                }
+            }
+        }
+        outputNode.set("transactions", transactionsArray);
+        return outputNode;
+    }
+
+    private void notSavingsAccountResult(final String commandName, final String description,
+                                         final long timestamp) {
+        ObjectNode cmdResult = mapper.createObjectNode();
+        cmdResult.put("command", commandName);
+        ObjectNode outputNode = mapper.createObjectNode();
+        outputNode.put("timestamp", timestamp);
+        outputNode.put("description", description);
+        cmdResult.set("output", outputNode);
+        cmdResult.put("timestamp", timestamp);
+        this.output.add(cmdResult);
+    }
+
+    private void convert(final PayOnlineCommand command, final Account associatedAccount) {
+        double convertedAmount = exchangeService.convertCurrency(command.getCurrency(),
+                associatedAccount.getCurrency(), command.getAmount());
+        DecimalFormat df = new DecimalFormat("#.#########");
+        double formattedAmount = Double.valueOf(df.format(convertedAmount));
+        Transaction transaction = new CardPaymentTransaction(command.getTimestamp(),
+                command.getCommerciant(), formattedAmount);
+        associatedAccount.addTransaction(transaction);
     }
 
     @Override
-    public void visit(PrintUsersCommand command) {
+    public void visit(final PrintUsersCommand command) {
         ObjectNode cmdResult = mapper.createObjectNode();
         cmdResult.put("command", command.getCommandName());
         ArrayNode outputUsers = mapper.createArrayNode();
@@ -87,7 +182,7 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(AddAccountCommand command) {
+    public void visit(final AddAccountCommand command) {
         Account newAccount = accountService.createAccount(command.getEmail(),
                 command.getAccountType(), command.getCurrency(), command.getInterestRate());
         if (newAccount != null) {
@@ -97,12 +192,12 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(AddFundsCommand command) {
+    public void visit(final AddFundsCommand command) {
         accountService.addFunds(command.getAccountIBAN(), command.getAmount());
     }
 
     @Override
-    public void visit(CreateCardCommand command) {
+    public void visit(final CreateCardCommand command) {
         Card result = cardService.createCard(command.getAccountIBAN(), command.getCardType(),
                 command.getEmail());
         if (result != null) {
@@ -113,13 +208,15 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(NotImplementedCommand command) {
-        addResult("Command '" + command.getCommandName() + "' at timestamp "
-                + command.getTimestamp() + " is not implemented yet.");
+    public void visit(final NotImplementedCommand command) {
+        ObjectNode resultNode = mapper.createObjectNode();
+        resultNode.put("result", "Command '" + command.getCommandName()
+                + "' at timestamp " + command.getTimestamp() + " is not implemented yet.");
+        output.add(resultNode);
     }
 
     @Override
-    public void visit(DeleteAccountCommand command) {
+    public void visit(final DeleteAccountCommand command) {
         ObjectNode cmdResult = mapper.createObjectNode();
         cmdResult.put("command", command.getCommandName());
 
@@ -142,12 +239,13 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(DeleteCardCommand command) {
+    public void visit(final DeleteCardCommand command) {
         Card card = cardService.getCardByNumber(command.getCardNumber());
         if (card != null) {
             String iban = card.getAccount().getIban();
             if (iban != null) {
-                Transaction transaction = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), iban);
+                Transaction transaction = new CardDeletionTransaction(command.getTimestamp(),
+                        command.getCardNumber(), command.getEmail(), iban);
                 accountService.getAccountByIBAN(iban).addTransaction(transaction);
             }
         }
@@ -155,15 +253,16 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(SetMinBalanceCommand command) {
+    public void visit(final SetMinBalanceCommand command) {
         accountService.setMinBalance(command.getAccountIban(), command.getMinBalance());
     }
 
     @Override
-    public void visit(PayOnlineCommand command) {
-        String result = cardService.payOnline(command.getCardNumber(), command.getAmount(), command.getCurrency(), command.getEmail());
-        //this.output.add(result);
-        if (result.equals("Card not found") || result.equals("You can't pay this amount because is used")) {
+    public void visit(final PayOnlineCommand command) {
+        String result = cardService.payOnline(command.getCardNumber(), command.getAmount(),
+                command.getCurrency(), command.getEmail());
+        if (result.equals("Card not found")
+                || result.equals("You can't pay this amount because is used")) {
             ObjectNode cmdResult = mapper.createObjectNode();
             cmdResult.put("command", command.getName());
 
@@ -179,38 +278,8 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         Card card = cardService.getCardByNumber(command.getCardNumber());
         if (card != null) {
             Account associatedAccount = card.getAccount();
-
-        /*User user = userService.getUserByEmail(command.getEmail());
-        if (user != null) {
-            Account associatedAccount = null;
-
-            for (Account account : user.getAccounts()) {
-                for (Card card : account.getCards()) {
-                    if (card.getCardNumber().equals(command.getCardNumber())) {
-                        associatedAccount = account;
-                        break;
-                    }
-                }
-                if (associatedAccount != null) {
-                    break;
-                }
-            }
-            if (associatedAccount != null) {
-
-         */
             if (result.equals("Success")) {
-                double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
-                DecimalFormat df = new DecimalFormat("#.#########");
-                double formattedAmount = Double.valueOf(df.format(convertedAmount));
-                Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
-                associatedAccount.addTransaction(transaction);
-                /*String newCardNumber = card.getCardNumber();
-                Card newCard = cardService.getCardByNumber(newCardNumber);
-                if (newCard != null && newCard != card) {
-                    ((OneTimePayCard) newCard).setIsUsed(false);
-                }
-
-                 */
+                convert(command, associatedAccount);
             }
             if (result.equals("Insufficient funds")) {
                 Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
@@ -224,38 +293,46 @@ public class ConcreteCommandVisitor implements CommandVisitor {
                 String[] resultParts = result.split(": ");
                 if (resultParts.length > 1) {
                     String newCardNumber = resultParts[1];
-                    double convertedAmount = exchangeService.convertCurrency(command.getCurrency(), associatedAccount.getCurrency(), command.getAmount());
-                    DecimalFormat df = new DecimalFormat("#.#########");
-                    double formattedAmount = Double.valueOf(df.format(convertedAmount));
-                    Transaction transaction = new CardPaymentTransaction(command.getTimestamp(), command.getCommerciant(), formattedAmount);
-                    associatedAccount.addTransaction(transaction);
-                    Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(), command.getCardNumber(), command.getEmail(), associatedAccount.getIban());
+                    convert(command, associatedAccount);
+                    Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(),
+                            command.getCardNumber(), command.getEmail(),
+                            associatedAccount.getIban());
                     associatedAccount.addTransaction(transaction1);
-                    Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(), command.getEmail(), associatedAccount.getIban(), newCardNumber);
+                    Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(),
+                            command.getEmail(), associatedAccount.getIban(), newCardNumber);
                     associatedAccount.addTransaction(transaction2);
                 }
             }
         }
     }
-      //  }
-    //}
 
     @Override
-    public void visit(SendMoneyCommand command) {
-        String result = accountService.sendMoney(command.getAccount(), command.getAmount(), command.getReciever());
-        if (result.equals("Success") && accountService.getAccountByIBAN(command.getAccount()) != null) {
+    public void visit(final SendMoneyCommand command) {
+        String result = accountService.sendMoney(command.getAccount(), command.getAmount(),
+                command.getReciever());
+        if (result.equals("Success")
+                && accountService.getAccountByIBAN(command.getAccount()) != null) {
             String currency = accountService.getAccountByIBAN(command.getAccount()).getCurrency();
-            Transaction transaction = new SendMoneyTransaction(command.getTimestamp(), command.getDescription(), command.getAccount(), command.getReciever(),
+            Transaction transaction = new SendMoneyTransaction(command.getTimestamp(),
+                    command.getDescription(), command.getAccount(), command.getReciever(),
                     command.getAmount(), currency, "sent");
             accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
         }
-        if (result.equals("Success") && accountService.getAccountByIBAN(command.getReciever()) != null) {
+        if (result.equals("Success")
+                && accountService.getAccountByIBAN(command.getReciever()) != null) {
             String currency = accountService.getAccountByIBAN(command.getReciever()).getCurrency();
-            double convertedAmount = exchangeService.convertCurrency(accountService.getAccountByIBAN(command.getAccount()).getCurrency(), currency, command.getAmount());
-            BigDecimal preciseAmount = new BigDecimal(convertedAmount).setScale(14, RoundingMode.DOWN);
+            double convertedAmount =
+                    exchangeService.convertCurrency(accountService.getAccountByIBAN(
+                            command.getAccount()).getCurrency(), currency,
+                            command.getAmount());
+            BigDecimal preciseAmount =
+                    new BigDecimal(convertedAmount).setScale(DECIMAL_PRECISION, RoundingMode.DOWN);
             double finalAmount = preciseAmount.doubleValue();
-            Transaction transaction = new SendMoneyTransaction(command.getTimestamp(), command.getDescription(), command.getAccount(), command.getReciever(),
-                    finalAmount, currency, "received");
+            Transaction transaction =
+                    new SendMoneyTransaction(command.getTimestamp(),
+                            command.getDescription(), command.getAccount(),
+                            command.getReciever(),
+                            finalAmount, currency, "received");
             accountService.getAccountByIBAN(command.getReciever()).addTransaction(transaction);
         }
         if (result.equals("Insufficient funds in sender's account")) {
@@ -265,24 +342,25 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(SetAliasCommand command) {
+    public void visit(final SetAliasCommand command) {
         userService.setAlias(command.getEmail(), command.getAlias(), command.getAccount());
     }
 
     @Override
-    public void visit(PrintTransactionsCommand command) {
+    public void visit(final PrintTransactionsCommand command) {
         ObjectNode cmdResult = mapper.createObjectNode();
         cmdResult.put("command", command.getCommand());
 
         ArrayNode outputTransactions = mapper.createArrayNode();
 
-        List<Transaction> transactions = transactionService.getTransactionsForUser(command.getEmail());
+        List<Transaction> transactions =
+                transactionService.getTransactionsForUser(command.getEmail());
         transactions.sort(Comparator.comparing(Transaction::getTimestamp));
         for (Transaction transaction : transactions) {
             ObjectNode transactionNode = mapper.createObjectNode();
 
-            ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
-                    cardService, transactionService, transactionNode, mapper);
+            ConcreteTransactionVisitor transactionVisitor =
+                    new ConcreteTransactionVisitor(transactionNode, mapper);
 
             transaction.accept(transactionVisitor);
             outputTransactions.add(transactionNode);
@@ -295,51 +373,42 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(CheckCardStatusCommand command) {
+    public void visit(final CheckCardStatusCommand command) {
         String result = cardService.checkCardStatus(command.getCardNumber());
         if (result.equals("Card not found")) {
-            ObjectNode cmdResult = mapper.createObjectNode();
-            cmdResult.put("command", command.getCommand());
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("timestamp", command.getTimestamp());
-            outputNode.put("description", result);
-            cmdResult.set("output", outputNode);
-            cmdResult.put("timestamp", command.getTimestamp());
-            this.output.add(cmdResult);
+            notFoundResult(command.getCommand(), result, command.getTimestamp());
         }
         if (result.equals("Insufficient funds")) {
             Transaction transaction = new MinimumAmountOfFundsTransaction(command.getTimestamp());
-            cardService.getCardByNumber(command.getCardNumber()).getAccount().addTransaction(transaction);
+            Account account = cardService.getCardByNumber(command.getCardNumber()).getAccount();
+            account.addTransaction(transaction);
             cardService.getCardByNumber(command.getCardNumber()).block();
         }
     }
 
     @Override
-    public void visit(ChangeInterestRateCommand command) {
-        String result = accountService.changeInterestRate(command.getAccount(), command.getIntrestRate());
+    public void visit(final ChangeInterestRateCommand command) {
+        String result = accountService.changeInterestRate(command.getAccount(),
+                command.getIntrestRate());
         if (result.equals("This is not a savings account")) {
-            ObjectNode cmdResult = mapper.createObjectNode();
-            cmdResult.put("command", command.getCommand());
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("timestamp", command.getTimestamp());
-            outputNode.put("description", result);
-            cmdResult.set("output", outputNode);
-            cmdResult.put("timestamp", command.getTimestamp());
-            this.output.add(cmdResult);
+            notSavingsAccountResult(command.getCommand(), result, command.getTimestamp());
         }
         if (result.equals("Success")) {
-            Transaction transaction = new InterestRateChangeTransaction(command.getTimestamp(), command.getIntrestRate());
+            Transaction transaction = new InterestRateChangeTransaction(command.getTimestamp(),
+                    command.getIntrestRate());
             accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
         }
     }
 
     @Override
-    public void visit(SplitPaymentCommand command) {
-        String result = accountService.splitPayment(command.getAccounts(), command.getCurrency(), command.getAmount());
+    public void visit(final SplitPaymentCommand command) {
+        String result = accountService.splitPayment(command.getAccounts(),
+                command.getCurrency(), command.getAmount());
         if (result.equals("Success")) {
-            double amount = command.getAmount()/command.getAccounts().size();
+            double amount = command.getAmount() / command.getAccounts().size();
             String formattedAmount = String.format("%.2f", command.getAmount());
-            Transaction transaction = new SplitPaymentTransaction(command.getTimestamp(), command.getCurrency(), formattedAmount, command.getAccounts(), amount);
+            Transaction transaction = new SplitPaymentTransaction(command.getTimestamp(),
+                    command.getCurrency(), formattedAmount, command.getAccounts(), amount);
             List<String> accounts = command.getAccounts();
             for (String iban : accounts) {
                 Account account = accountService.getAccountByIBAN(iban);
@@ -348,9 +417,10 @@ public class ConcreteCommandVisitor implements CommandVisitor {
         }
         String regex = "Account \\S+ has insufficient funds for a split payment\\.";
         if (result.trim().matches(regex)) {
-            double amount = command.getAmount()/command.getAccounts().size();
-            //String formattedAmount = String.format("%.2f", command.getAmount());
-            Transaction transaction = new InssuficientFundsForSplitTransaction(command.getAmount(), command.getCurrency(), command.getAccounts(), command.getTimestamp(), result, amount);
+            double amount = command.getAmount() / command.getAccounts().size();
+            Transaction transaction = new InssuficientFundsForSplitTransaction(command.getAmount(),
+                    command.getCurrency(), command.getAccounts(), command.getTimestamp(),
+                    result, amount);
             List<String> accounts = command.getAccounts();
             for (String iban : accounts) {
                 Account account = accountService.getAccountByIBAN(iban);
@@ -360,97 +430,53 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(ReportCommand command) {
+    public void visit(final ReportCommand command) {
         ObjectNode reportResult = mapper.createObjectNode();
         reportResult.put("command", command.getCommand());
         Account account = accountService.getAccountByIBAN(command.getAccount());
         if (account == null) {
-            ObjectNode cmdResult = mapper.createObjectNode();
-            cmdResult.put("command", command.getCommand());
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("description", "Account not found");
-            outputNode.put("timestamp", command.getTimestamp());
-            cmdResult.set("output", outputNode);
-            cmdResult.put("timestamp", command.getTimestamp());
-            this.output.add(cmdResult);
+            notFoundResult(command.getCommand(), "Account not found",
+                    command.getTimestamp());
             return;
         }
-        ObjectNode outputNode = mapper.createObjectNode();
-        outputNode.put("IBAN", account.getIban());
-        outputNode.put("balance", account.getBalance());
-        outputNode.put("currency", account.getCurrency());
-        ArrayNode transactionsArray = mapper.createArrayNode();
         List<Transaction> transactions = accountService.getTransactions(command.getAccount());
-        for (Transaction transaction : transactions) {
-            if (transaction.getTimestamp() >= command.getStartTimestamp() &&
-                    transaction.getTimestamp() <= command.getEndTimestamp()) {
-                ObjectNode transactionNode = mapper.createObjectNode();
-
-                ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
-                        cardService, transactionService, transactionNode, mapper);
-
-                transaction.accept(transactionVisitor);
-                transactionsArray.add(transactionNode);
-            }
-        }
-        outputNode.set("transactions", transactionsArray);
+        ObjectNode outputNode;
+        outputNode = createReportOutputNode(account, transactions, command.getStartTimestamp(),
+                command.getEndTimestamp(), null, null);
         reportResult.set("output", outputNode);
         reportResult.put("timestamp", command.getTimestamp());
         this.output.add(reportResult);
     }
 
     @Override
-    public void visit(SpendingsReportCommand command) {
+    public void visit(final SpendingsReportCommand command) {
         ObjectNode reportResult = mapper.createObjectNode();
         reportResult.put("command", command.getCommand());
         Account account = accountService.getAccountByIBAN(command.getAccount());
         if (account == null) {
-            ObjectNode cmdResult = mapper.createObjectNode();
-            cmdResult.put("command", command.getCommand());
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("description", "Account not found");
-            outputNode.put("timestamp", command.getTimestamp());
-            cmdResult.set("output", outputNode);
-            cmdResult.put("timestamp", command.getTimestamp());
-            this.output.add(cmdResult);
+            notFoundResult(command.getCommand(), "Account not found",
+                    command.getTimestamp());
             return;
         }
         if (account.getAccountType().equals("savings")) {
             ObjectNode cmdResult = mapper.createObjectNode();
             cmdResult.put("command", command.getCommand());
             ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("error", "This kind of report is not supported for a saving account");
+            outputNode.put("error",
+                    "This kind of report is not supported for a saving account");
             cmdResult.set("output", outputNode);
             cmdResult.put("timestamp", command.getTimestamp());
             this.output.add(cmdResult);
             return;
         }
-        ObjectNode outputNode = mapper.createObjectNode();
-        outputNode.put("IBAN", account.getIban());
-        outputNode.put("balance", account.getBalance());
-        outputNode.put("currency", account.getCurrency());
-        ArrayNode transactionsArray = mapper.createArrayNode();
-        List<Transaction> transactions = accountService.getTransactions(command.getAccount());
         Map<String, Double> commerciantsTotals = new HashMap<>();
-        assert transactions != null;
-        for (Transaction transaction : transactions) {
-            if (transaction.getTimestamp() >= command.getStartTimestamp() &&
-                    transaction.getTimestamp() <= command.getEndTimestamp() &&
-                    transaction.getType().equals("CardPayment")) {
-                ObjectNode transactionNode = mapper.createObjectNode();
-                ConcreteTransactionVisitor transactionVisitor = new ConcreteTransactionVisitor(userService, accountService,
-                        cardService, transactionService, transactionNode, mapper);
-
-                transaction.accept(transactionVisitor);
-                transactionsArray.add(transactionNode);
-
-                String commerciant = ((CardPaymentTransaction) transaction).getCommerciant();
-                double amount = ((CardPaymentTransaction) transaction).getAmount();
-                commerciantsTotals.merge(commerciant, amount, Double::sum);
-            }
-        }
-        outputNode.set("transactions", transactionsArray);
-        List<Map.Entry<String, Double>> commerciantsList = new ArrayList<>(commerciantsTotals.entrySet());
+        List<Transaction> transactions = accountService.getTransactions(command.getAccount());
+        ObjectNode outputNode;
+        outputNode = createReportOutputNode(account, transactions,
+                command.getStartTimestamp(), command.getEndTimestamp(),
+                "CardPayment", commerciantsTotals);
+        List<Map.Entry<String, Double>> commerciantsList =
+                new ArrayList<>(commerciantsTotals.entrySet());
         commerciantsList.sort(Map.Entry.comparingByKey());
         ArrayNode commerciantsArray = mapper.createArrayNode();
         for (Map.Entry<String, Double> entry : commerciantsList) {
@@ -467,17 +493,10 @@ public class ConcreteCommandVisitor implements CommandVisitor {
     }
 
     @Override
-    public void visit(AddInterestCommand command) {
+    public void visit(final AddInterestCommand command) {
         String result = accountService.addInterestRate(command.getAccount());
         if (result.equals("This is not a savings account")) {
-            ObjectNode interestResult = mapper.createObjectNode();
-            interestResult.put("command", command.getCommand());
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("timestamp", command.getTimestamp());
-            outputNode.put("description", result);
-            interestResult.set("output", outputNode);
-            interestResult.put("timestamp", command.getTimestamp());
-            this.output.add(interestResult);
+            notSavingsAccountResult(command.getCommand(), result, command.getTimestamp());
         }
     }
 }

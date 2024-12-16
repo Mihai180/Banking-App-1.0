@@ -2,19 +2,19 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-import java.io.Serializable;
-
-public class MinimumAmountOfFundsTransaction extends Transaction{
-    public MinimumAmountOfFundsTransaction (int timestamp) {
+public final class MinimumAmountOfFundsTransaction extends Transaction {
+    public MinimumAmountOfFundsTransaction(final int timestamp) {
         super(timestamp);
-        this. description = "You have reached the minimum amount of funds, the card will be frozen";
+        this.description = "You have reached the minimum amount of funds, the card will be frozen";
     }
 
+    @Override
     public String getType() {
         return "MinimumAmountOfFunds";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

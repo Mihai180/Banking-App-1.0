@@ -2,15 +2,16 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class SendMoneyTransaction extends Transaction {
-    private String sender;
-    private String receiver;
-    private double amount;
-    private String currency;
-    private String transferType;
+public final class SendMoneyTransaction extends Transaction {
+    private final String sender;
+    private final String receiver;
+    private final double amount;
+    private final String currency;
+    private final String transferType;
 
-    public SendMoneyTransaction(int timestamp, String description, String sender, String receiver,
-                                double amount, String currency, String transferType) {
+    public SendMoneyTransaction(final int timestamp, final String description, final String sender,
+                                final String receiver, final double amount, final String currency,
+                                final String transferType) {
         super(timestamp);
         this.sender = sender;
         this.receiver = receiver;
@@ -40,11 +41,13 @@ public class SendMoneyTransaction extends Transaction {
         return currency;
     }
 
+    @Override
     public String getType() {
         return "SendMoney";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

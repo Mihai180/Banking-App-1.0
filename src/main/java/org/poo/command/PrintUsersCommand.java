@@ -2,10 +2,10 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class PrintUsersCommand implements Command {
-    private String commandName;
-    private int timestamp;
-    public PrintUsersCommand(String commandName, int timestamp) {
+public final class PrintUsersCommand implements Command {
+    private final String commandName;
+    private final int timestamp;
+    public PrintUsersCommand(final String commandName, final int timestamp) {
         this.commandName = commandName;
         this.timestamp = timestamp;
     }
@@ -19,7 +19,7 @@ public class PrintUsersCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

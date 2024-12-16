@@ -1,7 +1,7 @@
 package org.poo.exception;
 
 public class AccountNotFoundException extends RuntimeException {
-    public AccountNotFoundException(String message) {
+    public AccountNotFoundException(final String message) {
         super(message);
     }
 }

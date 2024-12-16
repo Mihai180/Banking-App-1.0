@@ -2,12 +2,12 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class DeleteCardCommand implements Command {
-    private int timestamp;
-    private String cardNumber;
-    private String email;
+public final class DeleteCardCommand implements Command {
+    private final int timestamp;
+    private final String cardNumber;
+    private final String email;
 
-    public DeleteCardCommand(int timestamp, String cardNumber, String email) {
+    public DeleteCardCommand(final int timestamp, final String cardNumber, final String email) {
         this.timestamp = timestamp;
         this.cardNumber = cardNumber;
         this.email = email;
@@ -26,7 +26,7 @@ public class DeleteCardCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

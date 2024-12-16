@@ -2,17 +2,19 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class InsufficientFundsTransaction extends Transaction {
-    public InsufficientFundsTransaction(int timestamp) {
+public final class InsufficientFundsTransaction extends Transaction {
+    public InsufficientFundsTransaction(final int timestamp) {
         super(timestamp);
         this.description = "Insufficient funds";
     }
 
+    @Override
     public String getType() {
         return "InsufficientFunds";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

@@ -4,13 +4,14 @@ import org.poo.visitor.command.CommandVisitor;
 
 import java.util.List;
 
-public class SplitPaymentCommand implements Command{
-    private List<String> accounts;
-    private int timestamp;
-    private String currency;
-    private double amount;
+public final class SplitPaymentCommand implements Command {
+    private final List<String> accounts;
+    private final int timestamp;
+    private final String currency;
+    private final double amount;
 
-    public SplitPaymentCommand(List<String> accounts, int timestamp, String currency, double amount) {
+    public SplitPaymentCommand(final List<String> accounts, final int timestamp,
+                               final String currency, final double amount) {
         this.accounts = accounts;
         this.timestamp = timestamp;
         this.currency = currency;
@@ -34,7 +35,7 @@ public class SplitPaymentCommand implements Command{
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

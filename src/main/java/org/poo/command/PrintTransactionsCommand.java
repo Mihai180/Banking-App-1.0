@@ -2,12 +2,12 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class PrintTransactionsCommand implements Command {
-    private String command;
-    private int timestamp;
-    private String email;
+public final class PrintTransactionsCommand implements Command {
+    private final String command;
+    private final int timestamp;
+    private final String email;
 
-    public PrintTransactionsCommand(String command, int timestamp, String email) {
+    public PrintTransactionsCommand(final String command, final int timestamp, final String email) {
         this.command = command;
         this.timestamp = timestamp;
         this.email = email;
@@ -26,7 +26,7 @@ public class PrintTransactionsCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

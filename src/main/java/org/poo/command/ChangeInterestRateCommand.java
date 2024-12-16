@@ -2,16 +2,17 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class ChangeInterestRateCommand implements Command {
-    private int timestamp;
-    private String account;
-    private double IntrestRate;
-    private String command;
+public final class ChangeInterestRateCommand implements Command {
+    private final int timestamp;
+    private final String account;
+    private final double intrestRate;
+    private final String command;
 
-    public ChangeInterestRateCommand(int timestamp, String account, double IntrestRate, String command) {
+    public ChangeInterestRateCommand(final int timestamp, final String account,
+                                     final double intrestRate, final String command) {
         this.timestamp = timestamp;
         this.account = account;
-        this.IntrestRate = IntrestRate;
+        this.intrestRate = intrestRate;
         this.command = command;
     }
 
@@ -28,11 +29,11 @@ public class ChangeInterestRateCommand implements Command {
     }
 
     public double getIntrestRate() {
-        return IntrestRate;
+        return intrestRate;
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

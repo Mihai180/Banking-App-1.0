@@ -2,17 +2,23 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class FrozenCardTransaction extends Transaction {
-    public FrozenCardTransaction(int timestamp) {
+public final class FrozenCardTransaction extends Transaction {
+    public FrozenCardTransaction(final int timestamp) {
         super(timestamp);
         this.description = "The card is frozen";
     }
 
+    @Override
     public String getType() {
         return "FrozenCard";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    /**
+     *
+     * @param visitor
+     */
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

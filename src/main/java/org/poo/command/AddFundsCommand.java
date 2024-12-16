@@ -2,22 +2,22 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class AddFundsCommand implements Command {
-    private String CommandName;
-    private int timestamp;
-    private String accountIBAN;
-    private double amount;
+public final class AddFundsCommand implements Command {
+    private final String commandName;
+    private final int timestamp;
+    private final String accountIBAN;
+    private final double amount;
 
-    public AddFundsCommand(String commandName, int timestamp,
-                           String accountIBAN, double amount) {
-        this.CommandName = commandName;
+    public AddFundsCommand(final String commandName, final int timestamp,
+                           final String accountIBAN, final double amount) {
+        this.commandName = commandName;
         this.timestamp = timestamp;
         this.accountIBAN = accountIBAN;
         this.amount = amount;
     }
 
     public String getCommandName() {
-        return CommandName;
+        return commandName;
     }
 
     public int getTimestamp() {
@@ -33,7 +33,7 @@ public class AddFundsCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

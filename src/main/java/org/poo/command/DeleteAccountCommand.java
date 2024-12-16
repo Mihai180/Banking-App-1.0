@@ -2,13 +2,14 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class DeleteAccountCommand implements Command {
-    private String commandName;
-    private int timestamp;
-    private String account;
-    private String email;
+public final class DeleteAccountCommand implements Command {
+    private final String commandName;
+    private final int timestamp;
+    private final String account;
+    private final String email;
 
-    public DeleteAccountCommand(String commandName, int timestamp, String account, String email) {
+    public DeleteAccountCommand(final String commandName, final int timestamp,
+                                final String account, final String email) {
         this.commandName = commandName;
         this.timestamp = timestamp;
         this.account = account;
@@ -32,7 +33,7 @@ public class DeleteAccountCommand implements Command {
     }
 
     @Override
-   public void accept(CommandVisitor visitor) {
+   public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

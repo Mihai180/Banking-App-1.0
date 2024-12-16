@@ -1,11 +1,9 @@
 package org.poo.model.transaction;
 
-//import org.poo.visitor.transaction.TransactionVisitor;
-
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class AccountCreationTransaction extends Transaction {
-    public AccountCreationTransaction(int timestamp) {
+public final  class AccountCreationTransaction extends Transaction {
+    public AccountCreationTransaction(final int timestamp) {
         super(timestamp);
         this.description = "New account created";
     }
@@ -16,7 +14,7 @@ public class AccountCreationTransaction extends Transaction {
     }
 
     @Override
-    public void accept(TransactionVisitor visitor) {
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

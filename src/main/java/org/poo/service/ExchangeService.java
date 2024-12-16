@@ -2,14 +2,17 @@ package org.poo.service;
 
 import org.poo.fileio.ExchangeInput;
 import org.poo.model.exchange.CurrencyExchangeRate;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExchangeService {
+public final class ExchangeService {
     private List<CurrencyExchangeRate> exchangeRates = new ArrayList<>();
 
-    public void loadExchangeRates(List<ExchangeInput> exchangeInputs) {
+    /**
+     *
+     * @param exchangeInputs
+     */
+    public void loadExchangeRates(final List<ExchangeInput> exchangeInputs) {
         for (ExchangeInput input : exchangeInputs) {
             exchangeRates.add(new CurrencyExchangeRate(
                     input.getFrom(), input.getTo(), input.getRate()
@@ -17,16 +20,26 @@ public class ExchangeService {
         }
     }
 
-    public double convertCurrency(String fromCurrency, String toCurrency, double amount) {
+    /**
+     *
+     * @param fromCurrency
+     * @param toCurrency
+     * @param amount
+     * @return
+     */
+    public double convertCurrency(final String fromCurrency, final String toCurrency,
+                                  final double amount) {
         if (fromCurrency.equalsIgnoreCase(toCurrency)) {
             return amount;
         }
 
         for (CurrencyExchangeRate rate : exchangeRates) {
-            if (rate.getFromCurrency().equalsIgnoreCase(fromCurrency) && rate.getToCurrency().equalsIgnoreCase(toCurrency)) {
+            if (rate.getFromCurrency().equalsIgnoreCase(fromCurrency)
+                    && rate.getToCurrency().equalsIgnoreCase(toCurrency)) {
                 return amount * rate.getRate();
             }
-            if (rate.getFromCurrency().equalsIgnoreCase(toCurrency) && rate.getToCurrency().equalsIgnoreCase(fromCurrency)) {
+            if (rate.getFromCurrency().equalsIgnoreCase(toCurrency)
+                    && rate.getToCurrency().equalsIgnoreCase(fromCurrency)) {
                 return amount / rate.getRate();
             }
         }
@@ -41,6 +54,7 @@ public class ExchangeService {
                 return convertCurrency(rate.getFromCurrency(), toCurrency, intermediateAmount);
             }
         }
-        throw new IllegalArgumentException("No exchange rate found for " + fromCurrency + " to " + toCurrency);
+        throw new IllegalArgumentException("No exchange rate found for "
+                + fromCurrency + " to " + toCurrency);
     }
 }

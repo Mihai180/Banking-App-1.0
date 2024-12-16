@@ -1,17 +1,15 @@
 package org.poo.model.transaction;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.poo.visitor.transaction.TransactionVisitor;
 
-import java.util.Map;
+public final class CardPaymentTransaction extends Transaction {
+    private final String commerciant;
+    private final double amount;
 
-public class CardPaymentTransaction extends Transaction {
-    private String commerciant;
-    private double amount;
-
-    public CardPaymentTransaction(int timestamp, String commerciant, double amount) {
+    public CardPaymentTransaction(final int timestamp, final String commerciant,
+                                  final double amount) {
         super(timestamp);
-        this. description = "Card payment";
+        this.description = "Card payment";
         this.commerciant = commerciant;
         this.amount = amount;
     }
@@ -24,11 +22,13 @@ public class CardPaymentTransaction extends Transaction {
         return amount;
     }
 
+    @Override
     public String getType() {
         return "CardPayment";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

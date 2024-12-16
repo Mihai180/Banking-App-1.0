@@ -2,12 +2,12 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class SetAliasCommand implements Command {
-    private String email;
-    private String alias;
-    private String account;
+public final class SetAliasCommand implements Command {
+    private final String email;
+    private final String alias;
+    private final String account;
 
-    public SetAliasCommand(String email, String alias, String account) {
+    public SetAliasCommand(final String email, final String alias, final String account) {
         this.email = email;
         this.alias = alias;
         this.account = account;
@@ -26,7 +26,7 @@ public class SetAliasCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

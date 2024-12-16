@@ -2,14 +2,15 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
-public class SendMoneyCommand implements Command {
-    private String account;
-    private double amount;
-    private String reciever;
-    private int timestamp;
-    private String description;
+public final class SendMoneyCommand implements Command {
+    private final String account;
+    private final double amount;
+    private final String reciever;
+    private final int timestamp;
+    private final String description;
 
-    public SendMoneyCommand(String account, double amount, String reciever, int timestamp, String description) {
+    public SendMoneyCommand(final String account, final double amount, final String reciever,
+                            final int timestamp, final String description) {
         this.account = account;
         this.amount = amount;
         this.reciever = reciever;
@@ -38,7 +39,7 @@ public class SendMoneyCommand implements Command {
     }
 
     @Override
-    public void accept(CommandVisitor visitor) {
+    public void accept(final CommandVisitor visitor) {
         visitor.visit(this);
     }
 }

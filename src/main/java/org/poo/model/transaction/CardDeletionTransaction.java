@@ -2,12 +2,13 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-public class CardDeletionTransaction extends Transaction {
-    private String cardNumber;
-    private String cardHolder;
-    private String account;
+public final class CardDeletionTransaction extends Transaction {
+    private final String cardNumber;
+    private final String cardHolder;
+    private final String account;
 
-    public CardDeletionTransaction(int timestamp, String cardNumber, String cardHolder, String account) {
+    public CardDeletionTransaction(final int timestamp, final String cardNumber,
+                                   final String cardHolder, final String account) {
         super(timestamp);
         this.description = "The card has been destroyed";
         this.cardNumber = cardNumber;
@@ -33,7 +34,7 @@ public class CardDeletionTransaction extends Transaction {
     }
 
     @Override
-    public void accept(TransactionVisitor visitor) {
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 

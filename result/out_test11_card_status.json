@@ -26,8 +26,8 @@
 }, {
   "command" : "checkCardStatus",
   "output" : {
-    "timestamp" : 20,
-    "description" : "Card not found"
+    "description" : "Card not found",
+    "timestamp" : 20
   },
   "timestamp" : 20
 }, {

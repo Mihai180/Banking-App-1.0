@@ -2,17 +2,19 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class InssuficientFundsForSplitTransaction extends Transaction {
-    private double amount;
-    private double splitAmount;
-    private String currency;
-    private String error;
-    private List<String> involvedAccounts;
+public final class InssuficientFundsForSplitTransaction extends Transaction {
+    private final double amount;
+    private final double splitAmount;
+    private final String currency;
+    private final String error;
+    private final List<String> involvedAccounts;
 
-    public InssuficientFundsForSplitTransaction(double amount, String currency, List<String> involvedAccounts, int timestamp, String error, double splitAmount) {
+    public InssuficientFundsForSplitTransaction(final double amount, final String currency,
+                                                final List<String> involvedAccounts,
+                                                final int timestamp, final String error,
+                                                final double splitAmount) {
         super(timestamp);
         this.splitAmount = splitAmount;
         this.description = "Split payment of " + String.format("%.2f", amount) + " " + currency;
@@ -46,11 +48,13 @@ public class InssuficientFundsForSplitTransaction extends Transaction {
         return timestamp;
     }
 
+    @Override
     public String getType() {
         return "InssuficientFundsForSplit";
     }
 
-    public void accept(TransactionVisitor visitor) {
+    @Override
+    public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
 }

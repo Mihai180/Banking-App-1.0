@@ -1,11 +1,12 @@
 package org.poo.model.exchange;
 
-public class CurrencyExchangeRate {
-    private String fromCurrency;
-    private String toCurrency;
-    private double rate;
+public final class CurrencyExchangeRate {
+    private final String fromCurrency;
+    private final String toCurrency;
+    private final double rate;
 
-    public CurrencyExchangeRate(String fromCurrency, String toCurrency, double rate) {
+    public CurrencyExchangeRate(final String fromCurrency, final String toCurrency,
+                                final double rate) {
         this.fromCurrency = fromCurrency;
         this.toCurrency = toCurrency;
         this.rate = rate;
