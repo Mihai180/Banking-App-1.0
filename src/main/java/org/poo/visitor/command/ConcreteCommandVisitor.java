@@ -113,8 +113,8 @@ public final class ConcreteCommandVisitor implements CommandVisitor {
                 transaction.accept(transactionVisitor);
                 transactionsArray.add(transactionNode);
                 if ("CardPayment".equals(transaction.getType()) && commerciantsTotals != null) {
-                    String commerciant = ((CardPaymentTransaction) transaction).getCommerciant();
-                    double amount = ((CardPaymentTransaction) transaction).getAmount();
+                    String commerciant = transaction.getPaymentCommerciant();
+                    double amount = transaction.getPaymentAmount();
                     commerciantsTotals.merge(commerciant, amount, Double::sum);
                 }
             }

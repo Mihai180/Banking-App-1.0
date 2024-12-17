@@ -13,6 +13,16 @@ public final class FrozenCardTransaction extends Transaction {
         return "FrozenCard";
     }
 
+    @Override
+    public String getPaymentCommerciant() {
+        return null;
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return 0;
+    }
+
     /**
      *
      * @param visitor

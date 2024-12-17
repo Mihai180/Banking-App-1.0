@@ -1,6 +1,8 @@
 package org.poo.service;
 
+import org.poo.exception.AccountCanNotBeDeletedException;
 import org.poo.exception.AccountNotFoundException;
+import org.poo.exception.UserNotFoundException;
 import org.poo.model.account.Account;
 import org.poo.model.account.ClassicAccount;
 import org.poo.model.account.SavingsAccount;
@@ -41,11 +43,11 @@ public final class AccountService {
         User user = userService.getUserByEmail(email);
 
         if (user == null) {
-            throw new IllegalArgumentException("User not found with email: " + email);
+            throw new UserNotFoundException("User not found with email: " + email);
         }
         String iban = Utils.generateIBAN();
 
-        Account account = null;
+        Account account;
         if (accountType.equals("savings")) {
             account = new SavingsAccount(iban, user, currency, interestRate);
         } else {
@@ -79,7 +81,7 @@ public final class AccountService {
     public void deleteAccount(final String iban, final String email) {
         User user = userService.getUserByEmail(email);
         if (user == null) {
-            throw new IllegalArgumentException("User not found with email: " + email);
+            throw new UserNotFoundException("User not found with email: " + email);
         }
 
         Account accountToRemove = null;
@@ -96,7 +98,7 @@ public final class AccountService {
         }
 
         if (accountToRemove.getBalance() != 0.0) {
-            throw new IllegalArgumentException("Account couldn't be deleted -"
+            throw new AccountCanNotBeDeletedException("Account couldn't be deleted -"
                     + " see org.poo.transactions for details");
         }
 
@@ -267,7 +269,7 @@ public final class AccountService {
         if (account.getAccountType().equals("classic")) {
             return "This is not a savings account";
         }
-        ((SavingsAccount) account).addInterest();
+        account.addInterest();
         return "Success";
     }
 }

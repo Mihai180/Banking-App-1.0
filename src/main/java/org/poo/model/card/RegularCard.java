@@ -10,11 +10,20 @@ public final class RegularCard extends Card {
     }
 
     @Override
+    public void setIsUsed(final boolean isUsed) {
+
+    }
+
+    @Override
     public String makePayment(final double amount, final Map<String, Card> cardsByNumber) {
         if (isBlocked) {
             return "You can't pay this amount because isBlocked";
         }
         account.withdraw(amount);
         return "Success";
+    }
+
+    public String getCardType() {
+        return "Regular";
     }
 }

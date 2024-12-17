@@ -45,4 +45,8 @@ public final class OneTimePayCard extends Card {
     public void setIsUsed(final boolean isUsed) {
         this.isUsed = isUsed;
     }
+
+    public String getCardType() {
+        return "OneTimePayCard";
+    }
 }

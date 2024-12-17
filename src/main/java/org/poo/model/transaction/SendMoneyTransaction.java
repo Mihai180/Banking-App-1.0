@@ -42,6 +42,16 @@ public final class SendMoneyTransaction extends Transaction {
     }
 
     @Override
+    public String getPaymentCommerciant() {
+        return null;
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return 0;
+    }
+
+    @Override
     public String getType() {
         return "SendMoney";
     }

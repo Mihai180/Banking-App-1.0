@@ -19,6 +19,16 @@ public final class SplitPaymentTransaction extends Transaction {
         this.splitAmount = splitAmount;
     }
 
+    @Override
+    public String getPaymentCommerciant() {
+        return null;
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        return 0;
+    }
+
     public String getAmount() {
         return amount;
     }

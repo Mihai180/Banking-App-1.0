@@ -122,12 +122,12 @@ public final class CardService {
             return result;
         }
 
-        if (result.equals("Success") && card instanceof OneTimePayCard) {
+        if (result.equals("Success") && card.getCardType().equals("OneTimePayCard")) {
             String newCardNumber = card.getCardNumber();
             Card newCard = cardsByNumber.get(newCardNumber);
 
             if (newCard != null && newCard != card) {
-                ((OneTimePayCard) newCard).setIsUsed(false);
+                newCard.setIsUsed(false);
             }
             return "New card generated successfully: " + newCardNumber;
         }

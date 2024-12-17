@@ -21,6 +21,7 @@ public final class SavingsAccount extends Account {
     /**
      *
      */
+    @Override
     public void addInterest() {
         balance += balance * interestRate;
     }
@@ -29,10 +30,15 @@ public final class SavingsAccount extends Account {
      *
      * @param newInterestRate
      */
+    @Override
     public void changeInterestRate(final double newInterestRate) {
         this.interestRate = newInterestRate;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getAccountType() {
         return "savings";

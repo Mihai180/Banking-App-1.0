@@ -14,11 +14,13 @@ public final class CardPaymentTransaction extends Transaction {
         this.amount = amount;
     }
 
-    public String getCommerciant() {
+    @Override
+    public String getPaymentCommerciant() {
         return commerciant;
     }
 
-    public double getAmount() {
+    @Override
+    public double getPaymentAmount() {
         return amount;
     }
 

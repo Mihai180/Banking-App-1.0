@@ -7,12 +7,18 @@ public final class ClassicAccount extends Account {
         super(iban, owner, currency);
     }
 
+    @Override
     public String getAccountType() {
         return "classic";
     }
 
     @Override
     public void changeInterestRate(final double newInterestRate) {
+
+    }
+
+    @Override
+    public void addInterest() {
 
     }
 }

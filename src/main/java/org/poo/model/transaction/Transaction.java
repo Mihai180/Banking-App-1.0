@@ -38,4 +38,16 @@ public abstract class Transaction {
      * @param visitor
      */
     public abstract void accept(TransactionVisitor visitor);
+
+    /**
+     *
+     * @return
+     */
+    public abstract String getPaymentCommerciant();
+
+    /**
+     *
+     * @return
+     */
+    public abstract double getPaymentAmount();
 }

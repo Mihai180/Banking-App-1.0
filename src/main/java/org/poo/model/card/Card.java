@@ -90,4 +90,16 @@ public abstract class Card {
      * @return
      */
     public abstract String makePayment(double amount, Map<String, Card> cardsByNumber);
+
+    /**
+     *
+     * @param isUsed
+     */
+    public abstract void setIsUsed(boolean isUsed);
+
+    /**
+     *
+     * @return
+     */
+    public abstract String getCardType();
 }

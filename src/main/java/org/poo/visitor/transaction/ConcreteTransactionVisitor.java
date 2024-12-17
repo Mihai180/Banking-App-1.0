@@ -59,8 +59,8 @@ public final class ConcreteTransactionVisitor implements TransactionVisitor {
     public void visit(final CardPaymentTransaction transaction) {
         transactionNode.put("timestamp", transaction.getTimestamp());
         transactionNode.put("description", transaction.getDescription());
-        transactionNode.put("amount", transaction.getAmount());
-        transactionNode.put("commerciant", transaction.getCommerciant());
+        transactionNode.put("amount", transaction.getPaymentAmount());
+        transactionNode.put("commerciant", transaction.getPaymentCommerciant());
     }
 
     @Override

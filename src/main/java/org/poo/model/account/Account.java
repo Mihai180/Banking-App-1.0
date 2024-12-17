@@ -139,4 +139,9 @@ public abstract class Account {
      * @param newInterestRate
      */
     public abstract void changeInterestRate(double newInterestRate);
+
+    /**
+     *
+     */
+    public abstract void addInterest();
 }
