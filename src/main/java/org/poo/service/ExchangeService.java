@@ -1,5 +1,6 @@
 package org.poo.service;
 
+import org.poo.exception.NoExchangeRateException;
 import org.poo.fileio.ExchangeInput;
 import org.poo.model.exchange.CurrencyExchangeRate;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public final class ExchangeService {
                 return convertCurrency(rate.getFromCurrency(), toCurrency, intermediateAmount);
             }
         }
-        throw new IllegalArgumentException("No exchange rate found for "
+        throw new NoExchangeRateException("No exchange rate found for "
                 + fromCurrency + " to " + toCurrency);
     }
 }

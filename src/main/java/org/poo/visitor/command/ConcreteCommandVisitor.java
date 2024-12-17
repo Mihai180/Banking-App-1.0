@@ -259,48 +259,71 @@ public final class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(final PayOnlineCommand command) {
-        String result = cardService.payOnline(command.getCardNumber(), command.getAmount(),
-                command.getCurrency(), command.getEmail());
-        if (result.equals("Card not found")
-                || result.equals("You can't pay this amount because is used")) {
-            ObjectNode cmdResult = mapper.createObjectNode();
-            cmdResult.put("command", command.getName());
+        try {
+            String result = cardService.payOnline(command.getCardNumber(),
+                    command.getAmount(),
+                    command.getCurrency(),
+                    command.getEmail());
 
-            ObjectNode outputNode = mapper.createObjectNode();
-            outputNode.put("timestamp", command.getTimestamp());
-            outputNode.put("description", "Card not found");
+            Card card = cardService.getCardByNumber(command.getCardNumber());
+            if (card != null) {
+                Account associatedAccount = card.getAccount();
 
-            cmdResult.set("output", outputNode);
-            this.output.add(cmdResult);
-            cmdResult.put("timestamp", command.getTimestamp());
-        }
-
-        Card card = cardService.getCardByNumber(command.getCardNumber());
-        if (card != null) {
-            Account associatedAccount = card.getAccount();
-            if (result.equals("Success")) {
-                convert(command, associatedAccount);
-            }
-            if (result.equals("Insufficient funds")) {
-                Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
-                associatedAccount.addTransaction(transaction);
-            }
-            if (result.equals("Card is frozen")) {
-                Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
-                associatedAccount.addTransaction(transaction);
-            }
-            if (result.startsWith("New card generated successfully")) {
-                String[] resultParts = result.split(": ");
-                if (resultParts.length > 1) {
-                    String newCardNumber = resultParts[1];
+                if (result.equals("Success")) {
                     convert(command, associatedAccount);
-                    Transaction transaction1 = new CardDeletionTransaction(command.getTimestamp(),
-                            command.getCardNumber(), command.getEmail(),
-                            associatedAccount.getIban());
-                    associatedAccount.addTransaction(transaction1);
-                    Transaction transaction2 = new CardCreationTransaction(command.getTimestamp(),
-                            command.getEmail(), associatedAccount.getIban(), newCardNumber);
-                    associatedAccount.addTransaction(transaction2);
+                }
+
+                if (result.startsWith("New card generated successfully")) {
+                    String[] resultParts = result.split(": ");
+                    if (resultParts.length > 1) {
+                        String newCardNumber = resultParts[1];
+                        convert(command, associatedAccount);
+
+                        Transaction transaction1 = new CardDeletionTransaction(
+                                command.getTimestamp(), command.getCardNumber(),
+                                command.getEmail(), associatedAccount.getIban());
+                        associatedAccount.addTransaction(transaction1);
+
+                        Transaction transaction2 = new CardCreationTransaction(
+                                command.getTimestamp(), command.getEmail(),
+                                associatedAccount.getIban(), newCardNumber);
+                        associatedAccount.addTransaction(transaction2);
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+
+            if (errorMessage.equals("Card not found")
+                    || errorMessage.equals("You can't pay this amount because is used")) {
+
+                ObjectNode cmdResult = mapper.createObjectNode();
+                cmdResult.put("command", command.getName());
+
+                ObjectNode outputNode = mapper.createObjectNode();
+                outputNode.put("timestamp", command.getTimestamp());
+                outputNode.put("description", "Card not found");
+
+                cmdResult.set("output", outputNode);
+                this.output.add(cmdResult);
+                cmdResult.put("timestamp", command.getTimestamp());
+            } else {
+                if (errorMessage.equals("Insufficient funds")) {
+                    Card card = cardService.getCardByNumber(command.getCardNumber());
+                    if (card != null) {
+                        Account associatedAccount = card.getAccount();
+                        Transaction transaction =
+                                new InsufficientFundsTransaction(command.getTimestamp());
+                        associatedAccount.addTransaction(transaction);
+                    }
+                } else if (errorMessage.equals("Card is frozen")) {
+                    Card card = cardService.getCardByNumber(command.getCardNumber());
+                    if (card != null) {
+                        Account associatedAccount = card.getAccount();
+                        Transaction transaction = new FrozenCardTransaction(command.getTimestamp());
+                        associatedAccount.addTransaction(transaction);
+                    }
                 }
             }
         }
@@ -308,36 +331,50 @@ public final class ConcreteCommandVisitor implements CommandVisitor {
 
     @Override
     public void visit(final SendMoneyCommand command) {
-        String result = accountService.sendMoney(command.getAccount(), command.getAmount(),
-                command.getReciever());
-        if (result.equals("Success")
-                && accountService.getAccountByIBAN(command.getAccount()) != null) {
-            String currency = accountService.getAccountByIBAN(command.getAccount()).getCurrency();
-            Transaction transaction = new SendMoneyTransaction(command.getTimestamp(),
-                    command.getDescription(), command.getAccount(), command.getReciever(),
-                    command.getAmount(), currency, "sent");
-            accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
-        }
-        if (result.equals("Success")
-                && accountService.getAccountByIBAN(command.getReciever()) != null) {
-            String currency = accountService.getAccountByIBAN(command.getReciever()).getCurrency();
-            double convertedAmount =
-                    exchangeService.convertCurrency(accountService.getAccountByIBAN(
-                            command.getAccount()).getCurrency(), currency,
-                            command.getAmount());
-            BigDecimal preciseAmount =
-                    new BigDecimal(convertedAmount).setScale(DECIMAL_PRECISION, RoundingMode.DOWN);
-            double finalAmount = preciseAmount.doubleValue();
-            Transaction transaction =
-                    new SendMoneyTransaction(command.getTimestamp(),
-                            command.getDescription(), command.getAccount(),
-                            command.getReciever(),
-                            finalAmount, currency, "received");
-            accountService.getAccountByIBAN(command.getReciever()).addTransaction(transaction);
-        }
-        if (result.equals("Insufficient funds in sender's account")) {
-            Transaction transaction = new InsufficientFundsTransaction(command.getTimestamp());
-            accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
+        try {
+            String result = accountService.sendMoney(command.getAccount(), command.getAmount(),
+                    command.getReciever());
+
+            if (result.equals("Success")
+                    && accountService.getAccountByIBAN(command.getAccount()) != null) {
+                String currency =
+                        accountService.getAccountByIBAN(command.getAccount()).getCurrency();
+                Transaction transaction = new SendMoneyTransaction(command.getTimestamp(),
+                        command.getDescription(), command.getAccount(), command.getReciever(),
+                        command.getAmount(), currency, "sent");
+                accountService.getAccountByIBAN(command.getAccount()).addTransaction(transaction);
+            }
+
+            if (result.equals("Success")
+                    && accountService.getAccountByIBAN(command.getReciever()) != null) {
+                String currency =
+                        accountService.getAccountByIBAN(command.getReciever()).getCurrency();
+                double convertedAmount =
+                        exchangeService.convertCurrency(accountService.getAccountByIBAN(
+                                        command.getAccount()).getCurrency(), currency,
+                                command.getAmount());
+                BigDecimal preciseAmount =
+                        new BigDecimal(convertedAmount).setScale(DECIMAL_PRECISION,
+                                RoundingMode.DOWN);
+                double finalAmount = preciseAmount.doubleValue();
+                Transaction transaction =
+                        new SendMoneyTransaction(command.getTimestamp(),
+                                command.getDescription(), command.getAccount(),
+                                command.getReciever(),
+                                finalAmount, currency, "received");
+                accountService.getAccountByIBAN(command.getReciever()).addTransaction(transaction);
+            }
+
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            if ("Insufficient funds in sender's account".equals(errorMessage)) {
+                Account senderAccount = accountService.getAccountByIBAN(command.getAccount());
+                if (senderAccount != null) {
+                    Transaction transaction =
+                            new InsufficientFundsTransaction(command.getTimestamp());
+                    senderAccount.addTransaction(transaction);
+                }
+            }
         }
     }
 

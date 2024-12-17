@@ -2,6 +2,7 @@ package org.poo.service;
 
 import org.poo.exception.AccountCanNotBeDeletedException;
 import org.poo.exception.AccountNotFoundException;
+import org.poo.exception.InsufficientFundsException;
 import org.poo.exception.UserNotFoundException;
 import org.poo.model.account.Account;
 import org.poo.model.account.ClassicAccount;
@@ -136,18 +137,18 @@ public final class AccountService {
                             final String receiverAliasOrIBAN) {
         String receiverIban = resolveAliasOrIBAN(receiverAliasOrIBAN);
         if (receiverIban == null) {
-            return "Receiver account not found or invalid alias.";
+            throw new AccountNotFoundException("Receiver account not found or invalid alias.");
         }
 
         Account senderAccount = getAccountByIBAN(senderIban);
         Account receiverAccount = getAccountByIBAN(receiverIban);
 
         if (senderAccount == null) {
-            return "Sender account not found.";
+            throw new AccountNotFoundException("Sender account not found.");
         }
 
         if (receiverAccount == null) {
-            return "Receiver account not found.";
+            throw new AccountNotFoundException("Receiver account not found.");
         }
 
         double convertedAmount = exchangeService.convertCurrency(
@@ -157,7 +158,7 @@ public final class AccountService {
         );
 
         if (senderAccount.getBalance() < amount) {
-            return "Insufficient funds in sender's account";
+            throw new InsufficientFundsException("Insufficient funds in sender's account");
         }
 
         senderAccount.withdraw(amount);
@@ -188,7 +189,7 @@ public final class AccountService {
     public String changeInterestRate(final String iban, final Double interestRate) {
         Account account = getAccountByIBAN(iban);
         if (account == null) {
-            throw new IllegalArgumentException("Account not found with IBAN: " + iban);
+            throw new AccountNotFoundException("Account not found with IBAN: " + iban);
         }
         if (account.getAccountType().equals("classic")) {
             return "This is not a savings account";
@@ -214,7 +215,7 @@ public final class AccountService {
         for (String iban : accounts) {
             Account account = getAccountByIBAN(iban);
             if (account == null) {
-                return "Account not found with IBAN: " + iban;
+                throw new AccountNotFoundException("Account not found with IBAN: " + iban);
             }
             double convertedAmount = splitAmount;
             if (!account.getCurrency().equals(currency)) {
@@ -251,7 +252,7 @@ public final class AccountService {
     public List<Transaction> getTransactions(final String iban) {
         Account account = getAccountByIBAN(iban);
         if (account == null) {
-            throw new IllegalArgumentException("Account not found with IBAN: " + iban);
+            throw new AccountNotFoundException("Account not found with IBAN: " + iban);
         }
         return account.getTransactions();
     }

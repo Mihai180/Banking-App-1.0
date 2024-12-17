@@ -1,5 +1,6 @@
 package org.poo.service;
 
+import org.poo.exception.UserAlreadyExistsException;
 import org.poo.exception.UserNotFoundException;
 import org.poo.fileio.UserInput;
 import org.poo.model.user.User;
@@ -16,7 +17,7 @@ public final class UserService {
     public void createUser(final UserInput userInput) {
         String email = userInput.getEmail();
         if (usersByEmail.containsKey(email)) {
-            throw new IllegalArgumentException("User already exists: " + email);
+            throw new UserAlreadyExistsException("User already exists: " + email);
         }
 
         User user = new User(userInput.getFirstName(), userInput.getLastName(), email);

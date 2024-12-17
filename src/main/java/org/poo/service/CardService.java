@@ -1,5 +1,11 @@
 package org.poo.service;
 
+import org.poo.exception.AccountNotFoundException;
+import org.poo.exception.CardNotFoundException;
+import org.poo.exception.FrozenCardException;
+import org.poo.exception.UnauthorizedAccessException;
+import org.poo.exception.InsufficientFundsException;
+import org.poo.exception.CardIsUsedException;
 import org.poo.model.account.Account;
 import org.poo.model.card.Card;
 import org.poo.model.card.OneTimePayCard;
@@ -42,7 +48,7 @@ public final class CardService {
         Account account = accountService.getAccountByIBAN(accountIBAN);
 
         if (account == null) {
-            throw new IllegalArgumentException("Account not found with IBAN: " + accountIBAN);
+            throw new AccountNotFoundException("Account not found with IBAN: " + accountIBAN);
         }
 
         if (!account.getOwner().getEmail().equals(email)) {
@@ -95,15 +101,15 @@ public final class CardService {
         Card card = cardsByNumber.get(cardNumber);
 
         if (card == null) {
-            return "Card not found";
+            throw new CardNotFoundException("Card not found");
         }
 
         if (card.isBlocked()) {
-            return "Card is frozen";
+            throw new FrozenCardException("Card is frozen");
         }
 
         if (!card.getOwner().getEmail().equals(email)) {
-            return "Unauthorized access to card";
+            throw new UnauthorizedAccessException("Unauthorized access to card");
         }
 
         double finalAmount = amount;
@@ -113,13 +119,13 @@ public final class CardService {
         }
 
         if (card.getAccount().getBalance() < finalAmount) {
-            return "Insufficient funds";
+            throw new InsufficientFundsException("Insufficient funds");
         }
 
         String result = card.makePayment(finalAmount, cardsByNumber);
 
         if (result.equals("You can't pay this amount because is used")) {
-            return result;
+            throw new CardIsUsedException("You can't pay this amount because is used");
         }
 
         if (result.equals("Success") && card.getCardType().equals("OneTimePayCard")) {
@@ -133,7 +139,6 @@ public final class CardService {
         }
 
         Double minBalance = card.getAccount().getMinimumBalance();
-
         if (minBalance == null) {
             return "Success";
         }
