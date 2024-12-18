@@ -6,27 +6,35 @@ import org.poo.model.exchange.CurrencyExchangeRate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clasa finală ExchangeService gestionează operațiunile de conversie valutară
+ */
 public final class ExchangeService {
     private List<CurrencyExchangeRate> exchangeRates = new ArrayList<>();
 
     /**
-     *
-     * @param exchangeInputs
+     * Încarcă ratele de schimb valutar dintr-o listă de intrări
+     * @param exchangeInputs este Lista de obiecte ExchangeInput care conțin
+     * datele pentru ratele de schimb
      */
     public void loadExchangeRates(final List<ExchangeInput> exchangeInputs) {
         for (ExchangeInput input : exchangeInputs) {
             exchangeRates.add(new CurrencyExchangeRate(
-                    input.getFrom(), input.getTo(), input.getRate()
-            ));
+                    input.getFrom(), input.getTo(), input.getRate()));
         }
     }
 
     /**
-     *
-     * @param fromCurrency
-     * @param toCurrency
-     * @param amount
-     * @return
+     * Convertește o sumă dintr-o monedă în alta, utilizând ratele de schimb valutar disponibile
+     * Dacă nu există o rată directă între cele două monede, încearcă să găsească o cale
+     * intermediară
+     * prin alte monede disponibile.
+     * @param fromCurrency este moneda din care se face conversia
+     * @param toCurrency este moneda în care se face conversia
+     * @param amount este suma de convertit
+     * @return suma convertită în moneda dorită
+     * @throws NoExchangeRateException dacă nu există o rată de schimb valutar disponibilă
+     * între cele două monede
      */
     public double convertCurrency(final String fromCurrency, final String toCurrency,
                                   final double amount) {

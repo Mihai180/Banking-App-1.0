@@ -2,6 +2,9 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
+/**
+ * Clasa abstractă Transaction reprezintă o tranzacție generală
+ */
 public abstract class Transaction {
     protected int timestamp;
     protected String description;
@@ -12,42 +15,39 @@ public abstract class Transaction {
     }
 
     /**
-     *
-     * @return
+     * @return descrierea tranzacției
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     *
-     * @return
+     * @return timestamp-ul tranzacției
      */
     public int getTimestamp() {
         return timestamp;
     }
 
     /**
-     *
-     * @return
+     * @return tipul specific al tranzacției
      */
     public abstract String getType();
 
     /**
-     *
-     * @param visitor
+     * Acceptă un vizitator
+     * @param visitor este obiectul care implementează interfața TransactionVisitor
      */
     public abstract void accept(TransactionVisitor visitor);
 
     /**
-     *
-     * @return
+     * Este folosită doar pentru card payment transaction
+     * @return numele comerciantului implicat în tranzacție, dacă este cazul
      */
     public abstract String getPaymentCommerciant();
 
     /**
-     *
-     * @return
+     * Este folosită doar pentru card payment transaction
+     * @return returnează suma plății asociate tranzacției, dacă este cazul
      */
     public abstract double getPaymentAmount();
 }

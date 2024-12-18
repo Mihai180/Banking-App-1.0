@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru verificarea statusului unui card.
+ * Această clasă stochează informațiile necesare pentru verificarea statusului unui card,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class CheckCardStatusCommand implements Command {
     private final String command;
     private final String cardNumber;

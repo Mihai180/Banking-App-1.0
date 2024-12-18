@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Clasa finală AccountService gestionează operațiunile legate de conturi
+ */
 public final class AccountService {
     private Map<String, Account> accountsByIban = new HashMap<>();
     private UserService userService;
@@ -25,19 +28,20 @@ public final class AccountService {
     }
 
     /**
-     *
+     * Golește toate conturile gestionate de serviciu
      */
     public void clear() {
         accountsByIban.clear();
     }
 
     /**
-     *
-     * @param email
-     * @param accountType
-     * @param currency
-     * @param interestRate
-     * @return
+     * Creează un cont nou pentru un utilizator specificat prin email
+     * @param email este adresa de email a utilizatorului pentru care se creează contul
+     * @param accountType este tipul contului
+     * @param currency este moneda în care este exprimat contul
+     * @param interestRate este rata dobânzii pentru conturile de economii
+     * @return contul creat
+     * @throws UserNotFoundException dacă utilizatorul cu email-ul specificat nu este găsit
      */
     public Account createAccount(final String email, final String accountType,
                                  final String currency, final Double interestRate) {
@@ -46,8 +50,8 @@ public final class AccountService {
         if (user == null) {
             throw new UserNotFoundException("User not found with email: " + email);
         }
-        String iban = Utils.generateIBAN();
 
+        String iban = Utils.generateIBAN();
         Account account;
         if (accountType.equals("savings")) {
             account = new SavingsAccount(iban, user, currency, interestRate);
@@ -61,9 +65,10 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param iban
-     * @param amount
+     * Adaugă fonduri la un cont specificat prin IBAN
+     * @param iban este IBAN-ul contului în care se vor adăuga fondurile
+     * @param amount este suma de adăugat
+     * @throws AccountNotFoundException dacă contul cu IBAN-ul specificat nu este găsit
      */
     public void addFunds(final String iban, final Double amount) {
         Account account = getAccountByIBAN(iban);
@@ -75,9 +80,14 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param iban
-     * @param email
+     * Șterge un cont asociat unui utilizator, dacă soldul contului este zero
+     * @param iban este IBAN-ul contului care trebuie șters
+     * @param email este adresa de email a utilizatorului asociat contului
+     * @throws UserNotFoundException dacă utilizatorul cu email-ul specificat nu este găsit
+     * @throws AccountNotFoundException dacă contul cu IBAN-ul specificat nu este găsit în
+     * conturile utilizatorului
+     * @throws AccountCanNotBeDeletedException dacă contul are un sold diferit de zero și
+     * nu poate fi șters
      */
     public void deleteAccount(final String iban, final String email) {
         User user = userService.getUserByEmail(email);
@@ -108,18 +118,19 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param iban
-     * @return
+     * Returnează contul asociat unui IBAN specificat
+     * @param iban este IBAN-ul contului
+     * @return Contul asociat IBAN-ului sau null dacă nu este găsit
      */
     public Account getAccountByIBAN(final String iban) {
         return accountsByIban.get(iban);
     }
 
     /**
-     *
-     * @param accountIBAN
-     * @param minBalance
+     * Setează soldul minim pentru un cont specificat prin IBAN
+     * @param accountIBAN este IBAN-ul contului pentru care se setează soldul minim
+     * @param minBalance este soldul minim care trebuie menținut
+     * @throws AccountNotFoundException dacă contul cu IBAN-ul specificat nu este găsit
      */
     public void setMinBalance(final String accountIBAN, final double minBalance) {
         Account account = getAccountByIBAN(accountIBAN);
@@ -127,11 +138,13 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param senderIban
-     * @param amount
-     * @param receiverAliasOrIBAN
-     * @return
+     * Transferă bani de la un cont la altul, posibil cu conversie valutară
+     * @param senderIban este IBAN-ul contului expeditor
+     * @param amount este suma de transferat
+     * @param receiverAliasOrIBAN este alias-ul sau IBAN-ul contului destinatar
+     * @return mesaj de succes dacă transferul a avut loc cu succes
+     * @throws AccountNotFoundException dacă contul expeditor sau destinatar nu este găsit
+     * @throws InsufficientFundsException dacă contul expeditor nu are fonduri suficiente
      */
     public String sendMoney(final String senderIban, final double amount,
                             final String receiverAliasOrIBAN) {
@@ -167,24 +180,26 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param aliasOrIBAN
-     * @return
+     * Transformă un alias (dacă există) în IBAN-ul corespunzător
+     * @param aliasOrIban este alias-ul sau IBAN-ul care trebuie rezolvat
+     * @return IBAN-ul corespunzător alias-ului sau IBAN-ul dacă nu există alias
      */
-    private String resolveAliasOrIBAN(final String aliasOrIBAN) {
+    private String resolveAliasOrIBAN(final String aliasOrIban) {
         for (User user : userService.getAllUsers().values()) {
-            if (user.getAliases().containsKey(aliasOrIBAN)) {
-                return user.getAliases().get(aliasOrIBAN);
+            if (user.getAliases().containsKey(aliasOrIban)) {
+                return user.getAliases().get(aliasOrIban);
             }
         }
-        return aliasOrIBAN;
+        return aliasOrIban;
     }
 
     /**
-     *
-     * @param iban
-     * @param interestRate
-     * @return
+     * Schimbă rata dobânzii pentru un cont de economii specificat prin IBAN
+     * @param iban este IBAN-ul contului
+     * @param interestRate este noua rată a dobânzii
+     * @return mesaj de succes dacă schimbarea a avut loc cu succes sau un mesaj de eroare
+     * dacă contul nu este de economii
+     * @throws AccountNotFoundException dacă contul cu IBAN-ul specificat nu este găsit
      */
     public String changeInterestRate(final String iban, final Double interestRate) {
         Account account = getAccountByIBAN(iban);
@@ -201,11 +216,13 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param accounts
-     * @param currency
-     * @param amount
-     * @return
+     * Efectuează o plată împărțită între mai multe conturi
+     * @param accounts este lista de IBAN-uri ale conturilor între care se va face plata
+     * @param currency este moneda în care este exprimată suma totală a plății
+     * @param amount este suma totală a plății care trebuie împărțită
+     * @return mesaj de succes dacă plata a fost împărțită cu succes sau un mesaj de eroare
+     * dacă un cont are fonduri insuficiente
+     * @throws AccountNotFoundException dacă unul dintre conturile specificate nu este găsit
      */
     public String splitPayment(final List<String> accounts, final String currency,
                                final double amount) {
@@ -245,9 +262,10 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param iban
-     * @return
+     * Returnează lista de tranzacții pentru un cont specificat prin IBAN
+     * @param iban este IBAN-ul contului pentru care se solicită tranzacțiile
+     * @return lista de tranzacții asociate contului
+     * @throws AccountNotFoundException dacă contul cu IBAN-ul specificat nu este găsit
      */
     public List<Transaction> getTransactions(final String iban) {
         Account account = getAccountByIBAN(iban);
@@ -258,9 +276,10 @@ public final class AccountService {
     }
 
     /**
-     *
-     * @param iban
-     * @return
+     * Adaugă dobândă la un cont de economii specificat prin IBAN
+     * @param iban este IBAN-ul contului la care se adaugă dobânda
+     * @return Mmsaj de succes dacă dobânda a fost adăugată sau un
+     * mesaj de eroare dacă contul nu este de economii
      */
     public String addInterestRate(final String iban) {
         Account account = getAccountByIBAN(iban);

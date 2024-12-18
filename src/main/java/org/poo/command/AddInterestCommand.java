@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru încasarea dobânzii.
+ * Această clasă stochează informațiile necesare pentru încasarea dobânzii,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class AddInterestCommand implements Command {
     private final String command;
     private final String account;

@@ -1,11 +1,14 @@
 package org.poo.model.user;
 
 import org.poo.model.account.Account;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clasa finală User reprezintă un utilizator al sistemului bancar, conținând informații personale
+ * și gestionând conturile asociate acestuia
+ */
 public final class User {
     private final String firstName;
     private final String lastName;
@@ -42,8 +45,9 @@ public final class User {
     }
 
     /**
-     *
-     * @param account
+     * Adaugă un cont nou la lista de conturi ale utilizatorului
+     * Dacă contul nu este null, acesta este adăugat în listă
+     * @param account este contul care trebuie adăugat
      */
     public void addAccount(final Account account) {
         if (account != null) {
@@ -52,28 +56,11 @@ public final class User {
    }
 
     /**
-     *
-     * @param aliasName
-     * @param accountIban
+     * Adaugă un alias pentru un cont specificat prin IBAN
+     * @param aliasName este numele aliasului care va fi asociat contului
+     * @param accountIban este IBAN-ul contului pentru care se creează aliasul
      */
    public void addAlias(final String aliasName, final String accountIban) {
         aliases.put(aliasName, accountIban);
-   }
-
-    /**
-     *
-     * @param aliasName
-     * @return
-     */
-   public Account getAccountByAlias(final String aliasName) {
-        String accountIban = aliases.get(aliasName);
-        if (accountIban != null) {
-            for (Account account : accounts) {
-                if (account.getIban().equals(accountIban)) {
-                    return account;
-                }
-            }
-        }
-        return null;
    }
 }

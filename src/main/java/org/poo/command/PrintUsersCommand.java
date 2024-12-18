@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru afișarea utilizatorilor.
+ * Această clasă stochează informațiile necesare pentru afișarea utilizatorilor,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class PrintUsersCommand implements Command {
     private final String commandName;
     private final int timestamp;

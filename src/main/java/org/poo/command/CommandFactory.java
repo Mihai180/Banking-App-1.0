@@ -2,11 +2,16 @@ package org.poo.command;
 
 import org.poo.fileio.CommandInput;
 
+/**
+ * Fabrica de comenzi care instanțiază tipul de comandă corect
+ * în funcție de datele primite prin CommandInput.
+ */
 public final class CommandFactory {
     /**
-     *
-     * @param input
-     * @return
+     * Creează și returnează o instanță de Command corespunzătoare
+     * tipului de comandă specificat în input.
+     * @param input este un obiect ce conține datele necesare pentru crearea unei comenzi
+     * @return instanța de Command corespunzătoare
      */
     public Command createCommand(final CommandInput input) {
         String commandName = input.getCommand();

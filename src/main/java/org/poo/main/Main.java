@@ -103,26 +103,36 @@ public final class Main {
          *
          */
 
+        // Resetez seed-urile pentru generarea de IBAN și număr de card între teste
         Utils.resetRandom();
 
+        // Inițializez serviciile care reprezintă logica de lucru cu utilizatorii,
+        // conturi, carduri și tranzacții
         UserService userService = new UserService();
         ExchangeService exchangeService = new ExchangeService();
         AccountService accountService = new AccountService(userService, exchangeService);
         CardService cardService = new CardService(userService, accountService, exchangeService);
         TransactionService transactionService = new TransactionService(userService);
 
+        // Dacă inputData conține informații despre utilizatori, aceștia sunt creați
+        // prin intermediul userService
         if (inputData.getUsers() != null) {
             for (UserInput userInput : inputData.getUsers()) {
                 userService.createUser(userInput);
             }
         }
 
+        // Dacă inputData conține rate de schimb valutar, acestea sunt încărcate
+        // în exchangeService
         if (inputData.getExchangeRates() != null) {
             exchangeService.loadExchangeRates(Arrays.asList(inputData.getExchangeRates()));
         }
 
+        // Se creează o fabrică de comenzi care va produce obiecte de tip Command pe baza inputului
         CommandFactory commandFactory = new CommandFactory();
 
+        // Se instanțiază un vizitator concret care va executa logica aferentă fiecărei comenzi,
+        // folosind serviciile disponibile.
         ConcreteCommandVisitor visitor = new ConcreteCommandVisitor(
                 userService,
                 accountService,
@@ -133,6 +143,9 @@ public final class Main {
                 objectMapper
         );
 
+        // Dacă există comenzi în inputData, pentru fiecare se creează comanda corespunzătoare,
+        // apoi se apelează metoda accept, care permite vizitatorului să proceseze comanda și să
+        // producă rezultatul.
         if (inputData.getCommands() != null) {
             for (CommandInput cmdInput : inputData.getCommands()) {
                 Command command = commandFactory.createCommand(cmdInput);
@@ -140,6 +153,7 @@ public final class Main {
             }
         }
 
+        // După ce toate operațiunile au fost efectuate, se curăță datele din servicii.
         userService.clear();
         accountService.clear();
         cardService.clear();

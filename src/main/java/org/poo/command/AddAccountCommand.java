@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru adăugarea unui cont nou.
+ * Această clasă stochează informațiile necesare pentru crearea unui cont,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class AddAccountCommand implements Command {
     private final String commandName;
     private final int timestamp;

@@ -16,6 +16,11 @@ import org.poo.model.transaction.MinimumAmountOfFundsTransaction;
 import org.poo.model.transaction.SendMoneyTransaction;
 import org.poo.model.transaction.SplitPaymentTransaction;
 
+/**
+ * Clasa ConcreteTransactionVisitor implementează interfața TransactionVisitor
+ * și oferă implementări concrete pentru fiecare tip de tranzacție. Aceasta este utilizată
+ * pentru a genera reprezentări JSON detaliate ale diferitelor tipuri de tranzacții.
+ */
 public final class ConcreteTransactionVisitor implements TransactionVisitor {
     private final ObjectMapper mapper;
     private final ObjectNode transactionNode;

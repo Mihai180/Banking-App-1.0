@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru ștergerea unui card.
+ * Această clasă stochează informațiile necesare pentru ștergerea unui card,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class DeleteCardCommand implements Command {
     private final int timestamp;
     private final String cardNumber;

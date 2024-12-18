@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru depunerea de fonduri în cont.
+ * Această clasă stochează informațiile necesare pentru depunerea de fonduri în cont
+ * iar logica comenzii este realizată de CommandVisitor.
+ */
 public final class AddFundsCommand implements Command {
     private final String commandName;
     private final int timestamp;

@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru trimiterea banilor.
+ * Această clasă stochează informațiile necesare pentru trimiterea banilor,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class SendMoneyCommand implements Command {
     private final String account;
     private final double amount;

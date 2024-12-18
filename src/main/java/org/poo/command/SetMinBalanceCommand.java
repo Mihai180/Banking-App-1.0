@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru setarea balanței minime a unui cont.
+ * Această clasă stochează informațiile necesare pentru setarea balanțe,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class SetMinBalanceCommand implements Command {
     private final String accountIban;
     private final double minBalance;

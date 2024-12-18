@@ -1,5 +1,8 @@
 package org.poo.model.exchange;
 
+/**
+ * Clasa finală CurrencyExchangeRate reprezintă o rată de schimb între două monede
+ */
 public final class CurrencyExchangeRate {
     private final String fromCurrency;
     private final String toCurrency;

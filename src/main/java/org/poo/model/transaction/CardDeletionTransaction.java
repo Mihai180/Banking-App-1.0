@@ -2,6 +2,10 @@ package org.poo.model.transaction;
 
 import org.poo.visitor.transaction.TransactionVisitor;
 
+/**
+ * Clasa finală CardDeletionTransaction reprezintă o tranzacție specifică
+ * pentru ștergerea unui card
+ */
 public final class CardDeletionTransaction extends Transaction {
     private final String cardNumber;
     private final String cardHolder;
@@ -28,11 +32,19 @@ public final class CardDeletionTransaction extends Transaction {
         return account;
     }
 
+    /**
+     * Folosită doar la card payment transaction
+     * @return null
+     */
     @Override
     public String getPaymentCommerciant() {
         return null;
     }
 
+    /**
+     * Folosită doar la card payment transaction
+     * @return 0
+     */
     @Override
     public double getPaymentAmount() {
         return 0;
@@ -43,9 +55,12 @@ public final class CardDeletionTransaction extends Transaction {
         return "CardDeletion";
     }
 
+    /**
+     * Acceptă un vizitator
+     * @param visitor este obiectul care implementează interfața TransactionVisitor
+     */
     @Override
     public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);
     }
-
 }

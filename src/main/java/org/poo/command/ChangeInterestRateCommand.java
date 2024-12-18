@@ -2,6 +2,11 @@ package org.poo.command;
 
 import org.poo.visitor.command.CommandVisitor;
 
+/**
+ * Comanda utilizată pentru schimbarea dobânzii unui cont.
+ * Această clasă stochează informațiile necesare pentru schimbarea dobânzii,
+ * iar logica comenzii este realizată de CommandVisitor
+ */
 public final class ChangeInterestRateCommand implements Command {
     private final int timestamp;
     private final String account;

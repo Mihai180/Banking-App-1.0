@@ -3,6 +3,10 @@ package org.poo.model.transaction;
 import org.poo.visitor.transaction.TransactionVisitor;
 import java.util.List;
 
+/**
+ * Clasa finală SplitPaymentTransaction reprezintă o tranzacție specifică pentru
+ * efectuarea unei plăți împărțite între mai multe conturi
+ */
 public final class SplitPaymentTransaction extends Transaction {
     private final String currency;
     private final String amount;
@@ -19,11 +23,19 @@ public final class SplitPaymentTransaction extends Transaction {
         this.splitAmount = splitAmount;
     }
 
+    /**
+     * Folosită doar la card payment transaction
+     * @return null
+     */
     @Override
     public String getPaymentCommerciant() {
         return null;
     }
 
+    /**
+     * Folosită doar la card payment transaction
+     * @return 0
+     */
     @Override
     public double getPaymentAmount() {
         return 0;
@@ -50,6 +62,10 @@ public final class SplitPaymentTransaction extends Transaction {
         return "SplitPayment";
     }
 
+    /**
+     * Acceptă un vizitator
+     * @param visitor este obiectul care implementează interfața TransactionVisitor
+     */
     @Override
     public void accept(final TransactionVisitor visitor) {
         visitor.visit(this);

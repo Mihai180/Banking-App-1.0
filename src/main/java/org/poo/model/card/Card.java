@@ -2,9 +2,11 @@ package org.poo.model.card;
 
 import org.poo.model.account.Account;
 import org.poo.model.user.User;
-
 import java.util.Map;
 
+/**
+ * Clasa abstractă Card reprezintă un card asociat unui cont bancar
+ */
 public abstract class Card {
     protected String cardNumber;
     protected final Account account;
@@ -19,54 +21,47 @@ public abstract class Card {
     }
 
     /**
-     *
-     * @return
+     * Returnează numărul cardului
+     * @return numărul cardului
      */
     public String getCardNumber() {
         return cardNumber;
     }
 
     /**
-     *
-     * @return
+     * Returnează contul asociat cardului
+     * @return contul cardului
      */
     public Account getAccount() {
         return account;
     }
 
     /**
-     *
-     * @return
+     * Returnează proprietarul cardului
+     * @return proprietarul cardului
      */
     public User getOwner() {
         return owner;
     }
 
     /**
-     *
-     * @return
+     * Verifică dacă cardul este blocat
+     * @return true dacă este blocat, false dacă este activ
      */
     public boolean isBlocked() {
         return isBlocked;
     }
 
     /**
-     *
+     * Blochează cardul
      */
     public void block() {
         isBlocked = true;
     }
 
     /**
-     *
-     */
-    public void unblock() {
-        isBlocked = false;
-    }
-
-    /**
-     *
-     * @return
+     * Verifică starea cardului, returnând "frozen" dacă este blocat și "active" dacă este activ
+     * @return "frozen" sau "active"
      */
     public String checkStatus() {
         if (isBlocked) {
@@ -76,30 +71,30 @@ public abstract class Card {
     }
 
     /**
-     *
-     * @param cardNumber
+     * Setează un nou număr pentru card
+     * @param cardNumber este noul număr al cardului
      */
     public void setCardNumber(final String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
     /**
-     *
-     * @param amount
-     * @param cardsByNumber
-     * @return
+     * Efectuează o plată cu cardul
+     * @param amount este suma de plată
+     * @param cardsByNumber este un map de carduri indexate după numărul cardului
+     * @return mesajul pentru plată
      */
     public abstract String makePayment(double amount, Map<String, Card> cardsByNumber);
 
     /**
-     *
-     * @param isUsed
+     * Setează dacă cardul a fost utilizat sau nu
+     * @param isUsed true dacă cardul este marcat ca utilizat, false altfel
      */
     public abstract void setIsUsed(boolean isUsed);
 
     /**
-     *
-     * @return
+     * Returnează tipul cardului, care va fi definit de clasele derivate
+     * @return Tipul cardului
      */
     public abstract String getCardType();
 }
