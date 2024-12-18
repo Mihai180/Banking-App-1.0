@@ -4,7 +4,7 @@ import org.poo.visitor.command.CommandVisitor;
 
 /**
  * Comanda utilizată pentru crearea unui nou card pentru un cont.
- * Această clasă stochează informațiile necesare pentru ccrearea unui nou card,
+ * Această clasă stochează informațiile necesare pentru crearea unui nou card,
  * iar logica comenzii este realizată de CommandVisitor
  */
 public final class CreateCardCommand implements Command {

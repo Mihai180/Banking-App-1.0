@@ -18,7 +18,7 @@ public final class UserService {
      * Verifică dacă un utilizator cu adresa de email specificată deja există pentru a
      * preveni duplicarea
      * @param userInput este Obiectul UserInput care conține datele necesare pentru crearea
-     *                  unui utilizator
+     * unui utilizator
      * @throws UserAlreadyExistsException dacă un utilizator cu email-ul specificat deja există
      * în sistem
      */

@@ -4,8 +4,8 @@ import org.poo.visitor.command.CommandVisitor;
 
 /**
  * Comanda utilizată pentru verificarea dacă au fost implementate toate comenziile.
- * Această clasă stochează informațiile necesare pentru verificare,
- * iar logica comenzii este realizată de CommandVisitor
+ * Această clasă stochează informațiile necesare pentru identificarea cât mai rapidă
+ * a comenzii neimplementate, iar logica comenzii este realizată de CommandVisitor
  */
 public final class NotImplementedCommand implements Command {
     private final String commandName;
