@@ -1,0 +1,119 @@
+commit eb527b3d2e83c1713e8e76a3d99c5324be8abbd2
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Wed Dec 18 23:25:08 2024 +0200
+
+    Completare README.md
+
+commit 60f8cfdb0b81a3acca384078c250cf79900c375d
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Wed Dec 18 18:15:46 2024 +0200
+
+    Adaugarea comentarilor in cod
+
+commit 842e0f614ad6cd1c3466f2dd23d561dcdb44fec9
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Tue Dec 17 15:42:35 2024 +0200
+
+    Tratarea tuturor exceptiilor
+
+commit 57b6b91024989021b4747ef563274fe19589d679
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Tue Dec 17 14:35:38 2024 +0200
+
+    Adaugarea mai multor exceptii
+
+commit cf793206b37bfc2f1fdc0e35c99a35d24b165d5f
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Mon Dec 16 23:56:59 2024 +0200
+
+    Rezolvare erori checkstyle si  stergere cod nefolosit
+
+commit 1a4ac2ea9ce2388096a2a68623c2888b4f63ae43
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sun Dec 15 16:37:08 2024 +0200
+
+    Stergere fisiere neutilizate
+
+commit e66fefc3d75542524c828ed52bb4c4686fc5b5bb
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sat Dec 14 22:33:34 2024 +0200
+
+    Modificarea pentru check card status si adaufarea tranzactiei pentru change interest rate
+
+commit bc084c20e599660fbfa341c5a4b57fed3be04957
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sat Dec 14 18:22:53 2024 +0200
+
+    Modificare Pay Online
+
+commit bc289ad30f61f1a28cbd3991af7e0f6d18f21f09
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Fri Dec 13 17:35:51 2024 +0200
+
+    Adaugarea tranzactiilor pentru erori la stergerea unui cont si la un split payment
+
+commit 967f177e39fed07b5c626ee663177fc4be87e430
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Fri Dec 13 14:37:49 2024 +0200
+
+    Adaugarea comenzilor pentru reports si spendings reports
+
+commit 648a4254edd311d8e85dcf8c85606f2e0a53ed7e
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Thu Dec 12 23:35:13 2024 +0200
+
+    Adaugarea comenzii de split payment
+
+commit 017b05cdd7c172beaea59e791eed136f66dfeb0e
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Thu Dec 12 18:53:00 2024 +0200
+
+    Adaugarea comenzii pentru change interest rate
+
+commit fd6ce19c34e9418e62e5b8b78d6644aea17bfc2f
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Wed Dec 11 22:03:14 2024 +0200
+
+    Adaugarea tranzactiei de insufficient funds si pentru send money
+
+commit c161c08c329bdebfe5edf70eecfe1017a5976db7
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Wed Dec 11 21:55:14 2024 +0200
+
+    Contorizarea mai multor tranzactii si implementarea check card status
+
+commit 67740054fda5009baf53df7b51ef3d9b2c3702af
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Tue Dec 10 22:19:35 2024 +0200
+
+    Adaugarea posibilitatii de trimitere a banilor si printare a unor tranzactii
+
+commit 9ea22453317fa8220e650f95a18e9cdd3a51aa50
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sun Dec 8 19:47:59 2024 +0200
+
+    Completare logica pentru exchange si cazurile de eroare pentru payOnline
+
+commit 1dfaa4c971c2e87ca52cdd436d247a840e23981d
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sun Dec 8 16:37:46 2024 +0200
+
+    Adaugarea serviciului de exchange si de plata Online si eliminarea Visitors pentru account si card deoarece era inutil, avand doar doua subclase
+
+commit d21716020165d163c41800e817d30530ffc51f7a
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Sat Dec 7 21:05:42 2024 +0200
+
+    Codul dupa ce a inceput sa treaca teste
+
+commit 95b28407937f370668c18b5543b53f72869b0709
+Author: Mihai180 <paunescumihai2004@gmail.com>
+Date:   Tue Dec 3 12:50:23 2024 +0200
+
+    Adaugarea fisierelor din schelet.
+
+commit bc226cc50ca3957de7ed60fb4b25eba1b597e22e
+Author: Mihai180 <152068650+Mihai180@users.noreply.github.com>
+Date:   Tue Dec 3 12:38:40 2024 +0200
+
+    Initial commit

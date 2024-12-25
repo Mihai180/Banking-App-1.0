@@ -11,10 +11,34 @@ import java.util.List;
  * Clasa finală TransactionService gestionează operațiunile legate de tranzacții pentru utilizatori
  */
 public final class TransactionService {
+    // Instanța unică a clasei TransactionService
+    private static TransactionService instance;
     private UserService userService;
 
-    public TransactionService(final UserService userService) {
+    // Constructor privat pentru a preveni instanțierea directă din exterior
+    private TransactionService(final UserService userService) {
         this.userService = userService;
+    }
+
+    /**
+     * Metodă statică pentru a obține instanța unică a clasei TransactionService
+     * Dacă instanța nu există, aceasta este creată
+     * @param userService este instanța UserService necesară pentru TransactionService
+     * @return instanța unică a TransactionService
+     */
+    public static TransactionService getInstance(final UserService userService) {
+        if (instance == null) {
+            instance = new TransactionService(userService);
+        }
+        return instance;
+    }
+
+    /**
+     * Metodă statică pentru a reseta instanța unică a clasei TransactionService
+     * Folosită pentru resetarea instanței între teste
+     */
+    public static void resetInstance() {
+        instance = null;
     }
 
     /**

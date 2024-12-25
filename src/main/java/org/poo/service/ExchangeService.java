@@ -10,7 +10,33 @@ import java.util.List;
  * Clasa finală ExchangeService gestionează operațiunile de conversie valutară
  */
 public final class ExchangeService {
+    // Instanța unică a clasei ExchangeService
+    private static ExchangeService instance;
     private List<CurrencyExchangeRate> exchangeRates = new ArrayList<>();
+
+    // Constructor privat pentru a preveni instanțierea directă din exterior
+    private ExchangeService() {
+    }
+
+    /**
+     * Metodă statică pentru a obține instanța unică a clasei ExchangeService
+     * Dacă instanța nu există, aceasta este creată
+     * @return instanța unică a ExchangeService
+     */
+    public static ExchangeService getInstance() {
+        if (instance == null) {
+            instance = new ExchangeService();
+        }
+        return instance;
+    }
+
+    /**
+     * Metodă statică pentru a reseta instanța unică a clasei ExchangeService
+     * Folosită pentru resetarea instanței între teste
+     */
+    public static void resetInstance() {
+        instance = null;
+    }
 
     /**
      * Încarcă ratele de schimb valutar dintr-o listă de intrări

@@ -19,17 +19,45 @@ import java.util.Map;
  * Clasa finală CardService gestionează operațiunile legate de carduri
  */
 public final class CardService {
+    // Instanța unică a clasei CardService
+    private static CardService instance;
     private Map<String, Card> cardsByNumber = new HashMap<>();
     private UserService userService;
     private AccountService accountService;
     private ExchangeService exchangeService;
 
-    public CardService(final UserService userService,
+    // Constructor privat pentru a preveni instanțierea directă din exterior
+    private CardService(final UserService userService,
                        final AccountService accountService,
                        final ExchangeService exchangeService) {
         this.userService = userService;
         this.accountService = accountService;
         this.exchangeService = exchangeService;
+    }
+
+    /**
+     * Metodă statică pentru a obține instanța unică a clasei CardService
+     * Dacă instanța nu există, aceasta este creată
+     * @param userService este instanța UserService necesară pentru CardService
+     * @param accountService este instanța AccountService necesară pentru CardService
+     * @param exchangeService este instanța ExchangeService necesară pentru CardService
+     * @return instanța unică a CardService
+     */
+    public static CardService getInstance(final UserService userService,
+                                          final AccountService accountService,
+                                          final ExchangeService exchangeService) {
+        if (instance == null) {
+            instance = new CardService(userService, accountService, exchangeService);
+        }
+        return instance;
+    }
+
+    /**
+     * Metodă statică pentru a reseta instanța unică a clasei CardService
+     * Folosită pentru resetarea instanței între teste
+     */
+    public static void resetInstance() {
+        instance = null;
     }
 
     /**

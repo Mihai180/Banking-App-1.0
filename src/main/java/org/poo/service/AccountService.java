@@ -18,13 +18,39 @@ import java.util.Map;
  * Clasa finală AccountService gestionează operațiunile legate de conturi
  */
 public final class AccountService {
+    // Instanța unică a clasei AccountService
+    private static AccountService instance;
     private Map<String, Account> accountsByIban = new HashMap<>();
     private UserService userService;
     private ExchangeService exchangeService;
 
-    public AccountService(final UserService userService, final ExchangeService exchangeService) {
+    // Constructor privat pentru a preveni instanțierea directă din exterior
+    private AccountService(final UserService userService, final ExchangeService exchangeService) {
         this.userService = userService;
         this.exchangeService = exchangeService;
+    }
+
+    /**
+     * Metodă statică pentru a obține instanța unică a clasei AccountService
+     * Dacă instanța nu există, aceasta este creată
+     * @param userService este instanța UserService necesară pentru AccountService
+     * @param exchangeService este instanța ExchangeService necesară pentru AccountService
+     * @return instanța unică a AccountService
+     */
+    public static AccountService getInstance(final UserService userService,
+                                             final ExchangeService exchangeService) {
+        if (instance == null) {
+            instance = new AccountService(userService, exchangeService);
+        }
+        return instance;
+    }
+
+    /**
+     * Metodă statică pentru a reseta instanța unică a clasei AccountService
+     * Folosită pentru resetarea instanței între teste
+     */
+    public static void resetInstance() {
+        instance = null;
     }
 
     /**

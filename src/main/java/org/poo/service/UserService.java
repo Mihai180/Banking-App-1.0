@@ -11,7 +11,34 @@ import java.util.Map;
  * Clasa finală UserService gestionează operațiunile legate de utilizatori
  */
 public final class UserService {
+    // Instanța unică a clasei UserService
+    private static UserService instance;
     private Map<String, User> usersByEmail = new LinkedHashMap<>();
+
+    // Constructor privat pentru a preveni instanțierea directă din exterior
+    // Folosit la design pattern-ul Singleton
+    private UserService() {
+    }
+
+    /**
+     * Metodă statică pentru a obține instanța unică a clasei UserService
+     * Dacă instanța nu există, aceasta este creată
+     * @return instanța unică a clasei UserService
+     */
+    public static UserService getInstance() {
+        if (instance == null) {
+            instance = new UserService();
+        }
+        return instance;
+    }
+
+    /**
+     * Metodă statică pentru a reseta instanța unică a clasei UserService
+     * Folosită pentru resetarea instanței între teste
+     */
+    public static void resetInstance() {
+        instance = null;
+    }
 
     /**
      * Creează un nou utilizator în sistem folosind informațiile furnizate prin obiectul UserInput
