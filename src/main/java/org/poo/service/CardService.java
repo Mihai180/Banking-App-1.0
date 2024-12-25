@@ -61,13 +61,6 @@ public final class CardService {
     }
 
     /**
-     * Golește toate cardurile gestionate de serviciu
-     */
-    public void clear() {
-        cardsByNumber.clear();
-    }
-
-    /**
      * Creează un card nou pentru un cont specificat
      * @param accountIBAN este IBAN-ul contului pentru care se creează cardul
      * @param cardType este tipul cardului

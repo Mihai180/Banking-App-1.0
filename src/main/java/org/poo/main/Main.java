@@ -154,11 +154,7 @@ public final class Main {
             }
         }
 
-        // După ce toate operațiunile au fost efectuate, se curăță datele din servicii.
-        //userService.clear();
-        //accountService.clear();
-        //cardService.clear();
-
+        // După ce toate operațiunile au fost efectuate, se resetează instanțele serviciilor.
         UserService.resetInstance();
         AccountService.resetInstance();
         ExchangeService.resetInstance();

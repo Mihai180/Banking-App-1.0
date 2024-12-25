@@ -60,13 +60,6 @@ public final class UserService {
     }
 
     /**
-     * Golește toți utilizatorii din sistem
-     */
-    public void clear() {
-        usersByEmail.clear();
-    }
-
-    /**
      * Recuperează un utilizator pe baza adresei de email
      * @param email este Adresa de email a utilizatorului care se dorește a fi recuperat
      * @return obiectul User asociat adresei de email specificate

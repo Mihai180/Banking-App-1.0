@@ -54,13 +54,6 @@ public final class AccountService {
     }
 
     /**
-     * Golește toate conturile gestionate de serviciu
-     */
-    public void clear() {
-        accountsByIban.clear();
-    }
-
-    /**
      * Creează un cont nou pentru un utilizator specificat prin email
      * @param email este adresa de email a utilizatorului pentru care se creează contul
      * @param accountType este tipul contului
