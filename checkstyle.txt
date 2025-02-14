@@ -1,2 +1,1 @@
-Starting audit...
-Audit done.
+Error: Unable to access jarfile src/main/resources/checkstyle-10.20.1-all.jar

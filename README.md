@@ -1,113 +1,111 @@
-# Proiect-Etapa-1-POO
+# J. POO Morgan Chase & Co.
 
-**Nume**: Păunescu Mihai-Ionuț  
-**Grupa**: 322CD  
-**Data**: 18.12.2024
+**Author**: Mihai-Ionuț Păunescu  
 
-## Descriere
-J. POO Morgan Chase & Co. este un proiect în Java care modelează operațiunile  
-bancare folosind design pattern-uri precum **Visitor** și **Factory**. Aplicația  
-gestionează utilizatori, conturi, carduri, tranzacții și conversii valutare.
+## Description
+J. POO Morgan Chase & Co. is a Java project that models banking operations  
+using design patterns such as **Visitor** and **Factory**. The application  
+manages users, accounts, cards, transactions, and currency conversions.
 
-**Visitor** separă logica fiecărei comenzi și adaugă rezultatele în output, 
-adaptat la fiecare tip de tranzacție.  
-**Factory** creează și inițializează comenzile, returnând un obiect specific  
-pentru fiecare tip de acțiune solicitată.
+The **Visitor** pattern separates the logic of each command and adds results  
+to the output, adapting to each type of transaction.  
+The **Factory** pattern creates and initializes commands, returning a specific  
+object for each type of requested action.
 
-## Caracteristici
+## Features
 
-- **Gestionarea Utilizatorilor**: Adăugarea, ștergerea și afișarea detaliilor.
-- **Administrarea Conturilor Bancare**: Crearea și ștergerea conturilor, setarea  
-  soldului minim și modificarea dobânzii pentru conturi.
-- **Managementul Cardurilor**: Crearea, ștergerea și verificarea cardurilor.
-- **Tranzacții Financiare**: Trimiterea de bani, plăți online și împărțite între 
-mai multe conturi.
-- **Rapoarte Detaliate**: Generarea de rapoarte pentru tranzacții și cheltuieli.
-- **Conversii Valutare**: Gestionarea conversiilor valutare internaționale.
-- **Interfață JSON**: Generarea ieșirilor structurate în format JSON.
+- **User Management**: Adding, deleting, and displaying user details.
+- **Bank Account Administration**: Creating and deleting accounts, setting  
+  the minimum balance, and changing account interest rates.
+- **Card Management**: Creating, deleting, and checking card status.
+- **Financial Transactions**: Sending money, online payments, and splitting  
+  payments among multiple accounts.
+- **Detailed Reports**: Generating transaction and expense reports.
+- **Currency Conversions**: Managing international currency exchanges.
+- **JSON Interface**: Producing structured output in JSON format.
 
-## Structura proiectului
+## Project Structure
 
-### **Pachetul command**
-Pachetul `command` implementează comenzile specifice aplicației. Comenzile sunt  
-create folosind **CommandFactory**.
+### **Command Package**
+The `command` package implements the specific commands of the application.  
+Commands are created using the **CommandFactory**.
 
-- **AddAccountCommand**: Adaugă un nou cont bancar.
-- **AddFundsCommand**: Adaugă fonduri în contul specificat.
-- **AddInterestCommand**: Aplică dobândă conturilor de economii.
-- **ChangeInterestRateCommand**: Modifică rata dobânzii unui cont.
-- **CheckCardStatusCommand**: Verifică starea unui card.
-- **CreateCardCommand**: Creează un card nou pentru un cont.
-- **DeleteAccountCommand**: Șterge un cont bancar.
-- **DeleteCardCommand**: Șterge un card asociat unui cont.
-- **NotImplementedCommand**: Placeholder pentru comenzi neimplementate.
-- **PayOnlineCommand**: Realizează plăți online cu un card.
-- **PrintTransactionsCommand**: Afișează istoricul tranzacțiilor.
-- **PrintUsersCommand**: Afișează lista utilizatorilor din sistem.
-- **ReportCommand**: Generează rapoarte detaliate ale tranzacțiilor.
-- **SendMoneyCommand**: Transferă bani între conturi.
-- **SetAliasCommand**: Setează un alias pentru un cont.
-- **SetMinBalanceCommand**: Configurează soldul minim pentru conturi.
-- **SpendingsReportCommand**: Generează rapoarte despre cheltuieli.
-- **SplitPaymentCommand**: Realizează plăți împărțite între mai multe conturi.
+- **AddAccountCommand**: Adds a new bank account.
+- **AddFundsCommand**: Adds funds to a specified account.
+- **AddInterestCommand**: Applies interest to savings accounts.
+- **ChangeInterestRateCommand**: Changes the interest rate of an account.
+- **CheckCardStatusCommand**: Checks the status of a card.
+- **CreateCardCommand**: Creates a new card for an account.
+- **DeleteAccountCommand**: Deletes a bank account.
+- **DeleteCardCommand**: Deletes a card associated with an account.
+- **NotImplementedCommand**: Placeholder for unimplemented commands.
+- **PayOnlineCommand**: Makes online payments using a card.
+- **PrintTransactionsCommand**: Displays the transaction history.
+- **PrintUsersCommand**: Displays the list of system users.
+- **ReportCommand**: Generates detailed transaction reports.
+- **SendMoneyCommand**: Transfers money between accounts.
+- **SetAliasCommand**: Sets an alias for an account.
+- **SetMinBalanceCommand**: Configures the minimum balance for accounts.
+- **SpendingsReportCommand**: Generates expense reports.
+- **SplitPaymentCommand**: Performs split payments among multiple accounts.
 
-### **Pachetul exception**
-Pachetul `exception` conține excepțiile personalizate utilizate în sistem:
+### **Exception Package**
+The `exception` package contains the custom exceptions used in the system:
 
-- **AccountCanNotBeDeletedException**: Contul nu poate fi șters.
-- **AccountNotFoundException**: Contul specificat nu a fost găsit.
-- **CardIsUsedException**: Cardul este deja utilizat într-o tranzacție.
-- **CardNotFoundException**: Cardul specificat nu a fost găsit.
-- **FrozenCardException**: Cardul este blocat pentru utilizare.
-- **InsufficientFundsException**: Fonduri insuficiente pentru tranzacție.
-- **NoExchangeRateException**: Rata de schimb necesară nu este disponibilă.
-- **UnauthorizedAccessException**: Accesul utilizatorului este neautorizat.
-- **UserAlreadyExistsException**: Utilizatorul există deja în sistem.
-- **UserNotFoundException**: Utilizatorul specificat nu a fost găsit.
+- **AccountCanNotBeDeletedException**: The account cannot be deleted.
+- **AccountNotFoundException**: The specified account was not found.
+- **CardIsUsedException**: The card is already used in a transaction.
+- **CardNotFoundException**: The specified card was not found.
+- **FrozenCardException**: The card is locked for use.
+- **InsufficientFundsException**: Insufficient funds for the transaction.
+- **NoExchangeRateException**: The required exchange rate is unavailable.
+- **UnauthorizedAccessException**: User access is unauthorized.
+- **UserAlreadyExistsException**: The user already exists in the system.
+- **UserNotFoundException**: The specified user was not found.
 
-### **Pachetul model**
-Pachetul `model` conține structurile principale de date din aplicație.
+### **Model Package**
+The `model` package contains the main data structures of the application.
 
-#### **Subpachetul account**
-- **Account**: Clasa de bază pentru conturi.
-- **ClassicAccount**: Conturi clasice cu funcționalități standard.
-- **SavingsAccount**: Conturi de economii cu acumulare de dobândă.
+#### **account Subpackage**
+- **Account**: The base class for accounts.
+- **ClassicAccount**: Classic accounts with standard features.
+- **SavingsAccount**: Savings accounts that accrue interest.
 
-#### **Subpachetul card**
-- **Card**: Clasa de bază pentru carduri.
-- **OneTimePayCard**: Carduri utilizabile o singură dată.
-- **RegularCard**: Carduri obișnuite asociate conturilor.
+#### **card Subpackage**
+- **Card**: The base class for cards.
+- **OneTimePayCard**: Cards usable only once.
+- **RegularCard**: Regular cards associated with accounts.
 
-#### **Subpachetul transaction**
-- **AccountCreationTransaction**: Creează un cont nou.
-- **AccountDeletionErrorTransaction**: Eroare la ștergerea unui cont.
-- **CardCreationTransaction**: Creează un card pentru un cont.
-- **CardDeletionTransaction**: Șterge un card din sistem.
-- **CardPaymentTransaction**: Plată realizată folosind un card.
-- **FrozenCardTransaction**: Blochează un card pentru utilizare.
-- **InsufficientFundsTransaction**: Eroare de fonduri insuficiente.
-- **InterestRateChangeTransaction**: Modifică dobânda unui cont.
-- **MinimumAmountOfFundsTransaction**: Setează soldul minim necesar.
-- **SendMoneyTransaction**: Transferă bani între conturi.
-- **SplitPaymentTransaction**: Plată împărțită între conturi.
+#### **transaction Subpackage**
+- **AccountCreationTransaction**: Creates a new account.
+- **AccountDeletionErrorTransaction**: Error when deleting an account.
+- **CardCreationTransaction**: Creates a card for an account.
+- **CardDeletionTransaction**: Deletes a card from the system.
+- **CardPaymentTransaction**: Payment made using a card.
+- **FrozenCardTransaction**: Locks a card for use.
+- **InsufficientFundsTransaction**: Error for insufficient funds.
+- **InterestRateChangeTransaction**: Changes the interest rate of an account.
+- **MinimumAmountOfFundsTransaction**: Sets the required minimum balance.
+- **SendMoneyTransaction**: Transfers money between accounts.
+- **SplitPaymentTransaction**: Splits a payment between multiple accounts.
 
-### **Pachetul service**
-Pachetul `service` implementează logica principală a aplicației:
+### **Service Package**
+The `service` package implements the main logic of the application:
 
-- **AccountService**: Administrează conturile bancare.
-- **CardService**: Gestionează cardurile asociate conturilor.
-- **ExchangeService**: Realizează conversii valutare.
-- **TransactionService**: Gestionează tranzacțiile din sistem.
-- **UserService**: Administrează utilizatorii și datele asociate acestora.
+- **AccountService**: Manages bank accounts.
+- **CardService**: Handles cards associated with accounts.
+- **ExchangeService**: Performs currency conversions.
+- **TransactionService**: Manages system transactions.
+- **UserService**: Administers users and their associated data.
 
-### **Pachetul visitor**
-Pachetul `visitor` implementează **design pattern-ul Visitor**.
+### **Visitor Package**
+The `visitor` package implements the **Visitor** design pattern.
 
-#### **Subpachetul command**
-- **CommandVisitor**: Interfața pentru vizitarea comenzilor.
-- **ConcreteCommandVisitor**: Implementarea logicii comenzilor.
+#### **command Subpackage**
+- **CommandVisitor**: The interface for visiting commands.
+- **ConcreteCommandVisitor**: The implementation of command logic.
 
-#### **Subpachetul transaction**
-- **TransactionVisitor**: Interfața pentru vizitarea tranzacțiilor.
-- **ConcreteTransactionVisitor**: Implementarea logicii tranzacțiilor (crearea
-outputului specific fiecărei tranzacții).  
+#### **transaction Subpackage**
+- **TransactionVisitor**: The interface for visiting transactions.
+- **ConcreteTransactionVisitor**: The implementation of transaction logic 
+  (generating specific output for each transaction).
